@@ -1,11 +1,9 @@
 package br.com.api.controllers;
 
 import java.util.Set;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.com.api.infrastructure.database.datamodel.domainstweet.DomainTweetRepository;
 import br.com.api.models.domainstweet.DomainTweetJson;
 import br.com.api.models.domainstweet.DomainTweetListJson;

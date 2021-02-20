@@ -23,7 +23,6 @@ public class TextAnalysisByTFIDF {
 	}
 
 	private void calculateFrequencyKeyWords() {
-		TFIDFCalculator tfIDF = new TFIDFCalculator();
 		List<List<String>> documents = this.tweetsKeywords.entrySet().stream()
 				.map(p -> p.getValue()).collect(Collectors.toList());
 
@@ -31,7 +30,7 @@ public class TextAnalysisByTFIDF {
 			Map<String, Double> frequencies = new HashMap<>();
 
 			for (String term : tweet.getValue()) {
-				double frequency = tfIDF.tfIdf(tweet.getValue(), documents, term);
+				double frequency = TFIDFCalculator.tfIdf(tweet.getValue(), documents, term);
 				frequencies.put(term, frequency);
 
 				this.allDistictKeywords.add(term);

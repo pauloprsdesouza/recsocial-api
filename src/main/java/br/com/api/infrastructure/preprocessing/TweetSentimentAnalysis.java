@@ -14,16 +14,16 @@ import org.apache.commons.text.StringTokenizer;
 
 public class TweetSentimentAnalysis {
 	private static StanfordCoreNLP pipeline;
-	private static TweetCleaner tweetCleaner;
-	private static StopWord stopWords;
+	private static TweetCleanerService tweetCleaner;
+	private static StopWordService stopWords;
 	private static StringTokenizer stringToken;
 
 	public static void init() {
 		Properties props = new Properties();
 		props.setProperty("annotators", "tokenize, ssplit, parse, sentiment");
 		pipeline = new StanfordCoreNLP(props);
-		stopWords = new StopWord();
-		tweetCleaner = new TweetCleaner();
+		stopWords = new StopWordService();
+		tweetCleaner = new TweetCleanerService();
 	}
 
 	public static int findSentimentByPreProcessingTweet(String tweet) {

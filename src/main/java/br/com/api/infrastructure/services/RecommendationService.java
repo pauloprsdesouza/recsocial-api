@@ -17,36 +17,38 @@ import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
 import br.com.api.infrastructure.database.datamodel.tweets.TweetRepository;
 import br.com.api.infrastructure.database.datamodel.twitterusers.TwitterUser;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
-import br.com.api.infrastructure.preprocessing.StopWord;
+import br.com.api.infrastructure.preprocessing.StopWordService;
 import br.com.api.infrastructure.preprocessing.TextAnalysisByFrequency;
 import br.com.api.infrastructure.preprocessing.TextAnalysisByTFIDF;
-import br.com.api.infrastructure.preprocessing.TweetCleaner;
+import br.com.api.infrastructure.preprocessing.TweetCleanerService;
 import br.com.api.infrastructure.preprocessing.TweetSentimentAnalysis;
+import smile.projection.ProbabilisticPCA;
 
 @Service
 public class RecommendationService {
 
     private EntityTweetRepository _entities;
     private TweetRepository _tweets;
+    private TweetCleanerService _tweetCleanerService;
+    private StopWordService _stopWordService;
 
-    public RecommendationService(EntityTweetRepository entities, TweetRepository tweets) {
+    public RecommendationService(EntityTweetRepository entities, TweetRepository tweets,
+            TweetCleanerService tweetCleanerService, StopWordService stopWordService) {
         _entities = entities;
         _tweets = tweets;
+        _tweetCleanerService = tweetCleanerService;
+        _stopWordService = stopWordService;
     }
 
-    private UserAccount activeUser;
+    private UserAccount _activeUser;
     private Set<Tweet> tweets;
     private Set<Tweet> tweetsByEntity;
-    private TweetCleaner tweetCleaner;
-    private StopWord stopWords;
-    private boolean sentimentAnalysis;
+    private boolean _isSentimentAnalysis;
     private double maxFollowersCount;
-    // private ProbabilisticPCA pca;
+    private ProbabilisticPCA pca;
 
     public RecommendationService getInstance() {
-        this.tweetCleaner = new TweetCleaner();
-        this.stopWords = new StopWord();
-        this.sentimentAnalysis = false;
+        this._isSentimentAnalysis = false;
         this.tweetsByEntity = new HashSet<>();
         this.tweets = new HashSet<>();
         this.maxFollowersCount = 0;
@@ -56,7 +58,7 @@ public class RecommendationService {
 
     public RecommendationService withSentimentAnalysis() {
         TweetSentimentAnalysis.init();
-        this.sentimentAnalysis = true;
+        this._isSentimentAnalysis = true;
         return this;
     }
 
@@ -65,7 +67,8 @@ public class RecommendationService {
     }
 
     private List<Tweet> getTweetsEvaluated() {
-        List<Tweet> tweets = _tweets.getRecommendedTweetByRecommendationType(this.activeUser.getId());
+        List<Tweet> tweets =
+                _tweets.getRecommendedTweetByRecommendationType(this._activeUser.getId());
 
         return tweets;
     }
@@ -98,14 +101,15 @@ public class RecommendationService {
         Map<Tweet, List<String>> tweetsKeywords = new HashMap<>();
 
         for (Tweet tweet : this.tweets) {
-            String text = this.tweetCleaner.setText(tweet.getText()).cleanMentions().cleanHashtag().cleanUrls().clean()
-                    .getTextCleaned();
+            String text = this._tweetCleanerService.setText(tweet.getText()).cleanMentions()
+                    .cleanHashtag().cleanUrls().clean().getTextCleaned();
 
             stringToken = new StringTokenizer(text);
             List<String> keywords = stringToken.getTokenList();
 
-            keywords = this.stopWords.removeFromText(keywords).toList();
-            keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName()).collect(Collectors.toList()));
+            keywords = this._stopWordService.removeFromText(keywords).toList();
+            keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName())
+                    .collect(Collectors.toList()));
 
             tweetsKeywords.put(tweet, keywords);
         }
@@ -128,19 +132,20 @@ public class RecommendationService {
         List<EntityTweet> entities = _entities.findAll();
 
         for (EntityTweet entity : entities) {
-            List<Tweet> tweetsByEntity = this.tweets.stream()
-                    .filter(p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
+            List<Tweet> tweetsByEntity = this.tweets.stream().filter(
+                    p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
                     .collect(Collectors.toList());
 
             for (Tweet tweet : tweetsByEntity) {
-                String text = this.tweetCleaner.setText(tweet.getText()).cleanMentions().cleanHashtag().cleanUrls()
-                        .clean().getTextCleaned();
+                String text = this._tweetCleanerService.setText(tweet.getText()).cleanMentions()
+                        .cleanHashtag().cleanUrls().clean().getTextCleaned();
 
                 stringToken = new StringTokenizer(text);
                 List<String> keywords = stringToken.getTokenList();
 
-                keywords = this.stopWords.removeFromText(keywords).toList();
-                keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName()).collect(Collectors.toList()));
+                keywords = this._stopWordService.removeFromText(keywords).toList();
+                keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName())
+                        .collect(Collectors.toList()));
 
                 tweetsKeywords.put(tweet, keywords);
             }
@@ -164,7 +169,7 @@ public class RecommendationService {
         for (Tweet tweet : this.tweets) {
             double score = socialCapitalScoreCalculator(tweet);
 
-            if (this.sentimentAnalysis) {
+            if (this._isSentimentAnalysis) {
                 tweet.setScsaScore(score);
             } else {
                 tweet.setScScore(score);
@@ -211,17 +216,17 @@ public class RecommendationService {
     public RecommendationService setTweetsByEntity(Set<Tweet> tweets) {
         this.tweetsByEntity = tweets;
 
-        this.maxFollowersCount = tweets.stream().mapToLong(p -> p.getWhosPosted().getFollowersCount()).max()
-                .getAsLong();
+        this.maxFollowersCount = tweets.stream()
+                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
 
         return this;
     }
 
     public RecommendationService withAllTweets() {
-        this.tweets = null;// _tweets.getAllWithoutReplyRetweet();
+        this.tweets = _tweets.getAllWithoutReplyRetweet();
 
-        this.maxFollowersCount = this.tweets.stream().mapToLong(p -> p.getWhosPosted().getFollowersCount()).max()
-                .getAsLong();
+        this.maxFollowersCount = this.tweets.stream()
+                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
 
         return this;
     }
@@ -288,7 +293,7 @@ public class RecommendationService {
     }
 
     public RecommendationService setActiveUser(UserAccount user) {
-        this.activeUser = user;
+        this._activeUser = user;
         return this;
     }
 
@@ -319,13 +324,14 @@ public class RecommendationService {
 
         double totalInUserfluenceScoreRetweet = 0;
 
-        score += (frequencyLikes + frequencyRetweets + totalInUserfluenceScoreMentioned + totalInUserfluenceScoreRetweet
-                + frequencyReplies) * userInfluenceScore;
+        score += (frequencyLikes + frequencyRetweets + totalInUserfluenceScoreMentioned
+                + totalInUserfluenceScoreRetweet + frequencyReplies) * userInfluenceScore;
 
         double sentimentWeight = 0;
 
-        if (this.sentimentAnalysis) {
-            int sentimentClass = TweetSentimentAnalysis.findSentimentByPreProcessingTweet(tweet.getText());
+        if (this._isSentimentAnalysis) {
+            int sentimentClass =
+                    TweetSentimentAnalysis.findSentimentByPreProcessingTweet(tweet.getText());
 
             // 0 = very negative, 1 = negative, 2 = neutral, 3 = positive, and 4 = very
             // positive.
