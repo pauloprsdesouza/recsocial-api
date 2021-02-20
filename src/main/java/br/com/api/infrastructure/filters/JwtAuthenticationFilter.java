@@ -48,6 +48,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
+        response.setCharacterEncoding("UTF-8");
         filterChain.doFilter(request, response);
     }
 

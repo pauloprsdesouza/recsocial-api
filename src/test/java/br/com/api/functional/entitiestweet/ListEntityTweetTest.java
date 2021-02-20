@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -20,6 +21,7 @@ public class ListEntityTweetTest {
     private MockMvc mvc;
 
     @Test
+    @WithUserDetails("paulo.prsdesouza@gmail.com")
     public void shouldListAllEntitiesTweetByDomain() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/1").contentType(MediaType.APPLICATION_JSON));
@@ -28,6 +30,7 @@ public class ListEntityTweetTest {
     }
 
     @Test
+    @WithUserDetails("paulo.prsdesouza@gmail.com")
     public void shouldRespond404ForInexistentId() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/").contentType(MediaType.APPLICATION_JSON));
@@ -36,6 +39,7 @@ public class ListEntityTweetTest {
     }
 
     @Test
+    @WithUserDetails("paulo.prsdesouza@gmail.com")
     public void shouldReturnEmpityArrayForUnregistredId() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/999").contentType(MediaType.APPLICATION_JSON));
