@@ -1,11 +1,9 @@
 package br.com.api.infrastructure.database.datamodel.recommendations;
 
-import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
-import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
+import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 
 @Entity
 @Table(name = "recommendation")
@@ -44,11 +44,11 @@ public class Recommendation implements Serializable {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "recommendation", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<RecommendationItem> items;
+    @OneToMany(mappedBy = "recommendation", cascade = CascadeType.ALL)
+    private List<RecommendationItem> items;
 
     public Recommendation() {
-        this.items = new HashSet<>();
+        this.items = new ArrayList<>();
     }
 
     public int getId() {
@@ -91,11 +91,11 @@ public class Recommendation implements Serializable {
         this.finishedDate = finishedDate;
     }
 
-    public Set<RecommendationItem> getItems() {
+    public List<RecommendationItem> getItems() {
         return items;
     }
 
-    public void setItems(Set<RecommendationItem> items) {
+    public void setItems(List<RecommendationItem> items) {
         this.items = items;
     }
 

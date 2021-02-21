@@ -1,20 +1,5 @@
 package br.com.api.controllers;
 
-import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
-import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemPK;
-import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemRepository;
-import br.com.api.authorization.HttpContext;
-import br.com.api.infrastructure.database.datamodel.recommendations.Recommendation;
-import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
-import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationTypeEnum;
-import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
-import br.com.api.infrastructure.database.datamodel.tweets.TweetRepository;
-import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
-import br.com.api.infrastructure.services.RecommendationService;
-import br.com.api.models.recommendations.items.RecommendationItemListJson;
-import br.com.api.models.recommendations.items.UpdateItemRatingJson;
-import io.swagger.models.Response;
-import com.google.gson.JsonObject;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -25,17 +10,27 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.websocket.server.PathParam;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.api.authorization.HttpContext;
+import br.com.api.infrastructure.database.datamodel.recommendations.Recommendation;
+import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
+import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationTypeEnum;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemPK;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemRepository;
+import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
+import br.com.api.infrastructure.database.datamodel.tweets.TweetRepository;
+import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
+import br.com.api.infrastructure.services.RecommendationService;
+import br.com.api.models.recommendations.GenerateRecommendationJson;
+import br.com.api.models.recommendations.items.RecommendationItemListJson;
+import br.com.api.models.recommendations.items.UpdateItemRatingJson;
 
 
 @RestController
@@ -56,71 +51,67 @@ public class RecommendationController {
         _recommendationItemRepository = recommendationItemRepository;
     }
 
-    @PostMapping("/generate")
-    public ResponseEntity<String> generateRecommendations() {
-        // UserAccount user = HttpContext.getUserLogged();
+    @PostMapping("/bytype")
+    public ResponseEntity<String> generateRecommendations(
+            @RequestBody GenerateRecommendationJson json) {
 
-        // Map<Tweet, Double> tweetsScore;
-        // List<Tweet> tweets;
+        UserAccount user = HttpContext.getUserLogged();
 
-        // if (viewModel.getRecommendationType() == RecommendationTypeEnum.SocialCapial || viewModel
-        // .getRecommendationType() == RecommendationTypeEnum.SocialCapitalSentiment) {
+        Map<Tweet, Double> tweetsScore = new HashMap<>();
+        Set<Tweet> tweets = _tweets.getNotRecommendedTweets(user.getId(), json.getIdsEntities());
 
-        // tweets = _tweets.getTweetsNotRecommendedBySocialCapital(user.getId(),
-        // viewModel.getIdsEntities());
+        if (json.isSocialCapital()) {
+            for (Tweet tweet : tweets) {
+                tweetsScore.put(tweet, tweet.getScScore());
+            }
+        } else if (json.isSocialCapitalSentimentAnalysis()) {
+            for (Tweet tweet : tweets) {
+                tweetsScore.put(tweet, tweet.getScsaScore());
+            }
+        } else if (json.isCosineSimilarity()) {
+            tweetsScore = _recService.setActiveUser(user).setTweetsByEntity(tweets)
+                    .calculateSimilaritiesCosineSimilarity();
+        } else {
+            tweetsScore = _recService.setActiveUser(user).setTweetsByEntity(tweets)
+                    .calculateSimilaritiesBaseline01();
+        }
 
-        // tweetsScore = new HashMap<>();
-        // } else {
-        // tweets = _tweets.getTweetsNotRecommended(user.getId(), viewModel.getIdsEntities());
+        Recommendation recommendation = new Recommendation();
+        recommendation.setUser(user);
+        recommendation.setRegistrationDate(new Date());
+        recommendation.setRecommendationType(
+                RecommendationTypeEnum.getValue(json.getRecommendationType()));
 
-        // if (viewModel.getRecommendationType() == RecommendationTypeEnum.CosineSimilarity) {
-        // tweetsScore = _recService.setActiveUser(user).setTweetsByEntity(tweets)
-        // .calculateCosineSimilarityScores();
-        // } else {
-        // tweetsScore = _recService.setActiveUser(user).setTweetsByEntity(tweets)
-        // .calculateBaseline01Scores();
-        // }
-        // }
+        recommendation = _recommendations.save(recommendation);
 
-        // for (Tweet tweet : tweets) {
-        // tweetsScore.put(tweet, tweet.getScsaScore());
-        // }
+        Set<RecommendationItem> recommendedItems = new HashSet<>();
 
-        // Recommendation recommendation = new Recommendation();
-        // recommendation.setUser(user);
-        // recommendation.setRegistrationDate(new Date());
-        // recommendation.setRecommendationType(viewModel.getRecommendationType());
+        for (Entry<Tweet, Double> tweet : tweetsScore.entrySet()) {
+            RecommendationItemPK itemPK = new RecommendationItemPK();
+            itemPK.setIdTweet(tweet.getKey().getId());
+            itemPK.setIdRecommendation(recommendation.getId());
 
-        // recommendation = _recommendations.save(recommendation);
+            RecommendationItem item = new RecommendationItem();
+            item.setScore(tweet.getValue());
+            item.setId(itemPK);
 
-        // Set<RecommendationItem> recommendedItems = new HashSet<>();
+            recommendedItems.add(item);
+        }
 
-        // for (Entry<Tweet, Double> tweet : tweetsScore.entrySet()) {
-        // RecommendationItemPK itemPK = new RecommendationItemPK();
-        // itemPK.setIdTweet(tweet.getKey().getId());
-        // itemPK.setIdRecommendation(recommendation.getId());
+        LinkedList<RecommendationItem> recommendedRankedItems = new LinkedList<>(recommendedItems
+                .stream().sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
+                .limit(10).collect(Collectors.toCollection(LinkedList::new)));
 
-        // RecommendationItem item = new RecommendationItem();
-        // item.setScore(tweet.getValue());
-        // item.setId(itemPK);
+        int i = 1;
+        for (RecommendationItem item : recommendedRankedItems) {
+            item.setRank(i++);
+        }
 
-        // recommendedItems.add(item);
-        // }
+        recommendation.setItems(recommendedRankedItems);
 
-        // LinkedList<RecommendationItem> recommendedRankedItems = new LinkedList<>(recommendedItems
-        // .stream().sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
-        // .limit(10).collect(Collectors.toCollection(LinkedList::new)));
+        _recommendations.save(recommendation);
 
-        // int i = 1;
-        // for (RecommendationItem item : recommendedRankedItems) {
-        // item.setRank(i++);
-        // }
-
-        // // recommendation.setItems(recommendedRankedItems);
-
-        // _recommendations.save(recommendation);
-
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @PostMapping("/update-rating")
