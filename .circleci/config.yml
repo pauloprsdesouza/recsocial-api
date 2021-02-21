@@ -1,10 +1,11 @@
-version: 2.1
-
-orbs:
-  maven: circleci/maven@0.0.12
-
+version: 2
 jobs:
   build:
+    docker:
+      - image: circleci/openjdk:11.0-stretch-node-browsers-legacy
+        auth:
+          username: pauloprsdesouza
+          password: P4ul!nh0r2  # context / project UI env-var reference
     steps:
       - checkout
       - run : mvn test
