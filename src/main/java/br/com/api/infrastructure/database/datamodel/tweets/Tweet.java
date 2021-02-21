@@ -96,48 +96,52 @@ public class Tweet implements Serializable {
     @JoinColumn(name = "id_user_timeline")
     private TwitterUser onTimelineOf;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "hashtag", joinColumns = { @JoinColumn(name = "id_tweet") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_tag") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "hashtag", joinColumns = {@JoinColumn(name = "id_tweet")},
+            inverseJoinColumns = {@JoinColumn(name = "id_tag")})
     private Set<Tag> hashtags;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "address", joinColumns = { @JoinColumn(name = "id_tweet") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_url") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "address", joinColumns = {@JoinColumn(name = "id_tweet")},
+            inverseJoinColumns = {@JoinColumn(name = "id_url")})
     private Set<URL> urls;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "mention", joinColumns = { @JoinColumn(name = "id_tweet") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_user_mentioned") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "mention", joinColumns = {@JoinColumn(name = "id_tweet")},
+            inverseJoinColumns = {@JoinColumn(name = "id_user_mentioned")})
     private Set<TwitterUser> mentions;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "reply", joinColumns = {
-            @JoinColumn(name = "id_tweet", referencedColumnName = "id") }, inverseJoinColumns = {
-                    @JoinColumn(name = "id_reply", referencedColumnName = "id") })
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "reply",
+            joinColumns = {@JoinColumn(name = "id_tweet", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_reply", referencedColumnName = "id")})
     private Set<Tweet> replies;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "reply", joinColumns = {
-            @JoinColumn(name = "id_reply", referencedColumnName = "id", insertable = false, updatable = false) }, inverseJoinColumns = {
-                    @JoinColumn(name = "id_tweet", referencedColumnName = "id", insertable = false, updatable = false) })
+    @JoinTable(name = "reply",
+            joinColumns = {@JoinColumn(name = "id_reply", referencedColumnName = "id",
+                    insertable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "id_tweet", referencedColumnName = "id",
+                    insertable = false, updatable = false)})
     private Tweet originalTweetByReply;
 
-    @OneToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "retweet", joinColumns = {
-            @JoinColumn(name = "id_original_tweet", referencedColumnName = "id") }, inverseJoinColumns = {
-                    @JoinColumn(name = "id_retweet", referencedColumnName = "id") })
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "retweet",
+            joinColumns = {@JoinColumn(name = "id_original_tweet", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "id_retweet", referencedColumnName = "id")})
     private Set<Tweet> retweets;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "retweet", joinColumns = {
-            @JoinColumn(name = "id_retweet", referencedColumnName = "id", insertable = false, updatable = false) }, inverseJoinColumns = {
-                    @JoinColumn(name = "id_original_tweet", referencedColumnName = "id", insertable = false, updatable = false) })
+    @JoinTable(name = "retweet",
+            joinColumns = {@JoinColumn(name = "id_retweet", referencedColumnName = "id",
+                    insertable = false, updatable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "id_original_tweet",
+                    referencedColumnName = "id", insertable = false, updatable = false)})
     private Tweet originalTweetByRetweet;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "context_annotation", joinColumns = { @JoinColumn(name = "id_tweet") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_entity"), @JoinColumn(name = "id_domain") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "context_annotation", joinColumns = {@JoinColumn(name = "id_tweet")},
+            inverseJoinColumns = {@JoinColumn(name = "id_entity"), @JoinColumn(name = "id_domain")})
     private Set<EntityTweet> entities;
 
     @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL, orphanRemoval = true)

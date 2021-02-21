@@ -35,7 +35,6 @@ import br.com.api.models.recommendations.items.UpdateItemRatingJson;
 @RestController
 @RequestMapping("/recommendations")
 public class RecommendationController {
-
     private RecommendationService _recService;
     private TweetRepository _tweets;
     private RecommendationRepository _recommendations;
@@ -51,8 +50,8 @@ public class RecommendationController {
     }
 
     @PostMapping("/bytype")
-    public ResponseEntity<?> generateRecommendations(@RequestBody GenerateRecommendationJson json) {
-
+    public ResponseEntity<?> getRecommendationsByType(
+            @RequestBody GenerateRecommendationJson json) {
         UserAccount user = HttpContext.getUserLogged();
 
         Map<Tweet, Double> tweetsScore = new HashMap<>();

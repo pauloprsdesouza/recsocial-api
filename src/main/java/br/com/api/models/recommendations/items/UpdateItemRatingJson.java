@@ -5,38 +5,38 @@ import javax.validation.constraints.Size;
 
 public class UpdateItemRatingJson {
     @NotBlank(message = "Id da recomendação é obrigatório")
-    private int _idRecommendation;
+    private int idRecommendation;
 
     @NotBlank(message = "Id da recomendação é obrigatório")
-    private int _idTweet;
+    private long idTweet;
 
     @NotBlank(message = "Rating da avaliação é obrigatório")
     @Size(min = 1, max = 5, message = "Rating deve estar entre 1 e 5")
-    private int _rating;
+    private int rating;
 
 
     public int getIdRecommendation() {
-        return _idRecommendation;
+        return this.idRecommendation;
     }
 
     public void setIdRecommendation(int idRecommendation) {
-        _idRecommendation = idRecommendation;
+        this.idRecommendation = idRecommendation;
     }
 
-    public int getIdTweet() {
-        return _idTweet;
+    public long getIdTweet() {
+        return this.idTweet;
     }
 
-    public void setIdTweet(int idTweet) {
-        _idTweet = idTweet;
+    public void setIdTweet(long idTweet) {
+        this.idTweet = idTweet;
     }
 
     public int getRating() {
-        return _rating;
+        return this.rating;
     }
 
     public void setRating(int rating) {
-        _rating = rating;
+        this.rating = rating;
     }
 
 }
