@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.api.authorization.HttpContext;
 import br.com.api.infrastructure.database.datamodel.recommendations.Recommendation;
 import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
-import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationTypeEnum;
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemPK;
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemRepository;
@@ -52,8 +51,7 @@ public class RecommendationController {
     }
 
     @PostMapping("/bytype")
-    public ResponseEntity<String> generateRecommendations(
-            @RequestBody GenerateRecommendationJson json) {
+    public ResponseEntity<?> generateRecommendations(@RequestBody GenerateRecommendationJson json) {
 
         UserAccount user = HttpContext.getUserLogged();
 
@@ -79,8 +77,7 @@ public class RecommendationController {
         Recommendation recommendation = new Recommendation();
         recommendation.setUser(user);
         recommendation.setRegistrationDate(new Date());
-        recommendation.setRecommendationType(
-                RecommendationTypeEnum.getValue(json.getRecommendationType()));
+        recommendation.setRecommendationType(json.getRecommendationType());
 
         recommendation = _recommendations.save(recommendation);
 
@@ -111,7 +108,8 @@ public class RecommendationController {
 
         _recommendations.save(recommendation);
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok().body(new RecommendationItemListJson(recommendedRankedItems)
+                .getRecommendationItemsJson());
     }
 
     @PostMapping("/update-rating")

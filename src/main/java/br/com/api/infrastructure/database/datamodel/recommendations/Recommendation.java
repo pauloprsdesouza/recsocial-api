@@ -63,8 +63,8 @@ public class Recommendation implements Serializable {
         return RecommendationTypeEnum.getValue(this.recommendationType);
     }
 
-    public void setRecommendationType(RecommendationTypeEnum recommendationType) {
-        this.recommendationType = recommendationType.getValue();
+    public void setRecommendationType(String recommendationType) {
+        this.recommendationType = recommendationType;
     }
 
     public UserAccount getUser() {
