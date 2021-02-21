@@ -1,4 +1,4 @@
-version: 2,1
+version: 2.1
 orbs:
   codecov: codecov/codecov@1.0.2
 jobs:
@@ -14,6 +14,6 @@ jobs:
       - store_artifacts:
           path:  target
       - codecov/upload:
-          file: target/my-reports
-          token: 5c2006b7-3d49-49b4-85ce-e58fbafe043a
+          file: 'target/my-reports'
+          token: '5c2006b7-3d49-49b4-85ce-e58fbafe043a'
 
