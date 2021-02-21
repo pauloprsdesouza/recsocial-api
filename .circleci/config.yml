@@ -7,13 +7,13 @@ jobs:
       - image: circleci/openjdk:11.0-stretch-node-browsers-legacy
         auth:
           username: pauloprsdesouza
-          password: P4ul!nh0r2  # context / project UI env-var referenc
+          password: P4ul!nh0r2  # context / project UI env-var reference
     steps:
       - checkout
       - run : mvn test
       - store_artifacts:
           path:  target
       - codecov/upload:
-          file: 'target/my-reports'
-          token: '5c2006b7-3d49-49b4-85ce-e58fbafe043a'
+          file: 'target/my-reports/jacoco.xml'
+          token: 5c2006b7-3d49-49b4-85ce-e58fbafe043a
 
