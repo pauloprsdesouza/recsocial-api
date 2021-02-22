@@ -1,7 +1,7 @@
-package br.com.api.functional.domainstweet;
+package br.com.api.functional.usersaccount;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,16 +13,17 @@ import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ListDomainsTweetTest {
+public class DetailsUserAccountTest {
     @Autowired
     private MockMvc mvc;
 
     @Test
     @WithUserDetails("paulo.prsdesouza@gmail.com")
-    public void shouldListAllDomainsTweet() throws Exception {
+    public void shouldRealizeLogin() throws Exception {
         ResultActions response =
-                mvc.perform(get("/domains/all").contentType(MediaType.APPLICATION_JSON));
+                mvc.perform(get("/users/details").contentType(MediaType.APPLICATION_JSON));
 
-        response.andExpect(status().isOk());
+        response.andExpect(content().json(
+                "{'email':'paulo.prsdesouza@gmail.com','viewInstructions':true, 'registrationDate':'2021-02-20T19:18:09.000+00:00'}"));
     }
 }

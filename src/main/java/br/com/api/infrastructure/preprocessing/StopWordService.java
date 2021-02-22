@@ -24,6 +24,8 @@ public class StopWordService {
 		this.stopWordsEmojis = new ArrayList<>((readFile("/stopwords/emojis.txt")));
 	}
 
+
+
 	public StopWordService removeFromText(List<String> words) {
 		this.keyWords = new ArrayList<>();
 

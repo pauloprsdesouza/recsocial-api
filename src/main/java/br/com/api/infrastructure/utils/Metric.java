@@ -27,4 +27,8 @@ public class Metric {
     public static double log2ToLog10(double value) {
         return value > 0 ? Math.log10(value) : 0;
     }
+
+    public static double log10ToLog2(double value) {
+        return Math.log10(value) / Math.log10(2);
+    }
 }

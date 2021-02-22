@@ -24,7 +24,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("System Recommendation Twitter")
-                .description("A System Recommendation for tweets").version("1.0").build();
+                .description("A System Recommendation for tweets").version("1.0").contact(contact())
+                .build();
     }
 
     private Contact contact() {

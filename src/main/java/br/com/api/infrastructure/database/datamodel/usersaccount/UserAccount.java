@@ -55,10 +55,6 @@ public class UserAccount implements Serializable {
         return this.id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return this.name;
     }
@@ -91,10 +87,6 @@ public class UserAccount implements Serializable {
         this.token = token;
     }
 
-    public boolean isViewInstructions() {
-        return this.viewInstructions;
-    }
-
     public boolean getViewInstructions() {
         return this.viewInstructions;
     }
@@ -111,33 +103,13 @@ public class UserAccount implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public UserAccount id(int id) {
-        setId(id);
-        return this;
-    }
-
     public UserAccount email(String email) {
         setEmail(email);
         return this;
     }
 
-    public UserAccount name(String name) {
-        setName(name);
-        return this;
-    }
-
     public UserAccount password(String password) {
         setPassword(password);
-        return this;
-    }
-
-    public UserAccount token(String token) {
-        setToken(token);
-        return this;
-    }
-
-    public UserAccount viewInstructions(boolean viewInstructions) {
-        setViewInstructions(viewInstructions);
         return this;
     }
 

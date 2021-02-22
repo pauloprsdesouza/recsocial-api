@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,7 +31,7 @@ import br.com.api.infrastructure.services.RecommendationService;
 import br.com.api.models.recommendations.GenerateRecommendationJson;
 import br.com.api.models.recommendations.items.RecommendationItemListJson;
 import br.com.api.models.recommendations.items.UpdateItemRatingJson;
-
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/recommendations")
@@ -113,33 +114,22 @@ public class RecommendationController {
 
     @PostMapping("/update-rating")
     public ResponseEntity<?> updateRating(@RequestBody UpdateItemRatingJson json) {
-        RecommendationItem recommendationItem = _recommendationItemRepository
-                .withIdRecommendation(json.getIdRecommendation(), json.getIdTweet()).get();
+        Optional<RecommendationItem> result = _recommendationItemRepository
+                .withIdRecommendation(json.getIdRecommendation(), json.getIdTweet());
 
-        if (recommendationItem != null) {
+        if (result.isPresent()) {
+            RecommendationItem recommendationItem = result.get();
+
             recommendationItem.setRating(json.getRating());
             recommendationItem.setRegistrationRating(null);
             recommendationItem.setRegistrationRating(new Date());
-
             _recommendationItemRepository.save(recommendationItem);
         } else {
             return ResponseEntity.unprocessableEntity()
-                    .body("Não foi possível encontrar a recomendação solicitada.");
+                    .body("Não foi possível encontrar a recomendação solicitada");
         }
 
         return ResponseEntity.ok().build();
-    }
-
-    @GetMapping("/not-evaluated/{recommendationType}")
-    public ResponseEntity<?> notEvaluated(@PathVariable String recommendationType) {
-        UserAccount user = HttpContext.getUserLogged();
-
-        List<RecommendationItem> recommendations = _recommendationItemRepository
-                .whithUserAndRecommendationsNotEvaluated(user.getId(), recommendationType);
-
-
-        return ResponseEntity.ok()
-                .body(new RecommendationItemListJson(recommendations).getRecommendationItemsJson());
     }
 
     @GetMapping("/finished-evaluations")

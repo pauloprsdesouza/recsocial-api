@@ -3,6 +3,7 @@ package br.com.api.controllers;
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import br.com.api.authorization.HttpContext;
 import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccountRepository;
@@ -20,19 +22,17 @@ import br.com.api.models.usersaccount.UserAccountJson;
 @RestController
 @RequestMapping("/users")
 public class UserAccountController {
+    @Autowired
     private UserAccountRepository _users;
-    private RecommendationRepository _recommendations;
-    private PasswordEncoder _passwordEncoder;
-    private JwtService _jwtService;
 
-    public UserAccountController(UserAccountRepository users,
-            RecommendationRepository recommendations, PasswordEncoder passwordEncoder,
-            JwtService JwtService) {
-        _users = users;
-        _recommendations = recommendations;
-        _passwordEncoder = passwordEncoder;
-        _jwtService = JwtService;
-    }
+    @Autowired
+    private RecommendationRepository _recommendations;
+
+    @Autowired
+    private PasswordEncoder _passwordEncoder;
+
+    @Autowired
+    private JwtService _jwtService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody @Valid SaveUserAccountJson json) {
@@ -53,8 +53,8 @@ public class UserAccountController {
     }
 
     @GetMapping("/view-instructions")
-    public ResponseEntity<?> updateViewInstructions() throws Exception {
-        UserAccount user = new UserAccount();
+    public ResponseEntity<?> updateViewInstructions() {
+        UserAccount user = HttpContext.getUserLogged();
 
         user.setViewInstructions(true);
 
@@ -65,7 +65,7 @@ public class UserAccountController {
 
     @GetMapping("/logout")
     public ResponseEntity<String> logout(HttpServletRequest request) {
-        UserAccount user = new UserAccount();
+        UserAccount user = HttpContext.getUserLogged();
 
         request.getSession().invalidate();
 
@@ -78,7 +78,7 @@ public class UserAccountController {
 
     @GetMapping("/details")
     public ResponseEntity<UserAccountJson> details() {
-        UserAccount user = new UserAccount();
+        UserAccount user = HttpContext.getUserLogged();
 
         return ResponseEntity.ok().body(new UserAccountJson(user));
     }

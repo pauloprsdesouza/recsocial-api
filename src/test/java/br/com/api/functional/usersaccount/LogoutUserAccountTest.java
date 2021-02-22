@@ -1,6 +1,7 @@
-package br.com.api.functional.domainstweet;
+package br.com.api.functional.usersaccount;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +14,15 @@ import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ListDomainsTweetTest {
+public class LogoutUserAccountTest {
     @Autowired
     private MockMvc mvc;
 
     @Test
     @WithUserDetails("paulo.prsdesouza@gmail.com")
-    public void shouldListAllDomainsTweet() throws Exception {
+    public void shouldlogout() throws Exception {
         ResultActions response =
-                mvc.perform(get("/domains/all").contentType(MediaType.APPLICATION_JSON));
+                mvc.perform(get("/users/logout").contentType(MediaType.APPLICATION_JSON));
 
         response.andExpect(status().isOk());
     }
