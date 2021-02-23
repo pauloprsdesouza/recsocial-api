@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
+import javax.annotation.Nullable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -111,33 +111,17 @@ public class Tweet implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "id_user_mentioned")})
     private Set<TwitterUser> mentions;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "reply",
             joinColumns = {@JoinColumn(name = "id_tweet", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "id_reply", referencedColumnName = "id")})
     private Set<Tweet> replies;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "reply",
-            joinColumns = {@JoinColumn(name = "id_reply", referencedColumnName = "id",
-                    insertable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "id_tweet", referencedColumnName = "id",
-                    insertable = false, updatable = false)})
-    private Tweet originalTweetByReply;
-
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable(name = "retweet",
             joinColumns = {@JoinColumn(name = "id_original_tweet", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "id_retweet", referencedColumnName = "id")})
     private Set<Tweet> retweets;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(name = "retweet",
-            joinColumns = {@JoinColumn(name = "id_retweet", referencedColumnName = "id",
-                    insertable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "id_original_tweet",
-                    referencedColumnName = "id", insertable = false, updatable = false)})
-    private Tweet originalTweetByRetweet;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "context_annotation", joinColumns = {@JoinColumn(name = "id_tweet")},
@@ -154,22 +138,6 @@ public class Tweet implements Serializable {
         this.replies = new HashSet<>();
         this.retweets = new HashSet<>();
         this.entities = new HashSet<>();
-    }
-
-    public Tweet getOriginalTweetByRetweet() {
-        return originalTweetByRetweet;
-    }
-
-    public void setOriginalTweetByRetweet(Tweet originalTweetByRetweet) {
-        this.originalTweetByRetweet = originalTweetByRetweet;
-    }
-
-    public Tweet getOriginalTweetByReply() {
-        return originalTweetByReply;
-    }
-
-    public void setOriginalTweetByReply(Tweet originalTweetByReply) {
-        this.originalTweetByReply = originalTweetByReply;
     }
 
     public long getId() {
@@ -386,12 +354,24 @@ public class Tweet implements Serializable {
         this.urls.addAll(urls);
     }
 
+    public void addUrl(URL url) {
+        this.urls.add(url);
+    }
+
     public void addAllHashtags(Set<Tag> hashtags) {
         this.hashtags.addAll(hashtags);
     }
 
+    public void addHashTag(Tag hashtag) {
+        this.hashtags.add(hashtag);
+    }
+
     public void addAllMentions(Set<TwitterUser> mentions) {
         this.mentions.addAll(mentions);
+    }
+
+    public void addMention(TwitterUser twitterUser) {
+        this.mentions.add(twitterUser);
     }
 
     public void addEntity(EntityTweet entityTweet) {
@@ -399,6 +379,7 @@ public class Tweet implements Serializable {
     }
 
     public void addReply(Tweet tweet) {
+        
         this.replies.add(tweet);
     }
 

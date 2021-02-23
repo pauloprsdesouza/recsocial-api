@@ -5,15 +5,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +26,9 @@ import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
 import br.com.api.infrastructure.database.datamodel.tweets.TweetRepository;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.services.RecommendationService;
-import br.com.api.models.recommendations.GenerateRecommendationJson;
-import br.com.api.models.recommendations.items.RecommendationItemListJson;
-import br.com.api.models.recommendations.items.UpdateItemRatingJson;
-import java.util.Optional;
+import br.com.api.models.recommendation.GenerateRecommendationJson;
+import br.com.api.models.recommendation.item.RecommendationItemListJson;
+import br.com.api.models.recommendation.item.UpdateItemRatingJson;
 
 @RestController
 @RequestMapping("/recommendations")

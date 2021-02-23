@@ -1,4 +1,4 @@
-package br.com.api.models.recommendations.items;
+package br.com.api.models.recommendation.item;
 
 import java.util.List;
 import java.util.Set;

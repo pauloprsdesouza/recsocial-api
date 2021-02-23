@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweetRepository;
-import br.com.api.models.entitiestweet.EntityTweetJson;
-import br.com.api.models.entitiestweet.EntityTweetListJson;
+import br.com.api.models.entitytweet.EntityTweetJson;
+import br.com.api.models.entitytweet.EntityTweetListJson;
 
 @RestController
 @RequestMapping("/entities")

@@ -16,8 +16,8 @@ import br.com.api.infrastructure.database.datamodel.recommendations.Recommendati
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccountRepository;
 import br.com.api.infrastructure.services.JwtService;
-import br.com.api.models.usersaccount.SaveUserAccountJson;
-import br.com.api.models.usersaccount.UserAccountJson;
+import br.com.api.models.useraccount.SaveUserAccountJson;
+import br.com.api.models.useraccount.UserAccountJson;
 
 @RestController
 @RequestMapping("/users")

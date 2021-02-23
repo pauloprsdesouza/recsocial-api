@@ -1,4 +1,4 @@
-package br.com.api.models.usersaccount;
+package br.com.api.models.useraccount;
 
 import java.util.Date;
 

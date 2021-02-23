@@ -1,4 +1,4 @@
-package br.com.api.models.recommendations.items;
+package br.com.api.models.recommendation.item;
 
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
 

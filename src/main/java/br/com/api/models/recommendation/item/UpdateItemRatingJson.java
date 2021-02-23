@@ -1,4 +1,4 @@
-package br.com.api.models.recommendations.items;
+package br.com.api.models.recommendation.item;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

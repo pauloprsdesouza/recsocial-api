@@ -1,0 +1,20 @@
+{
+    "data": {
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1329647526807543809/2SGvnHYV_normal.jpg",
+        "protected": false,
+        "created_at": "2007-03-05T22:08:25.000Z",
+        "id": "813286",
+        "url": "https://t.co/FPuJ0CENpo",
+        "name": "Barack Obama",
+        "verified": true,
+        "public_metrics": {
+            "followers_count": 129608567,
+            "following_count": 594585,
+            "tweet_count": 16106,
+            "listed_count": 223187
+        },
+        "location": "Washington, DC",
+        "description": "Dad, husband, President, citizen.",
+        "username": "BarackObama"
+    }
+}

@@ -1,4 +1,4 @@
-package br.com.api.models.domainstweet;
+package br.com.api.models.domaintweet;
 
 import java.util.List;
 import java.util.Set;

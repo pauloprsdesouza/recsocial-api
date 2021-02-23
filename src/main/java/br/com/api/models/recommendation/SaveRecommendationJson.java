@@ -1,4 +1,4 @@
-package br.com.api.models.recommendations;
+package br.com.api.models.recommendation;
 
 import java.util.HashSet;
 import java.util.Set;

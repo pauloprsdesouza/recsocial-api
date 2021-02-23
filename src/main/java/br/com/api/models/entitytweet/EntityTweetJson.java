@@ -1,4 +1,4 @@
-package br.com.api.models.entitiestweet;
+package br.com.api.models.entitytweet;
 
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 

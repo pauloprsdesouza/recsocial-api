@@ -1,4 +1,4 @@
-package br.com.api.models.domainstweet;
+package br.com.api.models.domaintweet;
 
 import br.com.api.infrastructure.database.datamodel.domainstweet.DomainTweet;
 

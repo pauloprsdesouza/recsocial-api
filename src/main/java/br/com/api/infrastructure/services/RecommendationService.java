@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.apache.commons.text.StringTokenizer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
@@ -29,9 +30,13 @@ import smile.projection.ProbabilisticPCA;
 @Service
 public class RecommendationService {
 
+    @Autowired
     private EntityTweetRepository _entities;
+    @Autowired
     private TweetRepository _tweets;
+    @Autowired
     private TweetCleanerService _tweetCleanerService;
+    @Autowired
     private StopWordService _stopWordService;
 
     private UserAccount _activeUser;
@@ -41,19 +46,12 @@ public class RecommendationService {
     private double maxFollowersCount;
     private ProbabilisticPCA pca;
 
-    public RecommendationService(EntityTweetRepository entities, TweetRepository tweets,
-            TweetCleanerService tweetCleanerService, StopWordService stopWordService) {
-        _entities = entities;
-        _tweets = tweets;
-        _tweetCleanerService = tweetCleanerService;
-        _stopWordService = stopWordService;
-
+    public RecommendationService() {
         this._isSentimentAnalysis = false;
         this.tweetsByEntity = new HashSet<>();
         this.tweets = new HashSet<>();
         this.maxFollowersCount = 0;
     }
-
 
     public void generateAllRecommendations() {
         generateBaseline01Scores();
