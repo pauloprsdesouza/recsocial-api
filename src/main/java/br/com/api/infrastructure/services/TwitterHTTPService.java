@@ -48,7 +48,8 @@ public class TwitterHTTPService {
         return this;
     }
 
-    public TwitterHTTPService getTweetsFromTimelineUserId(Long userId) {
+    public TwitterHTTPService getTweetsFromTimelineUserId(Long userId)
+            throws IOException, URISyntaxException {
         try {
             URIBuilder uriBuilder = new URIBuilder(String
                     .format("https://api.twitter.com/2/users/%s/tweets", Long.toString(userId)));
@@ -56,7 +57,7 @@ public class TwitterHTTPService {
             ArrayList<NameValuePair> queryParameters;
             queryParameters = new ArrayList<>();
             queryParameters.addAll(getFieldsParameters());
-            queryParameters.add(new BasicNameValuePair("max_results", "100"));
+            queryParameters.add(new BasicNameValuePair("max_results", "5"));
             uriBuilder.addParameters(queryParameters);
 
             HttpGet httpGet = new HttpGet(uriBuilder.build());
@@ -69,15 +70,17 @@ public class TwitterHTTPService {
                 this.result = EntityUtils.toString(entity, "UTF-8");
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            throw new IOException("Couldn't possible to connect to the server");
+
         } catch (URISyntaxException ex) {
-            ex.printStackTrace();
+            throw new URISyntaxException("https://api.twitter.com/2/users/s/tweets",
+                    "Couldn't possible to parse the URI");
         }
 
         return this;
     }
 
-    public TwitterHTTPService getASingleTweetById(Long id) {
+    public TwitterHTTPService getASingleTweetById(Long id) throws IOException, URISyntaxException {
         try {
             URIBuilder uriBuilder = new URIBuilder(
                     String.format("https://api.twitter.com/2/tweets/%s", Long.toString(id)));
@@ -97,14 +100,17 @@ public class TwitterHTTPService {
                 this.result = EntityUtils.toString(entity, "UTF-8");
             }
         } catch (IOException ex) {
+            throw new IOException("Couldn't possible to connect to the server");
 
         } catch (URISyntaxException ex) {
+            throw new URISyntaxException("https://api.twitter.com/2/tweets/",
+                    "Couldn't possible to parse the URI");
         }
 
         return this;
     }
 
-    public TwitterHTTPService getASingleUserById(Long id) {
+    public TwitterHTTPService getASingleUserById(Long id) throws IOException, URISyntaxException {
         try {
             URIBuilder uriBuilder = new URIBuilder(
                     String.format("https://api.twitter.com/2/users/%s", Long.toString(id)));
@@ -126,8 +132,11 @@ public class TwitterHTTPService {
                 this.result = EntityUtils.toString(entity, "UTF-8");
             }
         } catch (IOException ex) {
+            throw new IOException("Couldn't possible to connect to the server");
 
         } catch (URISyntaxException ex) {
+            throw new URISyntaxException("https://api.twitter.com/2/users/",
+                    "Couldn't possible to parse the URI");
         }
 
         return this;
@@ -135,8 +144,8 @@ public class TwitterHTTPService {
 
     private String getAccessTokenDefault() {
         // return MARIA_TWITTER;
-        return EXPERIMENTAL_APP_TWITTER;
-        // return EXPERIMENTAL_APP2_TWITTER;
+        // return EXPERIMENTAL_APP_TWITTER;
+        return EXPERIMENTAL_APP2_TWITTER;
     }
 
     public JsonObject getResult() {

@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
+import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;
+import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweetPK;
 import br.com.api.infrastructure.database.datamodel.tags.Tag;
 import br.com.api.infrastructure.database.datamodel.tags.TagRepository;
 import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
@@ -25,6 +27,7 @@ import br.com.api.models.tweet.TweetDataJson;
 import br.com.api.models.twitteruser.TwitterUserDataJson;
 import br.com.api.models.url.UrlDataJson;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.User;
 import twitter4j.conf.ConfigurationBuilder;
@@ -48,6 +51,7 @@ public class TwitterV2Service {
     private Set<Tweet> _extractedTweets;
     private Set<TwitterUser> _extractedUsers;
     private Set<URL> _extractedUrls;
+    private JsonObject _searchResult;
 
     private Twitter _twitterInstance;
 
@@ -71,15 +75,17 @@ public class TwitterV2Service {
     }
 
     @Transactional
-    public TwitterV2Service parseResultJson(TwitterUser user, EntityTweet entity) {
+    public void parseResultJson(TwitterUser user, EntityTweet entity) throws Exception {
         try {
             this._activeUser = user;
             this._entityTweet = entity;
 
-            JsonObject searchResult = this._twitterHTTP.getInstance()
-                    .getTweetsFromTimelineUserId(user.getId()).getResult();
+            if (_searchResult == null) {
+                _searchResult = this._twitterHTTP.getInstance()
+                        .getTweetsFromTimelineUserId(user.getId()).getResult();
+            }
 
-            JsonElement existsTweets = searchResult.get("data");
+            JsonElement existsTweets = _searchResult.get("data");
 
             if (existsTweets != null) {
                 Type typeToken = new TypeToken<List<TweetDataJson>>() {
@@ -93,21 +99,22 @@ public class TwitterV2Service {
                     if (tweet == null) {
                         tweet = createTweetFromTweetJson(tweetData);
                     }
-
-                    tweet.setOnTimelineOf(_activeUser);
                 }
             }
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            throw new Exception(ex.getMessage());
         }
 
         _twitterUsers.save(this._activeUser);
+    }
 
+    public TwitterV2Service withSearchResult(JsonObject searchResult) {
+        _searchResult = searchResult;
         return this;
     }
 
-    private Tweet createTweetFromTweetJson(TweetDataJson tweetData) {
+    private Tweet createTweetFromTweetJson(TweetDataJson tweetData) throws Exception {
         Tweet tweet = new Tweet();
         tweet.setId(tweetData.getId());
         tweet.setLanguage(tweetData.getLang());
@@ -149,22 +156,35 @@ public class TwitterV2Service {
             Tweet originalTweet = getTweetFromId(tweetReferencedData.getId());
 
             if (originalTweet != null) {
+                ReferencedTweetPK referencedTweetPK = new ReferencedTweetPK();
+                referencedTweetPK.setIdTweet(originalTweet.getId());
+                referencedTweetPK.setIdReferenceTweet(tweet.getId());
+
                 if (tweetReferencedData.isRepliedTo()) {
-                    originalTweet.addReply(tweet);
+                    referencedTweetPK.setTypeReference("R");
+                } else if (tweetReferencedData.isRetweet()) {
+                    tweet.setRetweet(true);
+                    referencedTweetPK.setTypeReference("F");
                 } else {
-                    tweet.setQuoted(tweetReferencedData.isQuoted());
-                    tweet.setRetweet(tweetReferencedData.isRetweet());
-                    originalTweet.addRetweet(tweet);
+                    tweet.setRetweet(true);
+                    tweet.setQuoted(true);
+                    referencedTweetPK.setTypeReference("Q");
                 }
 
+                ReferencedTweet referencedTweet = new ReferencedTweet();
+                referencedTweet.setId(referencedTweetPK);
+
+                originalTweet.addReference(referencedTweet);
                 originalTweet.setOnTimelineOf(originalTweet.getWhosPosted());
             }
         }
 
-        return tweet;
+        tweet.setOnTimelineOf(_activeUser);
+
+        return _tweets.save(tweet);
     }
 
-    private Tweet getTweetFromId(long id) {
+    private Tweet getTweetFromId(long id) throws Exception {
         Tweet tweet =
                 _extractedTweets.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
 
@@ -179,18 +199,19 @@ public class TwitterV2Service {
                 TweetDataJson tweetData = new Gson().fromJson(result.get("data").getAsJsonObject(),
                         TweetDataJson.class);
 
-                tweet = createTweetFromTweetJson(tweetData);
+                tweet = _tweets.save(createTweetFromTweetJson(tweetData));
 
                 _extractedTweets.add(tweet);
             }
         } catch (Exception ex) {
-            return null;
+            ex.printStackTrace();
+            throw new Exception(ex.getMessage());
         }
 
         return tweet;
     }
 
-    private TwitterUser checkUserAccount(String screenName) {
+    private TwitterUser checkUserAccount(String screenName) throws Exception {
         TwitterUser twitterUser =
                 _extractedUsers.stream().filter(p -> p.getScreenName().equalsIgnoreCase(screenName))
                         .findFirst().orElse(null);
@@ -200,16 +221,18 @@ public class TwitterV2Service {
                 twitterUser = _twitterUsers.getUserByScreenName(screenName).orElse(
                         getUserAccountFromTwitterUser(_twitterInstance.showUser(screenName)));
 
+                twitterUser = _twitterUsers.save(twitterUser);
+
                 _extractedUsers.add(twitterUser);
             }
         } catch (Exception ex) {
-            return null;
+            throw new Exception("Couldn't possible to get user by screenName from Twitter");
         }
 
         return twitterUser;
     }
 
-    private TwitterUser checkUserAccount(long userId) {
+    private TwitterUser checkUserAccount(long userId) throws Exception {
         TwitterUser twitterUser =
                 _extractedUsers.stream().filter(p -> p.getId() == userId).findFirst().orElse(null);
 
@@ -218,16 +241,18 @@ public class TwitterV2Service {
                 twitterUser = _twitterUsers.findById(userId)
                         .orElse(getUserAccountFromTwitterUser(_twitterInstance.showUser(userId)));
 
+                twitterUser = _twitterUsers.save(twitterUser);
+
                 _extractedUsers.add(twitterUser);
             }
         } catch (Exception ex) {
-            return null;
+            throw new Exception("Couldn't possible to get user by id from Twitter");
         }
 
         return twitterUser;
     }
 
-    public TwitterUser createUser(String screenName) {
+    public TwitterUser createUser(String screenName) throws Exception {
         try {
             TwitterUser twitterUser =
                     getUserAccountFromTwitterUser(this._twitterInstance.showUser(screenName));
@@ -235,8 +260,12 @@ public class TwitterV2Service {
             _twitterUsers.save(twitterUser);
 
             return twitterUser;
-        } catch (Exception e) {
-            return null;
+        } catch (TwitterException ex) {
+            if (ex.getStatusCode() == TwitterException.NOT_FOUND) {
+                throw new Exception("User not found");
+            } else {
+                throw new Exception(ex.getErrorMessage());
+            }
         }
     }
 

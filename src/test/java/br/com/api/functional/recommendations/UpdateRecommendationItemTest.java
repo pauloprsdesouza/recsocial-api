@@ -37,5 +37,4 @@ public class UpdateRecommendationItemTest {
         responseRecommendationsUpdateItem.andExpect(
                 content().string("Não foi possível encontrar a recomendação solicitada"));
     }
-
 }

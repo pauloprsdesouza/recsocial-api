@@ -1,7 +1,10 @@
 package br.com.api.infrastructure.services;
 
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -10,15 +13,19 @@ import java.util.stream.Collectors;
 
 import org.apache.commons.text.StringTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.WebApplicationContext;
+import br.com.api.authorization.HttpContext;
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweetRepository;
+import br.com.api.infrastructure.database.datamodel.recommendations.Recommendation;
+import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
+import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationTypeEnum;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
+import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItemPK;
+import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;
 import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
 import br.com.api.infrastructure.database.datamodel.tweets.TweetRepository;
 import br.com.api.infrastructure.database.datamodel.twitterusers.TwitterUser;
-import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.preprocessing.StopWordService;
 import br.com.api.infrastructure.preprocessing.TextAnalysisByFrequency;
 import br.com.api.infrastructure.preprocessing.TextAnalysisByTFIDF;
@@ -35,37 +42,64 @@ public class RecommendationService {
     @Autowired
     private TweetRepository _tweets;
     @Autowired
+    private RecommendationRepository _recommendations;
+    @Autowired
     private TweetCleanerService _tweetCleanerService;
     @Autowired
     private StopWordService _stopWordService;
+    @Autowired
+    private TweetSentimentAnalysis _sentimentAnalysis;
 
-    private UserAccount _activeUser;
     private Set<Tweet> tweets;
-    private Set<Tweet> tweetsByEntity;
     private boolean _isSentimentAnalysis;
     private double maxFollowersCount;
     private ProbabilisticPCA pca;
 
     public RecommendationService() {
         this._isSentimentAnalysis = false;
-        this.tweetsByEntity = new HashSet<>();
         this.tweets = new HashSet<>();
         this.maxFollowersCount = 0;
     }
 
-    public void generateAllRecommendations() {
-        generateBaseline01Scores();
-        generateCosineSimilarityScores();
+    public List<RecommendationItem> getRecommendedItemsBy(RecommendationTypeEnum type,
+            List<Long> idsEntities) {
+        Set<Tweet> tweets =
+                _tweets.getNotRecommendedTweets(HttpContext.getUserLogged().getId(), idsEntities);
+
+        Map<Tweet, Double> tweetsScore = new HashMap<>();
+
+        if (type == RecommendationTypeEnum.SocialCapial) {
+            for (Tweet tweet : tweets) {
+                tweetsScore.put(tweet, tweet.getScScore());
+            }
+        } else if (type == RecommendationTypeEnum.SocialCapitalSentiment) {
+            for (Tweet tweet : tweets) {
+                tweetsScore.put(tweet, tweet.getScsaScore());
+            }
+        } else if (type == RecommendationTypeEnum.CosineSimilarity) {
+            tweetsScore = calculateSimilaritiesCosineSimilarity();
+        } else {
+            tweetsScore = calculateSimilaritiesBaseline01();
+        }
+
+        return saveRecommendations(tweetsScore, type.getValue());
+    }
+
+    public void generateAllScores() {
+        this.tweets = _tweets.getAllWithoutReplyRetweet();
+        
+        // generateBaseline01Scores();
+        // generateCosineSimilarityScores();
         generateteSocialCapitalScoresWithSentimentAnalysis();
         generateteSocialCapitalScoresWithoutSentimentAnalysis();
     }
 
-    public Map<Tweet, Double> calculateSimilaritiesBaseline01() {
+    private Map<Tweet, Double> calculateSimilaritiesBaseline01() {
         Map<Tweet, Double> tweets = new HashMap<>();
         Map<Tweet, double[]> tweetsFrequencyPCA = new HashMap<>();
         List<Tweet> tweetsEvaluated = getTweetsEvaluated();
 
-        for (Tweet tweet : this.tweetsByEntity) {
+        for (Tweet tweet : this.tweets) {
             double[] pcaValue = new double[2];
             pcaValue[0] = tweet.getPca1B1();
             pcaValue[1] = tweet.getPca2B1();
@@ -94,12 +128,12 @@ public class RecommendationService {
         return tweets;
     }
 
-    public Map<Tweet, Double> calculateSimilaritiesCosineSimilarity() {
+    private Map<Tweet, Double> calculateSimilaritiesCosineSimilarity() {
         Map<Tweet, Double> tweets = new HashMap<>();
         Map<Tweet, double[]> tweetsFrequencyPCA = new HashMap<>();
         List<Tweet> tweetsEvaluated = getTweetsEvaluated();
 
-        for (Tweet tweet : this.tweetsByEntity) {
+        for (Tweet tweet : this.tweets) {
             double[] pcaValue = new double[2];
             pcaValue[0] = tweet.getPca1Similarity();
             pcaValue[1] = tweet.getPca2Similarity();
@@ -127,37 +161,6 @@ public class RecommendationService {
 
         return tweets;
     }
-
-    public RecommendationService setActiveUser(UserAccount user) {
-        this._activeUser = user;
-        return this;
-    }
-
-    public RecommendationService setTweetsByEntity(Set<Tweet> tweets) {
-        this.tweetsByEntity = tweets;
-
-        this.maxFollowersCount = tweets.stream()
-                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
-
-        return this;
-    }
-
-    public RecommendationService withAllTweets() {
-        this.tweets = _tweets.getAllWithoutReplyRetweet();
-
-        this.maxFollowersCount = this.tweets.stream()
-                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
-
-        return this;
-    }
-
-    public RecommendationService withSentimentAnalysis() {
-        TweetSentimentAnalysis.init();
-        this._isSentimentAnalysis = true;
-
-        return this;
-    }
-
 
     private double getUserInfluence(TwitterUser twitterUser) {
         double followersCount = Metric.log2ToLog10(twitterUser.getFollowersCount());
@@ -201,14 +204,8 @@ public class RecommendationService {
 
         double score = 0;
 
-        if (tweet.getOriginalTweetByReply() != null) {
-            score += socialCapitalScoreCalculator(tweet.getOriginalTweetByReply());
-        }
-
-        if (tweet.getOriginalTweetByRetweet() != null) {
-            if (tweet.isQuoted()) {
-                score += socialCapitalScoreCalculator(tweet.getOriginalTweetByRetweet());
-            }
+        for (ReferencedTweet referencedTweet : tweet.getReferences()) {
+            score += socialCapitalScoreCalculator(referencedTweet.getReferencedTweet());
         }
 
         double totalInUserfluenceScoreRetweet = 0;
@@ -218,9 +215,9 @@ public class RecommendationService {
 
         double sentimentWeight = 0;
 
-        if (this._isSentimentAnalysis) {
+        if (_isSentimentAnalysis) {
             int sentimentClass =
-                    TweetSentimentAnalysis.findSentimentByPreProcessingTweet(tweet.getText());
+                    _sentimentAnalysis.findSentimentByPreProcessingTweet(tweet.getText());
 
             // 0 = very negative, 1 = negative, 2 = neutral, 3 = positive, and 4 = very
             // positive.
@@ -239,7 +236,13 @@ public class RecommendationService {
     }
 
     private List<Tweet> getTweetsEvaluated() {
-        return _tweets.getRecommendedTweetsByRecommendationType(this._activeUser.getId());
+        List<Tweet> tweets = _tweets
+                .getRecommendedTweetsByRecommendationType(HttpContext.getUserLogged().getId());
+
+        this.maxFollowersCount = tweets.stream()
+                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
+
+        return tweets;
     }
 
     private void generateBaseline01Scores() {
@@ -312,6 +315,8 @@ public class RecommendationService {
     }
 
     private void generateteSocialCapitalScoresWithSentimentAnalysis() {
+        _isSentimentAnalysis = true;
+
         for (Tweet tweet : this.tweets) {
             double score = socialCapitalScoreCalculator(tweet);
             tweet.setScsaScore(score);
@@ -321,11 +326,52 @@ public class RecommendationService {
     }
 
     private void generateteSocialCapitalScoresWithoutSentimentAnalysis() {
+        _isSentimentAnalysis = false;
+
         for (Tweet tweet : this.tweets) {
             double score = socialCapitalScoreCalculator(tweet);
             tweet.setScScore(score);
 
             _tweets.save(tweet);
         }
+    }
+
+    private List<RecommendationItem> saveRecommendations(Map<Tweet, Double> tweetsScore,
+            String type) {
+        Recommendation recommendation = new Recommendation();
+        recommendation.setUser(HttpContext.getUserLogged());
+        recommendation.setRegistrationDate(new Date());
+        recommendation.setRecommendationType(type);
+
+        recommendation = _recommendations.save(recommendation);
+
+        Set<RecommendationItem> recommendedItems = new HashSet<>();
+
+        for (Entry<Tweet, Double> tweet : tweetsScore.entrySet()) {
+            RecommendationItemPK itemPK = new RecommendationItemPK();
+            itemPK.setIdTweet(tweet.getKey().getId());
+            itemPK.setIdRecommendation(recommendation.getId());
+
+            RecommendationItem item = new RecommendationItem();
+            item.setScore(tweet.getValue());
+            item.setId(itemPK);
+
+            recommendedItems.add(item);
+        }
+
+        LinkedList<RecommendationItem> recommendedRankedItems = new LinkedList<>(recommendedItems
+                .stream().sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
+                .limit(10).collect(Collectors.toCollection(LinkedList::new)));
+
+        int i = 1;
+        for (RecommendationItem item : recommendedRankedItems) {
+            item.setRank(i++);
+        }
+
+        recommendation.setItems(recommendedRankedItems);
+
+        _recommendations.save(recommendation);
+
+        return recommendedRankedItems;
     }
 }

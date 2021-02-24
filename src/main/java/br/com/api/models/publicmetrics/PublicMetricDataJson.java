@@ -1,4 +1,4 @@
-package br.com.api.models.tweet;
+package br.com.api.models.publicmetrics;
 
 import java.io.Serializable;
 import com.google.gson.annotations.SerializedName;

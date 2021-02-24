@@ -32,9 +32,9 @@ public class TwitterController {
     public ResponseEntity<?> extractData() {
         Map<String, Integer> accounts = new HashMap<>();
 
-        accounts.put("MiamiHEAT", 13);
+        // accounts.put("MiamiHEAT", 13);
         // accounts.put("Bucks", 13);
-        // accounts.put("chicagobulls", 13);
+        accounts.put("chicagobulls", 13);
         // accounts.put("DetroitPistons", 13);
         // accounts.put("LAClippers", 13);
         // accounts.put("nyknicks", 13);
@@ -44,14 +44,17 @@ public class TwitterController {
         // accounts.put("cavs", 13);
 
         for (Entry<String, Integer> account : accounts.entrySet()) {
-
             EntityTweet entity =
                     _entities.findById(new EntityTweetPK((long) account.getValue(), 4L)).get();
 
-            TwitterUser twitterUser = _twitterUsers.getUserByScreenName(account.getKey())
-                    .orElse(_twitterService.getInstance().createUser(account.getKey()));
+            try {
+                TwitterUser twitterUser = _twitterUsers.getUserByScreenName(account.getKey())
+                        .orElse(_twitterService.getInstance().createUser(account.getKey()));
 
-            _twitterService.getInstance().parseResultJson(twitterUser, entity);
+                _twitterService.getInstance().parseResultJson(twitterUser, entity);
+            } catch (Exception ex) {
+                return ResponseEntity.unprocessableEntity().body(ex.getMessage());
+            }
         }
 
         return ResponseEntity.ok().build();

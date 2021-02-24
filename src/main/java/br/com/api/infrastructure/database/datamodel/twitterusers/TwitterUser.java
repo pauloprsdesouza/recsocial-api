@@ -10,8 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -72,36 +70,18 @@ public class TwitterUser implements Serializable {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "follower", joinColumns = { @JoinColumn(name = "id_user") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_follower") })
-    private Set<TwitterUser> followers;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(name = "followee", joinColumns = { @JoinColumn(name = "id_user") }, inverseJoinColumns = {
-            @JoinColumn(name = "id_followee") })
-    private Set<TwitterUser> followees;
-
-    @OneToMany(mappedBy = "postedBy", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "postedBy", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Tweet> tweetsPosted;
 
-    @OneToMany(mappedBy = "onTimelineOf", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "onTimelineOf", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Tweet> tweetOfTimeline;
 
     @ManyToMany(mappedBy = "mentions", fetch = FetchType.LAZY)
     private Set<Tweet> tweetsMentioned;
 
-    /*
-     * @ManyToMany(fetch = FetchType.LAZY, mappedBy = "replies") private Set<Tweet>
-     * tweetsReplied;
-     */
-
     public TwitterUser() {
         this.tweetsPosted = new HashSet<>();
-        this.followers = new HashSet<>();
-        this.followees = new HashSet<>();
         this.tweetsMentioned = new HashSet<>();
-        // this.tweetsReplied = new HashSet<>();
         this.tweetOfTimeline = new HashSet<>();
     }
 
@@ -225,22 +205,6 @@ public class TwitterUser implements Serializable {
         this.registrationDate = registrationDate;
     }
 
-    public Set<TwitterUser> getFollowers() {
-        return followers;
-    }
-
-    public Set<TwitterUser> getFollowees() {
-        return followees;
-    }
-
-    public void setFollowers(Set<TwitterUser> followers) {
-        this.followers = followers;
-    }
-
-    public void setFollowees(Set<TwitterUser> followees) {
-        this.followees = followees;
-    }
-
     public Set<Tweet> getTweetsPosted() {
         return tweetsPosted;
     }
@@ -268,13 +232,6 @@ public class TwitterUser implements Serializable {
     public void setTweetsMentioned(Set<Tweet> tweetsMentioned) {
         this.tweetsMentioned = tweetsMentioned;
     }
-
-    /*
-     * public Set<Tweet> getTweetsReplied() { return tweetsReplied; }
-     * 
-     * public void setTweetsReplied(Set<Tweet> tweetsReplied) { this.tweetsReplied =
-     * tweetsReplied; }
-     */
 
     @Override
     public int hashCode() {

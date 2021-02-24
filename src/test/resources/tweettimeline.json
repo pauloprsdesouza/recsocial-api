@@ -1,0 +1,3077 @@
+{
+    "data": [
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 68,
+              "end": 83,
+              "tag": "HEATHighlights"
+            }
+          ],
+          "urls": [
+            {
+              "start": 84,
+              "end": 107,
+              "url": "https://t.co/r3htRwRcD3",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364256203497476098/video/1",
+              "display_url": "pic.twitter.com/r3htRwRcD3"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 7,
+              "probability": 0.9692,
+              "type": "Person",
+              "normalized_text": "Kendrick"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 62,
+          "reply_count": 20,
+          "like_count": 562,
+          "quote_count": 9
+        },
+        "created_at": "2021-02-23T16:50:00.000Z",
+        "id": "1364256203497476098",
+        "text": "Kendrick was indeed \"hard to guard\" in our win over the Thunder\n\n🔥🎥 #HEATHighlights https://t.co/r3htRwRcD3"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 75,
+              "end": 90,
+              "tag": "HEATHighlights"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 2,
+              "end": 10,
+              "username": "Bam1of1"
+            }
+          ],
+          "urls": [
+            {
+              "start": 91,
+              "end": 114,
+              "url": "https://t.co/PRpaftu8Hn",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364249912024702980/video/1",
+              "display_url": "pic.twitter.com/PRpaftu8Hn"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 68,
+              "end": 70,
+              "probability": 0.9184,
+              "type": "Place",
+              "normalized_text": "OKC"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 51,
+          "reply_count": 6,
+          "like_count": 452,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-23T16:25:00.000Z",
+        "id": "1364249912024702980",
+        "text": "💥 @Bam1of1 wreaked havoc on the Thunder and the rims last night in OKC\n\n🔥🎥 #HEATHighlights https://t.co/PRpaftu8Hn"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 117,
+              "end": 132,
+              "tag": "HEATHighlights"
+            }
+          ],
+          "urls": [
+            {
+              "start": 133,
+              "end": 156,
+              "url": "https://t.co/FARFI2Q6dn",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364245301373116416/video/1",
+              "display_url": "pic.twitter.com/FARFI2Q6dn"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 4,
+              "probability": 0.4299,
+              "type": "Place",
+              "normalized_text": "Miami"
+            },
+            {
+              "start": 13,
+              "end": 18,
+              "probability": 0.8893,
+              "type": "Person",
+              "normalized_text": "Duncan"
+            },
+            {
+              "start": 35,
+              "end": 42,
+              "probability": 0.6315,
+              "type": "Person",
+              "normalized_text": "Robinson"
+            },
+            {
+              "start": 111,
+              "end": 113,
+              "probability": 0.762,
+              "type": "Organization",
+              "normalized_text": "OKC"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 49,
+          "reply_count": 10,
+          "like_count": 523,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-23T16:06:40.000Z",
+        "id": "1364245301373116416",
+        "text": "Miami ran on Duncan last night 🍩\n\nRobinson hit a bunch of 3s and scored a bunch of 4th quarter points (13) in OKC\n🔥🎥 #HEATHighlights https://t.co/FARFI2Q6dn"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 46,
+              "end": 69,
+              "url": "https://t.co/Xgtu5mVzE9",
+              "expanded_url": "http://gohe.at/3bv9sGl",
+              "display_url": "gohe.at/3bv9sGl",
+              "images": [
+                {
+                  "url": "https://pbs.twimg.com/news_img/1364090405051072513/qUAkERmM?format=jpg&name=orig",
+                  "width": 1200,
+                  "height": 630
+                },
+                {
+                  "url": "https://pbs.twimg.com/news_img/1364090405051072513/qUAkERmM?format=jpg&name=150x150",
+                  "width": 150,
+                  "height": 150
+                }
+              ],
+              "status": 200,
+              "title": "HEAT End Road Trip On A High Note, Beat Thunder 108-94 | Miami Heat",
+              "description": "While the HEAT started off their seven-game road trip a little shaky, they ended it strong. Thanks to some solid defense and a 15-0 run to start the fourth, the HEAT defeated the Thunder 108-94",
+              "unwound_url": "https://www.nba.com/heat/news/game-recap-mia-okc-210223"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 31,
+          "reply_count": 12,
+          "like_count": 370,
+          "quote_count": 0
+        },
+        "created_at": "2021-02-23T14:44:55.000Z",
+        "id": "1364224728047652865",
+        "text": "We closed out the trip with another dub. \n\n📝👇\nhttps://t.co/Xgtu5mVzE9"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 7,
+              "end": 19,
+              "username": "nunnbetter_"
+            },
+            {
+              "start": 76,
+              "end": 82,
+              "username": "GEICO"
+            }
+          ],
+          "urls": [
+            {
+              "start": 83,
+              "end": 106,
+              "url": "https://t.co/M6bycOLNu6",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364214527538167808/video/1",
+              "display_url": "pic.twitter.com/M6bycOLNu6"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 46,
+          "reply_count": 9,
+          "like_count": 448,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-23T14:04:23.000Z",
+        "id": "1364214527538167808",
+        "text": "Yep... @nunnbetter_ clearly enjoyed his time out West\n\nStatline Shoutout // @GEICO https://t.co/M6bycOLNu6"
+      },
+      {
+        "source": "Twitter for Advertisers",
+        "author_id": "11026952",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 80,
+          "reply_count": 19,
+          "like_count": 1157,
+          "quote_count": 5
+        },
+        "created_at": "2021-02-23T05:34:11.000Z",
+        "id": "1364086129855725570",
+        "text": "these pics scream W"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 56,
+              "end": 68,
+              "username": "JimmyButler"
+            },
+            {
+              "start": 71,
+              "end": 84,
+              "username": "Goran_Dragic"
+            }
+          ],
+          "urls": [
+            {
+              "start": 103,
+              "end": 126,
+              "url": "https://t.co/w93iJXTNrm",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364079800441257985/video/1",
+              "display_url": "pic.twitter.com/w93iJXTNrm"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 188,
+          "reply_count": 25,
+          "like_count": 1328,
+          "quote_count": 35
+        },
+        "created_at": "2021-02-23T05:09:02.000Z",
+        "id": "1364079800441257985",
+        "text": "Tag the person you miss this much after 13 days apart!\n\n@JimmyButler x @Goran_Dragic Café Con Leche ☕️ https://t.co/w93iJXTNrm"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 50,
+              "end": 73,
+              "url": "https://t.co/6xm6u3Lqhs",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364078150368579584/video/1",
+              "display_url": "pic.twitter.com/6xm6u3Lqhs"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 32,
+              "end": 37,
+              "probability": 0.963,
+              "type": "Person",
+              "normalized_text": "Duncan"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 101,
+          "reply_count": 17,
+          "like_count": 822,
+          "quote_count": 20
+        },
+        "created_at": "2021-02-23T05:02:29.000Z",
+        "id": "1364078150368579584",
+        "text": "Good things usually happen when Duncan hits 6 👌's https://t.co/6xm6u3Lqhs"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 83,
+              "end": 106,
+              "url": "https://t.co/rk9XsoyVeQ",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364076657930362880/video/1",
+              "display_url": "pic.twitter.com/rk9XsoyVeQ"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 7,
+              "probability": 0.9866,
+              "type": "Person",
+              "normalized_text": "Kendrick"
+            },
+            {
+              "start": 80,
+              "end": 83,
+              "probability": 0.4717,
+              "type": "Person",
+              "normalized_text": "Stls"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 119,
+          "reply_count": 17,
+          "like_count": 890,
+          "quote_count": 14
+        },
+        "created_at": "2021-02-23T04:56:33.000Z",
+        "id": "1364076657930362880",
+        "text": "Kendrick continues to be on a tear 👶🐐 \n\n20 Pts / 5 Rebs / 9 Asts / 2 Blks / 3 Stls https://t.co/rk9XsoyVeQ"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 12,
+              "tag": "TacoTuesday"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 120,
+              "end": 133,
+              "username": "PapaJohnsSFL"
+            }
+          ],
+          "urls": [
+            {
+              "start": 137,
+              "end": 160,
+              "url": "https://t.co/efVbw0Dzqy",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364075828351541249/photo/1",
+              "display_url": "pic.twitter.com/efVbw0Dzqy"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 55,
+          "reply_count": 15,
+          "like_count": 537,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-23T04:53:15.000Z",
+        "id": "1364075828351541249",
+        "text": "#TacoTuesday is on pause. It's all about 🍕 tomorrow.\n\nPromo code 'HEATWIN' gets you 50% off all online orders. That's a @PapaJohnsSFL W! https://t.co/efVbw0Dzqy"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 24,
+              "end": 36,
+              "username": "JimmyButler"
+            }
+          ],
+          "urls": [
+            {
+              "start": 114,
+              "end": 137,
+              "url": "https://t.co/M52bFl1uI9",
+              "expanded_url": "http://gohe.at/37sZLqD",
+              "display_url": "gohe.at/37sZLqD"
+            },
+            {
+              "start": 138,
+              "end": 161,
+              "url": "https://t.co/KU93YBGMuS",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364071551340052480/video/1",
+              "display_url": "pic.twitter.com/KU93YBGMuS"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 43,
+              "end": 47,
+              "probability": 0.9214,
+              "type": "Place",
+              "normalized_text": "Miami"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 60,
+          "reply_count": 9,
+          "like_count": 624,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-23T04:36:15.000Z",
+        "id": "1364071551340052480",
+        "text": "You'll be reunited with @JimmyButler soon, Miami. \n\nBe one of the few to welcome back the squad Wednesday night 👉 https://t.co/M52bFl1uI9 https://t.co/KU93YBGMuS"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 240,
+              "end": 263,
+              "url": "https://t.co/rZuBLRJolJ",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364071268102922244/photo/1",
+              "display_url": "pic.twitter.com/rZuBLRJolJ"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 17,
+              "end": 24,
+              "probability": 0.6629,
+              "type": "Person",
+              "normalized_text": "Robinson"
+            },
+            {
+              "start": 36,
+              "end": 39,
+              "probability": 0.7048,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 68,
+              "end": 71,
+              "probability": 0.6406,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 76,
+              "end": 79,
+              "probability": 0.4853,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 116,
+              "end": 119,
+              "probability": 0.562,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 124,
+              "end": 127,
+              "probability": 0.5011,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 140,
+              "end": 145,
+              "probability": 0.6958,
+              "type": "Person",
+              "normalized_text": "Butler"
+            },
+            {
+              "start": 157,
+              "end": 160,
+              "probability": 0.647,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 165,
+              "end": 168,
+              "probability": 0.5425,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 188,
+              "end": 193,
+              "probability": 0.6271,
+              "type": "Person",
+              "normalized_text": "Olynyk"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 201,
+          "reply_count": 18,
+          "like_count": 1823,
+          "quote_count": 18
+        },
+        "created_at": "2021-02-23T04:35:08.000Z",
+        "id": "1364071268102922244",
+        "text": "📊 Final Box\n\n🔥 Robinson 22 Pts, 7 Rebs &amp; 2 Stls\n🔥 Nunn 20 Pts, 5 Rebs, 9 Asts, 2 Blks &amp; 3 Stls\n🔥 Bam 19 Pts, 13 Rebs, 5 Asts &amp; 1 Blk\n🔥 Butler 15 Pts, 4 Rebs, 9 Asts, 1 Blk &amp; 1 Stl\n🔥 Olynyk 11 Pts &amp; 6 Rebs\n🔥 Strus 11 Pts https://t.co/rZuBLRJolJ"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 38,
+              "end": 46,
+              "tag": "WINNING"
+            }
+          ],
+          "urls": [
+            {
+              "start": 47,
+              "end": 70,
+              "url": "https://t.co/lMQXexYKsm",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364069234444271621/video/1",
+              "display_url": "pic.twitter.com/lMQXexYKsm"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 1188,
+          "reply_count": 123,
+          "like_count": 4691,
+          "quote_count": 194
+        },
+        "created_at": "2021-02-23T04:27:03.000Z",
+        "id": "1364069234444271621",
+        "text": "🎶 Last took a L about a week agooooo! #WINNING https://t.co/lMQXexYKsm"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 21,
+              "end": 44,
+              "url": "https://t.co/kOxjBo7qcN",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364067770221133827/photo/1",
+              "display_url": "pic.twitter.com/kOxjBo7qcN"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 752,
+          "reply_count": 102,
+          "like_count": 5130,
+          "quote_count": 95
+        },
+        "created_at": "2021-02-23T04:21:14.000Z",
+        "id": "1364067770221133827",
+        "text": "It's a winning trip. https://t.co/kOxjBo7qcN"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/B0Xfl2XxH5",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364064277515108352/video/1",
+              "display_url": "pic.twitter.com/B0Xfl2XxH5"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 175,
+          "reply_count": 25,
+          "like_count": 1201,
+          "quote_count": 20
+        },
+        "created_at": "2021-02-23T04:07:21.000Z",
+        "id": "1364064277515108352",
+        "text": "we're having fun https://t.co/B0Xfl2XxH5"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 37,
+              "end": 60,
+              "url": "https://t.co/5Gxf4Oggul",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364060692240809984/video/1",
+              "display_url": "pic.twitter.com/5Gxf4Oggul"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 69,
+          "reply_count": 10,
+          "like_count": 613,
+          "quote_count": 5
+        },
+        "created_at": "2021-02-23T03:53:06.000Z",
+        "id": "1364060692240809984",
+        "text": "Precious hustle leads to Strusssssss https://t.co/5Gxf4Oggul"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/4I4cFXM19H",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364060103578640384/photo/1",
+              "display_url": "pic.twitter.com/4I4cFXM19H"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 65,
+          "reply_count": 36,
+          "like_count": 1043,
+          "quote_count": 6
+        },
+        "created_at": "2021-02-23T03:50:46.000Z",
+        "id": "1364060103578640384",
+        "text": "Up 79-77 after 👌 https://t.co/4I4cFXM19H"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 22,
+              "end": 45,
+              "url": "https://t.co/neGdgKLalL",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364059143309582336/video/1",
+              "display_url": "pic.twitter.com/neGdgKLalL"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 74,
+          "reply_count": 7,
+          "like_count": 493,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-23T03:46:57.000Z",
+        "id": "1364059143309582336",
+        "text": "BUCKETS all the way 😤 https://t.co/neGdgKLalL"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 40,
+              "end": 63,
+              "url": "https://t.co/oMxYehXIcs",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364053573559058432/video/1",
+              "display_url": "pic.twitter.com/oMxYehXIcs"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 30,
+              "end": 34,
+              "probability": 0.8957,
+              "type": "Person",
+              "normalized_text": "Kelly"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 36,
+          "reply_count": 12,
+          "like_count": 306,
+          "quote_count": 0
+        },
+        "created_at": "2021-02-23T03:24:49.000Z",
+        "id": "1364053573559058432",
+        "text": "Starting the half with a nice Kelly cut https://t.co/oMxYehXIcs"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 27,
+              "end": 50,
+              "url": "https://t.co/CzOXn2qzP5",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364049664924876803/photo/1",
+              "display_url": "pic.twitter.com/CzOXn2qzP5"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 52,
+          "reply_count": 71,
+          "like_count": 654,
+          "quote_count": 21
+        },
+        "created_at": "2021-02-23T03:09:17.000Z",
+        "id": "1364049664924876803",
+        "text": "we have some scoring to do https://t.co/CzOXn2qzP5"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 31,
+              "end": 54,
+              "url": "https://t.co/OceAwoSG3P",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364044346262183937/video/1",
+              "display_url": "pic.twitter.com/OceAwoSG3P"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 56,
+          "reply_count": 14,
+          "like_count": 507,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-23T02:48:09.000Z",
+        "id": "1364044346262183937",
+        "text": "the occasional soft Bam slam 💥 https://t.co/OceAwoSG3P"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/uGMWykS1M3",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364040812330426372/photo/1",
+              "display_url": "pic.twitter.com/uGMWykS1M3"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 39,
+          "reply_count": 18,
+          "like_count": 625,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-23T02:34:06.000Z",
+        "id": "1364040812330426372",
+        "text": "Up 23-21 after 👆 https://t.co/uGMWykS1M3"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 27,
+              "end": 50,
+              "url": "https://t.co/WY8LnAbFeS",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364039357900931075/video/1",
+              "display_url": "pic.twitter.com/WY8LnAbFeS"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 48,
+          "reply_count": 9,
+          "like_count": 451,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-23T02:28:20.000Z",
+        "id": "1364039357900931075",
+        "text": "Sharing the rock with ease https://t.co/WY8LnAbFeS"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/YRZuHXX2sA",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364036423322656772/video/1",
+              "display_url": "pic.twitter.com/YRZuHXX2sA"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 42,
+          "reply_count": 13,
+          "like_count": 465,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-23T02:16:40.000Z",
+        "id": "1364036423322656772",
+        "text": "1️⃣0️⃣ for Strus https://t.co/YRZuHXX2sA"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 23,
+              "end": 46,
+              "url": "https://t.co/Ij6nvDAtnr",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364036367622279176/video/1",
+              "display_url": "pic.twitter.com/Ij6nvDAtnr"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 5,
+              "probability": 0.9348,
+              "type": "Person",
+              "normalized_text": "Duncan"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 193,
+          "reply_count": 24,
+          "like_count": 1556,
+          "quote_count": 26
+        },
+        "created_at": "2021-02-23T02:16:27.000Z",
+        "id": "1364036367622279176",
+        "text": "Duncan from the logo 🍩 https://t.co/Ij6nvDAtnr"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 44,
+              "end": 58,
+              "username": "FOXSportsHEAT"
+            }
+          ],
+          "urls": [
+            {
+              "start": 59,
+              "end": 82,
+              "url": "https://t.co/xOI1NMTixP",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364034577652719619/photo/1",
+              "display_url": "pic.twitter.com/xOI1NMTixP"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 45,
+          "reply_count": 8,
+          "like_count": 467,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-23T02:09:20.000Z",
+        "id": "1364034577652719619",
+        "text": "Let's close out this trip the right way.\n\n📺 @FOXSportsHEAT https://t.co/xOI1NMTixP"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 32,
+              "end": 48,
+              "username": "BiscayneBayBrew"
+            }
+          ],
+          "urls": [
+            {
+              "start": 49,
+              "end": 72,
+              "url": "https://t.co/5pMYwijNSr",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1364024678415691780/photo/1",
+              "display_url": "pic.twitter.com/5pMYwijNSr"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 148,
+          "reply_count": 48,
+          "like_count": 1619,
+          "quote_count": 23
+        },
+        "created_at": "2021-02-23T01:30:00.000Z",
+        "id": "1364024678415691780",
+        "text": "We're locked in.\n\nStarting 5 // @biscaynebaybrew https://t.co/5pMYwijNSr"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 9,
+              "tag": "MIAvsOKC"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 25,
+              "end": 35,
+              "probability": 0.9854,
+              "type": "Person",
+              "normalized_text": "Tyler Herro"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 75,
+          "reply_count": 70,
+          "like_count": 917,
+          "quote_count": 62
+        },
+        "created_at": "2021-02-23T00:25:40.000Z",
+        "id": "1364008489094418432",
+        "text": "#MIAvsOKC INJURY UPDATE: Tyler Herro (hip) has been ruled out of tonight's game vs the Thunder."
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 12,
+              "tag": "HEATTwitter"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 103,
+              "end": 113,
+              "username": "MiamiHEAT"
+            },
+            {
+              "start": 117,
+              "end": 124,
+              "username": "TaxAct"
+            }
+          ],
+          "urls": [
+            {
+              "start": 125,
+              "end": 148,
+              "url": "https://t.co/RhvvJ2OeEg",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363901646384816128/photo/1",
+              "display_url": "pic.twitter.com/RhvvJ2OeEg"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 22,
+          "reply_count": 185,
+          "like_count": 592,
+          "quote_count": 30
+        },
+        "created_at": "2021-02-22T17:21:07.000Z",
+        "id": "1363901646384816128",
+        "text": "#HEATTwitter let's get those Monday wheels spinning! We'll be in the replies at 7pm with the answer 👀\n\n@MiamiHEAT // @TaxAct https://t.co/RhvvJ2OeEg"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 33,
+              "end": 45,
+              "tag": "HEATCulture"
+            }
+          ],
+          "urls": [
+            {
+              "start": 46,
+              "end": 69,
+              "url": "https://t.co/iZj5HfUICX",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363892733795000322/photo/1",
+              "display_url": "pic.twitter.com/iZj5HfUICX"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 109,
+          "reply_count": 20,
+          "like_count": 1353,
+          "quote_count": 16
+        },
+        "created_at": "2021-02-22T16:45:42.000Z",
+        "id": "1363892733795000322",
+        "text": "Gotta finish this trip strong 🔥\n\n#HEATCulture https://t.co/iZj5HfUICX"
+      },
+      {
+        "source": "Twitter for iPhone",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 76,
+              "end": 88,
+              "tag": "HEATCulture"
+            }
+          ],
+          "urls": [
+            {
+              "start": 89,
+              "end": 112,
+              "url": "https://t.co/N82uTPxdmP",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363655336473862150/photo/1",
+              "display_url": "pic.twitter.com/N82uTPxdmP"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 137,
+          "reply_count": 14,
+          "like_count": 1857,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-22T01:02:22.000Z",
+        "id": "1363655336473862150",
+        "text": "1 more ahead on the trip. We’re doing everything to get it tomorrow night.\n\n#HEATCulture https://t.co/N82uTPxdmP"
+      },
+      {
+        "source": "Twitter for iPhone",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 9,
+              "tag": "MIAvsOKC"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 25,
+              "end": 35,
+              "probability": 0.9853,
+              "type": "Person",
+              "normalized_text": "Tyler Herro"
+            },
+            {
+              "start": 99,
+              "end": 105,
+              "probability": 0.4668,
+              "type": "Organization",
+              "normalized_text": "Thunder"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 75,
+          "reply_count": 44,
+          "like_count": 1085,
+          "quote_count": 31
+        },
+        "created_at": "2021-02-21T23:52:32.000Z",
+        "id": "1363637764122681344",
+        "text": "#MIAvsOKC INJURY UPDATE: Tyler Herro (hip) is questionable to play in tomorrow night’s game vs the Thunder."
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 79,
+              "end": 96,
+              "tag": "BlackLivesMatter"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 115,
+              "end": 123,
+              "username": "Bam1of1"
+            }
+          ],
+          "urls": [
+            {
+              "start": 126,
+              "end": 149,
+              "url": "https://t.co/ADGD2rfAkf",
+              "expanded_url": "http://gohe.at/3sdLDcN",
+              "display_url": "gohe.at/3sdLDcN"
+            },
+            {
+              "start": 150,
+              "end": 173,
+              "url": "https://t.co/tOw68lsk0F",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363609443632508932/video/1",
+              "display_url": "pic.twitter.com/tOw68lsk0F"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 10,
+              "probability": 0.9912,
+              "type": "Person",
+              "normalized_text": "Bam Adebayo"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 67,
+          "reply_count": 6,
+          "like_count": 470,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-21T22:00:00.000Z",
+        "id": "1363609443632508932",
+        "text": "Bam Adebayo shares the truth on a middle school experience he'll never forget. #BlackLivesMatter\n\nSpeak the Truth: @Bam1of1 - https://t.co/ADGD2rfAkf https://t.co/tOw68lsk0F"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 12,
+              "tag": "HEATTwitter"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 165,
+              "end": 175,
+              "username": "MiamiHEAT"
+            },
+            {
+              "start": 179,
+              "end": 186,
+              "username": "FLBlue"
+            }
+          ],
+          "urls": [
+            {
+              "start": 140,
+              "end": 163,
+              "url": "https://t.co/mqZMKPdtd9",
+              "expanded_url": "https://gohe.at/2ZFplo0",
+              "display_url": "gohe.at/2ZFplo0"
+            },
+            {
+              "start": 187,
+              "end": 210,
+              "url": "https://t.co/JbWZ1zhv6J",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363591209760002055/photo/1",
+              "display_url": "pic.twitter.com/JbWZ1zhv6J"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 35,
+          "reply_count": 4,
+          "like_count": 351,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-21T20:47:33.000Z",
+        "id": "1363591209760002055",
+        "text": "#HEATTwitter do yourselves and each other a favor and mask up please. Shop our collection of HEAT masks for the perfect look just for you - https://t.co/mqZMKPdtd9\n\n@MiamiHEAT // @FLBlue https://t.co/JbWZ1zhv6J"
+      },
+      {
+        "source": "Twitter for iPhone",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 51,
+              "end": 59,
+              "username": "AAarena"
+            }
+          ],
+          "urls": [
+            {
+              "start": 111,
+              "end": 134,
+              "url": "https://t.co/M52bFl1uI9",
+              "expanded_url": "http://gohe.at/37sZLqD",
+              "display_url": "gohe.at/37sZLqD"
+            },
+            {
+              "start": 135,
+              "end": 158,
+              "url": "https://t.co/CdQ0q5woAP",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363541790742216712/photo/1",
+              "display_url": "pic.twitter.com/CdQ0q5woAP"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 9,
+              "end": 18,
+              "probability": 0.4759,
+              "type": "Organization",
+              "normalized_text": "West Coast"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 26,
+          "reply_count": 8,
+          "like_count": 416,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-21T17:31:10.000Z",
+        "id": "1363541790742216712",
+        "text": "One more West Coast game ’til the squad returns to @AAArena 🙌\n\nBe there Wednesday night to welcome them back - https://t.co/M52bFl1uI9 https://t.co/CdQ0q5woAP"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 22,
+              "end": 45,
+              "url": "https://t.co/mACoPEp2L4",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363513550338207748/video/1",
+              "display_url": "pic.twitter.com/mACoPEp2L4"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 12,
+              "end": 18,
+              "probability": 0.891,
+              "type": "Person",
+              "normalized_text": "Adebayo"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 462,
+          "reply_count": 53,
+          "like_count": 2900,
+          "quote_count": 80
+        },
+        "created_at": "2021-02-21T15:38:57.000Z",
+        "id": "1363513550338207748",
+        "text": "\"Blocked by Adebayo!\" https://t.co/mACoPEp2L4"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 42,
+              "end": 65,
+              "url": "https://t.co/aA9tbPMKc8",
+              "expanded_url": "http://gohe.at/37A3rHl",
+              "display_url": "gohe.at/37A3rHl",
+              "images": [
+                {
+                  "url": "https://pbs.twimg.com/news_img/1363367184827899906/ijL95fqT?format=jpg&name=orig",
+                  "width": 1200,
+                  "height": 630
+                },
+                {
+                  "url": "https://pbs.twimg.com/news_img/1363367184827899906/ijL95fqT?format=jpg&name=150x150",
+                  "width": 150,
+                  "height": 150
+                }
+              ],
+              "status": 200,
+              "title": "HEAT Hang On To Beat Lakers In Finals Rematch | Miami Heat",
+              "description": "One hundred thirty-two days after falling to the Lakers in Game 6 of the Finals, the HEAT defeated LA 96-94 Saturday night at Staples Center. And while it wasn’t always the prettiest display of",
+              "unwound_url": "https://www.nba.com/heat/news/game-recap-mia-lal-210221"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 33,
+          "reply_count": 8,
+          "like_count": 482,
+          "quote_count": 0
+        },
+        "created_at": "2021-02-21T14:45:14.000Z",
+        "id": "1363500029424582667",
+        "text": "We got a win under the bright lights.\n\n📝👇\nhttps://t.co/aA9tbPMKc8"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 33,
+              "end": 43,
+              "username": "MiamiHEAT"
+            },
+            {
+              "start": 47,
+              "end": 56,
+              "username": "JBLaudio"
+            }
+          ],
+          "urls": [
+            {
+              "start": 57,
+              "end": 80,
+              "url": "https://t.co/1n8IwCqq1I",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363359826886201344/photo/1",
+              "display_url": "pic.twitter.com/1n8IwCqq1I"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 244,
+          "reply_count": 19,
+          "like_count": 2255,
+          "quote_count": 12
+        },
+        "created_at": "2021-02-21T05:28:07.000Z",
+        "id": "1363359826886201344",
+        "text": "We know what needs to be done. \n\n@MiamiHEAT // @JBLaudio https://t.co/1n8IwCqq1I"
+      },
+      {
+        "source": "Twitter for Advertisers",
+        "author_id": "11026952",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 180,
+          "reply_count": 21,
+          "like_count": 2061,
+          "quote_count": 11
+        },
+        "created_at": "2021-02-21T05:16:08.000Z",
+        "id": "1363356813534638081",
+        "text": "Lights. Camera. Dub"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 52,
+              "end": 75,
+              "url": "https://t.co/ecZ2ubGqIF",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363352161447510018/video/1",
+              "display_url": "pic.twitter.com/ecZ2ubGqIF"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 35,
+              "end": 39,
+              "probability": 0.8809,
+              "type": "Person",
+              "normalized_text": "Jimmy"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 154,
+          "reply_count": 21,
+          "like_count": 1224,
+          "quote_count": 16
+        },
+        "created_at": "2021-02-21T04:57:39.000Z",
+        "id": "1363352161447510018",
+        "text": "We're smirking just watching these Jimmy highlights https://t.co/ecZ2ubGqIF"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 12,
+              "tag": "HEATTwitter"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 87,
+              "end": 100,
+              "username": "PapaJohnsSFL"
+            }
+          ],
+          "urls": [
+            {
+              "start": 152,
+              "end": 175,
+              "url": "https://t.co/36wVd77zdh",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363348540123136003/photo/1",
+              "display_url": "pic.twitter.com/36wVd77zdh"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 74,
+          "reply_count": 17,
+          "like_count": 900,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-21T04:43:16.000Z",
+        "id": "1363348540123136003",
+        "text": "#HEATTwitter is gonna be so happy about this pizza...\n\nSunday Dinner plans courtesy of @PapaJohnsSFL. Promo code 'HEATWin' half off all online orders 🍕 https://t.co/36wVd77zdh"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "und",
+        "entities": {
+          "urls": [
+            {
+              "start": 0,
+              "end": 23,
+              "url": "https://t.co/YwOAocTY4b",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363344191988895744/photo/1",
+              "display_url": "pic.twitter.com/YwOAocTY4b"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 1090,
+          "reply_count": 61,
+          "like_count": 7019,
+          "quote_count": 80
+        },
+        "created_at": "2021-02-21T04:25:59.000Z",
+        "id": "1363344191988895744",
+        "text": "https://t.co/YwOAocTY4b"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 190,
+              "end": 213,
+              "url": "https://t.co/6wQc8RtIa0",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363342625739313161/photo/1",
+              "display_url": "pic.twitter.com/6wQc8RtIa0"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 32,
+              "end": 35,
+              "probability": 0.5952,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 40,
+              "end": 43,
+              "probability": 0.4661,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 64,
+              "end": 69,
+              "probability": 0.5898,
+              "type": "Person",
+              "normalized_text": "Butler"
+            },
+            {
+              "start": 81,
+              "end": 84,
+              "probability": 0.6484,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 89,
+              "end": 92,
+              "probability": 0.5366,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 121,
+              "end": 124,
+              "probability": 0.5505,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 129,
+              "end": 132,
+              "probability": 0.6435,
+              "type": "Person",
+              "normalized_text": "Asts"
+            },
+            {
+              "start": 153,
+              "end": 160,
+              "probability": 0.7233,
+              "type": "Person",
+              "normalized_text": "Robinson"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 304,
+          "reply_count": 46,
+          "like_count": 2171,
+          "quote_count": 16
+        },
+        "created_at": "2021-02-21T04:19:46.000Z",
+        "id": "1363342625739313161",
+        "text": "📊 Final Box\n\n🔥 Nunn 27 Pts, 5 Rebs, 3 Asts, 1 Blk &amp; 2 Stls\n🔥 Butler 24 Pts, 8 Rebs, 5 Asts &amp; 2 Stls\n🔥 Bam 16 Pts, 10 Rebs, 6 Asts, 1 Blk &amp; 2 Stls\n🔥 Robinson 11 Pts &amp; 10 Rebs https://t.co/6wQc8RtIa0"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 48,
+              "end": 56,
+              "tag": "WINNING"
+            }
+          ],
+          "urls": [
+            {
+              "start": 57,
+              "end": 80,
+              "url": "https://t.co/hrBGzRo9GE",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363340064990887936/video/1",
+              "display_url": "pic.twitter.com/hrBGzRo9GE"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 1096,
+          "reply_count": 130,
+          "like_count": 4260,
+          "quote_count": 172
+        },
+        "created_at": "2021-02-21T04:09:35.000Z",
+        "id": "1363340064990887936",
+        "text": "We ain't the SuperSonics. Today was a Good Day. #WINNING https://t.co/hrBGzRo9GE"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 19,
+              "end": 42,
+              "url": "https://t.co/XAM07F96Na",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363339400701165570/photo/1",
+              "display_url": "pic.twitter.com/XAM07F96Na"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 1468,
+          "reply_count": 213,
+          "like_count": 7872,
+          "quote_count": 328
+        },
+        "created_at": "2021-02-21T04:06:57.000Z",
+        "id": "1363339400701165570",
+        "text": "Good show tonight. https://t.co/XAM07F96Na"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "annotations": [
+            {
+              "start": 38,
+              "end": 43,
+              "probability": 0.9451,
+              "type": "Organization",
+              "normalized_text": "Lakers"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 66,
+          "reply_count": 56,
+          "like_count": 1157,
+          "quote_count": 9
+        },
+        "created_at": "2021-02-21T03:56:48.000Z",
+        "id": "1363336847569657856",
+        "text": "Up ✌️ \n\nwith 25 seconds left to play. Lakers ball."
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/hUhZ2zSMYx",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363333465849163776/video/1",
+              "display_url": "pic.twitter.com/hUhZ2zSMYx"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 814,
+          "reply_count": 70,
+          "like_count": 3192,
+          "quote_count": 188
+        },
+        "created_at": "2021-02-21T03:43:22.000Z",
+        "id": "1363333465849163776",
+        "text": "No one is safe 👀 https://t.co/hUhZ2zSMYx"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 40,
+              "end": 52,
+              "tag": "HEATCulture"
+            }
+          ],
+          "urls": [
+            {
+              "start": 53,
+              "end": 76,
+              "url": "https://t.co/PboxYFF0W9",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363330609473605634/video/1",
+              "display_url": "pic.twitter.com/PboxYFF0W9"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 92,
+          "reply_count": 27,
+          "like_count": 626,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-21T03:32:01.000Z",
+        "id": "1363330609473605634",
+        "text": "This is how we like to play basketball. #HEATCulture https://t.co/PboxYFF0W9"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 35,
+              "end": 58,
+              "url": "https://t.co/ZwxNHnyYez",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363329669509115905/photo/1",
+              "display_url": "pic.twitter.com/ZwxNHnyYez"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 82,
+          "reply_count": 50,
+          "like_count": 960,
+          "quote_count": 14
+        },
+        "created_at": "2021-02-21T03:28:17.000Z",
+        "id": "1363329669509115905",
+        "text": "leading 81-77 heading to the 4th Q https://t.co/ZwxNHnyYez"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 26,
+              "end": 49,
+              "url": "https://t.co/8gqrSy9CdC",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363328722984656902/video/1",
+              "display_url": "pic.twitter.com/8gqrSy9CdC"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 4,
+              "probability": 0.9753,
+              "type": "Person",
+              "normalized_text": "Jimmy"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 82,
+          "reply_count": 15,
+          "like_count": 672,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-21T03:24:31.000Z",
+        "id": "1363328722984656902",
+        "text": "Jimmy with the right hook https://t.co/8gqrSy9CdC"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 27,
+              "end": 50,
+              "url": "https://t.co/AM3BfjfRKy",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363325282158002180/video/1",
+              "display_url": "pic.twitter.com/AM3BfjfRKy"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 7,
+              "probability": 0.969,
+              "type": "Person",
+              "normalized_text": "Kendrick"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 105,
+          "reply_count": 30,
+          "like_count": 858,
+          "quote_count": 11
+        },
+        "created_at": "2021-02-21T03:10:51.000Z",
+        "id": "1363325282158002180",
+        "text": "Kendrick is always there 🤚 https://t.co/AM3BfjfRKy"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 17,
+              "end": 24,
+              "tag": "OGTalk"
+            }
+          ],
+          "urls": [
+            {
+              "start": 25,
+              "end": 48,
+              "url": "https://t.co/2Y1EYTCcE8",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363321221975314432/photo/1",
+              "display_url": "pic.twitter.com/2Y1EYTCcE8"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 85,
+          "reply_count": 25,
+          "like_count": 1134,
+          "quote_count": 5
+        },
+        "created_at": "2021-02-21T02:54:43.000Z",
+        "id": "1363321221975314432",
+        "text": "Keep pushing. ⚓️ #OGTalk https://t.co/2Y1EYTCcE8"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 9,
+              "tag": "MIAvsLAL"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 25,
+              "end": 35,
+              "probability": 0.9964,
+              "type": "Person",
+              "normalized_text": "Tyler Herro"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 116,
+          "reply_count": 105,
+          "like_count": 1258,
+          "quote_count": 172
+        },
+        "created_at": "2021-02-21T02:49:23.000Z",
+        "id": "1363319881437962241",
+        "text": "#MIAvsLAL Injury Update: Tyler Herro suffered a right hip contusion in the 1st half. He's questionable to return."
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/C0vYaWPqbw",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363319255924699138/photo/1",
+              "display_url": "pic.twitter.com/C0vYaWPqbw"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 86,
+          "reply_count": 50,
+          "like_count": 886,
+          "quote_count": 17
+        },
+        "created_at": "2021-02-21T02:46:54.000Z",
+        "id": "1363319255924699138",
+        "text": "Solid 24 minutes https://t.co/C0vYaWPqbw"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 59,
+              "end": 82,
+              "url": "https://t.co/ICAoH9El3j",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363317522452385793/video/1",
+              "display_url": "pic.twitter.com/ICAoH9El3j"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 7,
+              "probability": 0.7336,
+              "type": "Person",
+              "normalized_text": "Defender"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 154,
+          "reply_count": 18,
+          "like_count": 1062,
+          "quote_count": 19
+        },
+        "created_at": "2021-02-21T02:40:01.000Z",
+        "id": "1363317522452385793",
+        "text": "Defender wanted no part in what Precious was about to do 😂 https://t.co/ICAoH9El3j"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 42,
+              "end": 65,
+              "url": "https://t.co/fHj8ePBcpS",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363316466628653058/video/1",
+              "display_url": "pic.twitter.com/fHj8ePBcpS"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 7,
+              "probability": 0.4313,
+              "type": "Person",
+              "normalized_text": "K3ndrick"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 68,
+          "reply_count": 11,
+          "like_count": 560,
+          "quote_count": 6
+        },
+        "created_at": "2021-02-21T02:35:49.000Z",
+        "id": "1363316466628653058",
+        "text": "K3ndrick showing out in the bright lights https://t.co/fHj8ePBcpS"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 17,
+              "end": 40,
+              "url": "https://t.co/hn4rrPvktM",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363310809200418818/photo/1",
+              "display_url": "pic.twitter.com/hn4rrPvktM"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 117,
+          "reply_count": 58,
+          "like_count": 1423,
+          "quote_count": 21
+        },
+        "created_at": "2021-02-21T02:13:20.000Z",
+        "id": "1363310809200418818",
+        "text": "up 36-23 after 👆 https://t.co/hn4rrPvktM"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 64,
+              "end": 87,
+              "url": "https://t.co/UFQI5GPOu5",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363309852097937409/video/1",
+              "display_url": "pic.twitter.com/UFQI5GPOu5"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 127,
+          "reply_count": 28,
+          "like_count": 807,
+          "quote_count": 12
+        },
+        "created_at": "2021-02-21T02:09:32.000Z",
+        "id": "1363309852097937409",
+        "text": "There's really Nunn better right now \n\n15 points &amp; counting https://t.co/UFQI5GPOu5"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 34,
+              "end": 57,
+              "url": "https://t.co/GsNnwyUtG2",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363306024531353604/video/1",
+              "display_url": "pic.twitter.com/GsNnwyUtG2"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 121,
+          "reply_count": 32,
+          "like_count": 1083,
+          "quote_count": 28
+        },
+        "created_at": "2021-02-21T01:54:19.000Z",
+        "id": "1363306024531353604",
+        "text": "we can't stop watching this cut 😳 https://t.co/GsNnwyUtG2"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 21,
+              "end": 44,
+              "url": "https://t.co/xDZef67ei7",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363303559807324161/video/1",
+              "display_url": "pic.twitter.com/xDZef67ei7"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 62,
+          "reply_count": 15,
+          "like_count": 587,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-21T01:44:32.000Z",
+        "id": "1363303559807324161",
+        "text": "andddddd we're off 💥 https://t.co/xDZef67ei7"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "es",
+        "entities": {
+          "urls": [
+            {
+              "start": 18,
+              "end": 41,
+              "url": "https://t.co/lsMfFasXrR",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363302606576230405/video/1",
+              "display_url": "pic.twitter.com/lsMfFasXrR"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 61,
+          "reply_count": 8,
+          "like_count": 451,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-21T01:40:45.000Z",
+        "id": "1363302606576230405",
+        "text": "Prime Time in LA! https://t.co/lsMfFasXrR"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 33,
+              "end": 45,
+              "tag": "HEATTwitter"
+            }
+          ],
+          "urls": [
+            {
+              "start": 62,
+              "end": 85,
+              "url": "https://t.co/XyLIsOn72x",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363301755946164224/photo/1",
+              "display_url": "pic.twitter.com/XyLIsOn72x"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 80,
+          "reply_count": 17,
+          "like_count": 677,
+          "quote_count": 10
+        },
+        "created_at": "2021-02-21T01:37:22.000Z",
+        "id": "1363301755946164224",
+        "text": "It's a perfect night for some 🏀\n\n#HEATTwitter, let's do this! https://t.co/XyLIsOn72x"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 44,
+              "end": 60,
+              "username": "BiscayneBayBrew"
+            }
+          ],
+          "urls": [
+            {
+              "start": 61,
+              "end": 84,
+              "url": "https://t.co/tXljogGQX9",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363292355428683779/photo/1",
+              "display_url": "pic.twitter.com/tXljogGQX9"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 194,
+          "reply_count": 61,
+          "like_count": 1877,
+          "quote_count": 66
+        },
+        "created_at": "2021-02-21T01:00:00.000Z",
+        "id": "1363292355428683779",
+        "text": "Ready to take on the Champs.\n\nStarting 5 // @biscaynebaybrew https://t.co/tXljogGQX9"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 14,
+              "end": 31,
+              "tag": "TissotStyleWatch"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 35,
+              "end": 42,
+              "username": "TISSOT"
+            }
+          ],
+          "urls": [
+            {
+              "start": 43,
+              "end": 66,
+              "url": "https://t.co/AK0ng0Xoiv",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363287464266326021/photo/1",
+              "display_url": "pic.twitter.com/AK0ng0Xoiv"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 71,
+          "reply_count": 21,
+          "like_count": 863,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-21T00:40:34.000Z",
+        "id": "1363287464266326021",
+        "text": "Clocked in. \n\n#TissotStyleWatch // @TISSOT https://t.co/AK0ng0Xoiv"
+      },
+      {
+        "source": "Twitter for iPhone",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 78,
+              "end": 101,
+              "url": "https://t.co/M52bFl1uI9",
+              "expanded_url": "http://gohe.at/37sZLqD",
+              "display_url": "gohe.at/37sZLqD"
+            },
+            {
+              "start": 102,
+              "end": 125,
+              "url": "https://t.co/zfgq50MFhA",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363172553007763466/photo/1",
+              "display_url": "pic.twitter.com/zfgq50MFhA"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 23,
+          "reply_count": 5,
+          "like_count": 436,
+          "quote_count": 4
+        },
+        "created_at": "2021-02-20T17:03:57.000Z",
+        "id": "1363172553007763466",
+        "text": "IT IS (YOUR) TIME!\n\nLimited number of single game tickets are available NOW 👉 https://t.co/M52bFl1uI9 https://t.co/zfgq50MFhA"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 10,
+              "tag": "NBAFinals"
+            }
+          ],
+          "urls": [
+            {
+              "start": 34,
+              "end": 57,
+              "url": "https://t.co/D4lvVVDyS4",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1363148909015494656/photo/1",
+              "display_url": "pic.twitter.com/D4lvVVDyS4"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 286,
+          "reply_count": 51,
+          "like_count": 2799,
+          "quote_count": 52
+        },
+        "created_at": "2021-02-20T15:30:00.000Z",
+        "id": "1363148909015494656",
+        "text": "#NBAFinals rematch in primetime 🔥 https://t.co/D4lvVVDyS4"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 55,
+              "end": 62,
+              "username": "UKGInc"
+            }
+          ],
+          "urls": [
+            {
+              "start": 63,
+              "end": 86,
+              "url": "https://t.co/nvfi7zvUiG",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362914332024205312/video/1",
+              "display_url": "pic.twitter.com/nvfi7zvUiG"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 142,
+          "reply_count": 12,
+          "like_count": 896,
+          "quote_count": 14
+        },
+        "created_at": "2021-02-19T23:57:53.000Z",
+        "id": "1362914332024205312",
+        "text": "The Triple-Double Streak (Vol. 1-3)\n\nUltimate Plays // @UKGInc https://t.co/nvfi7zvUiG"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 171,
+              "end": 184,
+              "username": "HistoryMiami"
+            }
+          ],
+          "urls": [
+            {
+              "start": 233,
+              "end": 256,
+              "url": "https://t.co/bV7BuDoBhd",
+              "expanded_url": "http://gohe.at/3s9P6Jp",
+              "display_url": "gohe.at/3s9P6Jp",
+              "images": [
+                {
+                  "url": "https://pbs.twimg.com/news_img/1362872658598199299/y4X8CXhF?format=jpg&name=orig",
+                  "width": 1920,
+                  "height": 1080
+                },
+                {
+                  "url": "https://pbs.twimg.com/news_img/1362872658598199299/y4X8CXhF?format=jpg&name=150x150",
+                  "width": 150,
+                  "height": 150
+                }
+              ],
+              "status": 200,
+              "title": "Two Miamis - Coconut Grove",
+              "description": "Beyond the glitz and glamour there are real people who built this city and their stories deserve to be remembered. . .",
+              "unwound_url": "https://www.nba.com/heat/video-two-miamis-coconut-grove-21"
+            },
+            {
+              "start": 257,
+              "end": 280,
+              "url": "https://t.co/FWPXybvDzl",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362872637559627785/video/1",
+              "display_url": "pic.twitter.com/FWPXybvDzl"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 68,
+              "end": 72,
+              "probability": 0.9798,
+              "type": "Place",
+              "normalized_text": "Miami"
+            },
+            {
+              "start": 155,
+              "end": 167,
+              "probability": 0.9126,
+              "type": "Place",
+              "normalized_text": "Coconut Grove"
+            },
+            {
+              "start": 221,
+              "end": 230,
+              "probability": 0.4474,
+              "type": "Other",
+              "normalized_text": "Two Miamis"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 40,
+          "reply_count": 1,
+          "like_count": 216,
+          "quote_count": 1
+        },
+        "created_at": "2021-02-19T21:12:12.000Z",
+        "id": "1362872637559627785",
+        "text": "There are 3 specific historical events that brought Black people to Miami in the late 1800s... One of them resulted in a boom of Black-Owned businesses in Coconut Grove.\n\n@HistoryMiami tells the story in this edition of \"Two Miamis\" https://t.co/bV7BuDoBhd https://t.co/FWPXybvDzl"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 0,
+              "end": 12,
+              "tag": "HEATTwitter"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 55,
+              "end": 63,
+              "username": "AAarena"
+            }
+          ],
+          "urls": [
+            {
+              "start": 134,
+              "end": 157,
+              "url": "https://t.co/Tov7slGatq",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362846919513505798/photo/1",
+              "display_url": "pic.twitter.com/Tov7slGatq"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 47,
+          "reply_count": 7,
+          "like_count": 687,
+          "quote_count": 7
+        },
+        "created_at": "2021-02-19T19:30:00.000Z",
+        "id": "1362846919513505798",
+        "text": "#HEATTwitter here’s your first chance to get back into @AAArena 🙌\n\nLimited number of single game tickets go on sale tomorrow at 12pm. https://t.co/Tov7slGatq"
+      },
+      {
+        "source": "Twitter for iPhone",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 107,
+              "end": 123,
+              "username": "FLRightsRestore"
+            },
+            {
+              "start": 125,
+              "end": 141,
+              "username": "HealthintheHood"
+            }
+          ],
+          "urls": [
+            {
+              "start": 183,
+              "end": 206,
+              "url": "https://t.co/2CBOlqQMkh",
+              "expanded_url": "http://gohe.at/3bk0n33",
+              "display_url": "gohe.at/3bk0n33"
+            },
+            {
+              "start": 207,
+              "end": 230,
+              "url": "https://t.co/Tm3Q0T2oaj",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362831179012046851/photo/1",
+              "display_url": "pic.twitter.com/Tm3Q0T2oaj"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 18,
+          "reply_count": 5,
+          "like_count": 202,
+          "quote_count": 0
+        },
+        "created_at": "2021-02-19T18:27:27.000Z",
+        "id": "1362831179012046851",
+        "text": "Speak truth and spread love in Court Culture’s Social Justice Collection ✊🏾\n\nEvery $ will directly support @FLRightsRestore, @HealthintheHood and more Black advocacy groups to come - https://t.co/2CBOlqQMkh https://t.co/Tm3Q0T2oaj"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 92,
+              "end": 105,
+              "username": "vicopainting"
+            }
+          ],
+          "urls": [
+            {
+              "start": 106,
+              "end": 129,
+              "url": "https://t.co/LAc7K2OZ4M",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362809420820996096/video/1",
+              "display_url": "pic.twitter.com/LAc7K2OZ4M"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 4,
+              "probability": 0.9799,
+              "type": "Person",
+              "normalized_text": "Jimmy"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 45,
+          "reply_count": 4,
+          "like_count": 459,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-19T17:01:00.000Z",
+        "id": "1362809420820996096",
+        "text": "Jimmy had one of those nights last night... especially at the rim 😤\n\nPoints In The Paint // @VicoPainting https://t.co/LAc7K2OZ4M"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 186,
+              "end": 201,
+              "tag": "HEATHighlights"
+            }
+          ],
+          "urls": [
+            {
+              "start": 202,
+              "end": 225,
+              "url": "https://t.co/xN0MM7JBOq",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362801619222466561/video/1",
+              "display_url": "pic.twitter.com/xN0MM7JBOq"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 114,
+              "end": 125,
+              "probability": 0.9862,
+              "type": "Person",
+              "normalized_text": "Jimmy Butler"
+            },
+            {
+              "start": 156,
+              "end": 160,
+              "probability": 0.525,
+              "type": "Person",
+              "normalized_text": "13pts"
+            },
+            {
+              "start": 163,
+              "end": 168,
+              "probability": 0.5833,
+              "type": "Person",
+              "normalized_text": "13asts"
+            },
+            {
+              "start": 172,
+              "end": 177,
+              "probability": 0.7002,
+              "type": "Person",
+              "normalized_text": "10rebs"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 95,
+          "reply_count": 11,
+          "like_count": 621,
+          "quote_count": 4
+        },
+        "created_at": "2021-02-19T16:30:00.000Z",
+        "id": "1362801619222466561",
+        "text": "-1st HEAT player to notch 3 straight triple-doubles\n-2nd HEAT player to have 4 triple-doubles in the same season\n\nJimmy Butler made history last night with 13pts, 13asts &amp; 10rebs\n🔥🎥 #HEATHighlights https://t.co/xN0MM7JBOq"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 139,
+              "end": 154,
+              "tag": "HEATHighlights"
+            }
+          ],
+          "mentions": [
+            {
+              "start": 2,
+              "end": 10,
+              "username": "Bam1of1"
+            }
+          ],
+          "urls": [
+            {
+              "start": 155,
+              "end": 178,
+              "url": "https://t.co/4FcTDorIiS",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362794070402162688/video/1",
+              "display_url": "pic.twitter.com/4FcTDorIiS"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 74,
+              "end": 78,
+              "probability": 0.435,
+              "type": "Organization",
+              "normalized_text": "16pts"
+            },
+            {
+              "start": 81,
+              "end": 86,
+              "probability": 0.5682,
+              "type": "Person",
+              "normalized_text": "12rebs"
+            },
+            {
+              "start": 89,
+              "end": 94,
+              "probability": 0.6404,
+              "type": "Person",
+              "normalized_text": "10asts"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 106,
+          "reply_count": 18,
+          "like_count": 1119,
+          "quote_count": 8
+        },
+        "created_at": "2021-02-19T16:00:00.000Z",
+        "id": "1362794070402162688",
+        "text": "💥 @Bam1of1 earned his 4th career triple-double last night finishing with 16pts, 12rebs, 10asts and a monster dunk on a familiar friend\n\n🔥🎥 #HEATHighlights https://t.co/4FcTDorIiS"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 41,
+              "end": 64,
+              "url": "https://t.co/nLABbTSfV0",
+              "expanded_url": "http://gohe.at/2NeYPj4",
+              "display_url": "gohe.at/2NeYPj4",
+              "images": [
+                {
+                  "url": "https://pbs.twimg.com/news_img/1362656577325522944/2ZDLUy34?format=jpg&name=orig",
+                  "width": 1200,
+                  "height": 630
+                },
+                {
+                  "url": "https://pbs.twimg.com/news_img/1362656577325522944/2ZDLUy34?format=jpg&name=150x150",
+                  "width": 150,
+                  "height": 150
+                }
+              ],
+              "status": 200,
+              "title": "HEAT Get Much-Needed Win Over Kings | Miami Heat",
+              "description": "Finally back in the win column. Thanks to recording a season-high 36 assists, the HEAT snapped a three-game skid and defeated the Kings 118-110 Thursday night at Golden 1 Center. Oh yeah, two",
+              "unwound_url": "https://www.nba.com/heat/news/game-recap-mia-sac-210219"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 29,
+          "reply_count": 14,
+          "like_count": 430,
+          "quote_count": 3
+        },
+        "created_at": "2021-02-19T14:30:52.000Z",
+        "id": "1362771637163220997",
+        "text": "We got back to our ways last night.\n\n📝⬇️\nhttps://t.co/nLABbTSfV0"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 3,
+              "end": 13,
+              "username": "raf_tyler"
+            }
+          ],
+          "urls": [
+            {
+              "start": 98,
+              "end": 121,
+              "url": "https://t.co/08ZCnNWRwA",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362647344836149248/video/1",
+              "display_url": "pic.twitter.com/08ZCnNWRwA"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 143,
+          "reply_count": 10,
+          "like_count": 1005,
+          "quote_count": 15
+        },
+        "created_at": "2021-02-19T06:16:58.000Z",
+        "id": "1362647344836149248",
+        "text": "👶🐐 @raf_tyler led all scorers. . . and he did it off the bench.\n\n27 Pts / 4 Rebs / 3 Asts / 1 Stl https://t.co/08ZCnNWRwA"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 58,
+              "end": 81,
+              "url": "https://t.co/bxMhWiDcpw",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362646073592979462/video/1",
+              "display_url": "pic.twitter.com/bxMhWiDcpw"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 0,
+              "end": 2,
+              "probability": 0.904,
+              "type": "Person",
+              "normalized_text": "Bam"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 66,
+          "reply_count": 10,
+          "like_count": 610,
+          "quote_count": 2
+        },
+        "created_at": "2021-02-19T06:11:55.000Z",
+        "id": "1362646073592979462",
+        "text": "Bam felt like joining the triple-double party, so he did. https://t.co/bxMhWiDcpw"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 129,
+              "end": 141,
+              "username": "JimmyButler"
+            },
+            {
+              "start": 148,
+              "end": 156,
+              "username": "Bam1of1"
+            },
+            {
+              "start": 191,
+              "end": 197,
+              "username": "GEICO"
+            }
+          ],
+          "urls": [
+            {
+              "start": 198,
+              "end": 221,
+              "url": "https://t.co/TixFsXX1b7",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362642147158200323/photo/1",
+              "display_url": "pic.twitter.com/TixFsXX1b7"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 192,
+          "reply_count": 6,
+          "like_count": 1005,
+          "quote_count": 13
+        },
+        "created_at": "2021-02-19T05:56:19.000Z",
+        "id": "1362642147158200323",
+        "text": "Tonight was only the 2nd time in HEAT history 2 players earned triple-doubles in the same game.\n\nWho did it the 1st time? Yep... @JimmyButler &amp; @Bam1of1 (Dec. 2019)\n\nStatline Shoutout // @GEICO https://t.co/TixFsXX1b7"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 85,
+              "end": 108,
+              "url": "https://t.co/FOVCmQOGiy",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362640222987681792/video/1",
+              "display_url": "pic.twitter.com/FOVCmQOGiy"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 70,
+              "end": 82,
+              "probability": 0.322,
+              "type": "Person",
+              "normalized_text": "Jimmy BUCKETS"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 240,
+          "reply_count": 25,
+          "like_count": 1399,
+          "quote_count": 25
+        },
+        "created_at": "2021-02-19T05:48:40.000Z",
+        "id": "1362640222987681792",
+        "text": "The first HEAT player to record back-to-back-to-back triple-doubles:\n\nJimmy BUCKETS. https://t.co/FOVCmQOGiy"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 34,
+              "end": 47,
+              "username": "PapaJohnsSFL"
+            }
+          ],
+          "urls": [
+            {
+              "start": 116,
+              "end": 139,
+              "url": "https://t.co/ywuquX4aZI",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362636723180752897/photo/1",
+              "display_url": "pic.twitter.com/ywuquX4aZI"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 42,
+          "reply_count": 4,
+          "like_count": 469,
+          "quote_count": 4
+        },
+        "created_at": "2021-02-19T05:34:46.000Z",
+        "id": "1362636723180752897",
+        "text": "We're pressing the button on that @PapaJohnsSFL 'HEATWIN' promo code TODAY\n\nHalf off online🍕 orders thanks to the W https://t.co/ywuquX4aZI"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 181,
+              "end": 204,
+              "url": "https://t.co/pjNfAHjDKE",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362633709975920641/photo/1",
+              "display_url": "pic.twitter.com/pjNfAHjDKE"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 33,
+              "end": 36,
+              "probability": 0.5449,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 51,
+              "end": 56,
+              "probability": 0.6785,
+              "type": "Person",
+              "normalized_text": "Olynyk"
+            },
+            {
+              "start": 68,
+              "end": 71,
+              "probability": 0.6037,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 85,
+              "end": 92,
+              "probability": 0.757,
+              "type": "Person",
+              "normalized_text": "Robinson"
+            },
+            {
+              "start": 120,
+              "end": 123,
+              "probability": 0.5839,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 138,
+              "end": 143,
+              "probability": 0.7246,
+              "type": "Person",
+              "normalized_text": "Butler"
+            },
+            {
+              "start": 156,
+              "end": 159,
+              "probability": 0.4944,
+              "type": "Organization",
+              "normalized_text": "Rebs"
+            },
+            {
+              "start": 166,
+              "end": 169,
+              "probability": 0.5595,
+              "type": "Person",
+              "normalized_text": "Asts"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 249,
+          "reply_count": 41,
+          "like_count": 1670,
+          "quote_count": 32
+        },
+        "created_at": "2021-02-19T05:22:47.000Z",
+        "id": "1362633709975920641",
+        "text": "📊 Final Box\n\n🔥 Herro 27 Pts, 4 Rebs &amp; 3 Asts \n🔥 Olynyk 22 Pts, 7 Rebs &amp; 2 Asts\n🔥 Robinson 20 Pts \n🔥 Bam 16 Pts, 12 Rebs &amp; 10 Asts\n🔥 Butler 13 Pts, 10 Rebs &amp; 13 Asts https://t.co/pjNfAHjDKE"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "hashtags": [
+            {
+              "start": 37,
+              "end": 45,
+              "tag": "WINNING"
+            }
+          ],
+          "urls": [
+            {
+              "start": 46,
+              "end": 69,
+              "url": "https://t.co/LQnpZOCqwW",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362632959988228096/video/1",
+              "display_url": "pic.twitter.com/LQnpZOCqwW"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 367,
+          "reply_count": 47,
+          "like_count": 1838,
+          "quote_count": 47
+        },
+        "created_at": "2021-02-19T05:19:48.000Z",
+        "id": "1362632959988228096",
+        "text": "It's been a long week... TURN IT UP. #WINNING https://t.co/LQnpZOCqwW"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 14,
+              "end": 37,
+              "url": "https://t.co/N5scRdW3XY",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362631512659755016/photo/1",
+              "display_url": "pic.twitter.com/N5scRdW3XY"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 560,
+          "reply_count": 155,
+          "like_count": 4251,
+          "quote_count": 118
+        },
+        "created_at": "2021-02-19T05:14:03.000Z",
+        "id": "1362631512659755016",
+        "text": "Good morning. https://t.co/N5scRdW3XY"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 322,
+          "reply_count": 31,
+          "like_count": 2853,
+          "quote_count": 29
+        },
+        "created_at": "2021-02-19T05:09:26.000Z",
+        "id": "1362630351496105990",
+        "text": "🚨 BAM TRIPLE-DOUBLE ALERT 🚨\n\n16 Pts / 12 Rebs / 10 Asts"
+      },
+      {
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "urls": [
+            {
+              "start": 75,
+              "end": 98,
+              "url": "https://t.co/whaGz6HHJh",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362628592149135360/photo/1",
+              "display_url": "pic.twitter.com/whaGz6HHJh"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 20,
+              "end": 24,
+              "probability": 0.784,
+              "type": "Person",
+              "normalized_text": "JIMMY"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 419,
+          "reply_count": 54,
+          "like_count": 2905,
+          "quote_count": 55
+        },
+        "created_at": "2021-02-19T05:02:27.000Z",
+        "id": "1362628592149135360",
+        "text": "*nightly tweet*\n\n🚨 JIMMY TRIPLE-DOUBLE ALERT 🚨\n\n13 Pts / 10 Rebs / 12 Asts https://t.co/whaGz6HHJh"
+      },
+      {
+        "source": "Twitter Media Studio",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 29,
+              "end": 39,
+              "username": "raf_tyler"
+            }
+          ],
+          "urls": [
+            {
+              "start": 40,
+              "end": 63,
+              "url": "https://t.co/7d7EQdhLM9",
+              "expanded_url": "https://twitter.com/MiamiHEAT/status/1362625973385125889/video/1",
+              "display_url": "pic.twitter.com/7d7EQdhLM9"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 91,
+          "reply_count": 13,
+          "like_count": 603,
+          "quote_count": 11
+        },
+        "created_at": "2021-02-19T04:52:03.000Z",
+        "id": "1362625973385125889",
+        "text": "23 points &amp; counting for @raf_tyler https://t.co/7d7EQdhLM9"
+      }
+    ],
+    "meta": {
+      "oldest_id": "1362625973385125889",
+      "newest_id": "1364256203497476098",
+      "result_count": 100,
+      "next_token": "7140dibdnow9c7btw3w3itck0aivzxm3k86g14wdbb77d"
+    }
+  }

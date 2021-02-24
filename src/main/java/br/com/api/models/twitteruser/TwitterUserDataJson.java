@@ -3,7 +3,7 @@ package br.com.api.models.twitteruser;
 import java.io.Serializable;
 import java.util.Date;
 import com.google.gson.annotations.SerializedName;
-import br.com.api.models.tweet.PublicMetricDataJson;
+import br.com.api.models.publicmetrics.PublicMetricDataJson;
 
 public class TwitterUserDataJson implements Serializable {
     /**

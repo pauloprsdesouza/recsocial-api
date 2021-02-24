@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.google.gson.annotations.SerializedName;
 import br.com.api.models.entitytweet.EntityDataJson;
+import br.com.api.models.publicmetrics.PublicMetricDataJson;
 
 @JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class TweetDataJson implements Serializable {
@@ -121,7 +122,7 @@ public class TweetDataJson implements Serializable {
     }
 
     public boolean isQuoted() {
-        return type.equals("quote");
+        return type.equals("quoted");
     }
 
     public boolean isRepliedTo() {

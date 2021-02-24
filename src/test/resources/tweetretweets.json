@@ -1,0 +1,49 @@
+{
+    "data": [
+      {
+        "referenced_tweets": [
+          {
+            "type": "retweeted",
+            "id": "1362629377343819776"
+          }
+        ],
+        "source": "Twitter Web App",
+        "author_id": "11026952",
+        "lang": "en",
+        "entities": {
+          "mentions": [
+            {
+              "start": 3,
+              "end": 11,
+              "username": "CoupNBA"
+            }
+          ],
+          "annotations": [
+            {
+              "start": 13,
+              "end": 24,
+              "probability": 0.9913,
+              "type": "Person",
+              "normalized_text": "Jimmy Butler"
+            },
+            {
+              "start": 69,
+              "end": 80,
+              "probability": 0.9226,
+              "type": "Person",
+              "normalized_text": "Jimmy Butler"
+            }
+          ]
+        },
+        "public_metrics": {
+          "retweet_count": 234,
+          "reply_count": 0,
+          "like_count": 0,
+          "quote_count": 0
+        },
+        "created_at": "2021-02-19T05:30:38.000Z",
+        "id": "1362635683433701379",
+        "text": "RT @CoupNBA: Jimmy Butler Triple-Doubles before joining the Heat: 4\n\nJimmy Butler Triple-Doubles in the past eight days: 4"
+      }
+    ]
+  }

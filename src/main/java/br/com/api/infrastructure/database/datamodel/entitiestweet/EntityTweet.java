@@ -68,7 +68,7 @@ public class EntityTweet implements Serializable {
     }
 
     public DomainTweet getDomain() {
-        return null;
+        return this.domain;
     }
 
     public void setDomain(DomainTweet domain) {

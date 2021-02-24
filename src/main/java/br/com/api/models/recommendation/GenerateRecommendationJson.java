@@ -16,16 +16,20 @@ public class GenerateRecommendationJson {
     @Pattern(regexp = "(SC)}|(SCSA)|(CS)|(BA)")
     private String recommendationType;
 
+    public GenerateRecommendationJson() {
+        this.idsEntities = new ArrayList<>();
+    }
+
     public String getRecommendationType() {
         return this.recommendationType;
     }
 
-    public void setRecommendationType(String recommendationType) {
-        this.recommendationType = recommendationType;
+    public RecommendationTypeEnum getRecommendationTypeEnum() {
+        return RecommendationTypeEnum.getValue(this.recommendationType);
     }
 
-    public GenerateRecommendationJson() {
-        this.idsEntities = new ArrayList<>();
+    public void setRecommendationType(String recommendationType) {
+        this.recommendationType = recommendationType;
     }
 
     public List<Long> getIdsEntities() {
@@ -34,25 +38,5 @@ public class GenerateRecommendationJson {
 
     public void setIdsEntities(List<Long> idsEntities) {
         this.idsEntities = idsEntities;
-    }
-
-    public boolean isSocialCapital() {
-        return RecommendationTypeEnum
-                .getValue(recommendationType) == RecommendationTypeEnum.SocialCapial;
-    }
-
-    public boolean isSocialCapitalSentimentAnalysis() {
-        return RecommendationTypeEnum
-                .getValue(recommendationType) == RecommendationTypeEnum.SocialCapitalSentiment;
-    }
-
-    public boolean isCosineSimilarity() {
-        return RecommendationTypeEnum
-                .getValue(recommendationType) == RecommendationTypeEnum.CosineSimilarity;
-    }
-
-    public boolean isBaselineA() {
-        return RecommendationTypeEnum
-                .getValue(recommendationType) == RecommendationTypeEnum.BaselineA;
     }
 }

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javax.annotation.Nullable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import javax.persistence.Table;
 
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
+import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;
 import br.com.api.infrastructure.database.datamodel.tags.Tag;
 import br.com.api.infrastructure.database.datamodel.twitterusers.TwitterUser;
 import br.com.api.infrastructure.database.datamodel.urls.URL;
@@ -111,17 +113,8 @@ public class Tweet implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "id_user_mentioned")})
     private Set<TwitterUser> mentions;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name = "reply",
-            joinColumns = {@JoinColumn(name = "id_tweet", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "id_reply", referencedColumnName = "id")})
-    private Set<Tweet> replies;
-
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable(name = "retweet",
-            joinColumns = {@JoinColumn(name = "id_original_tweet", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "id_retweet", referencedColumnName = "id")})
-    private Set<Tweet> retweets;
+    @OneToMany(mappedBy = "referencedTweet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<ReferencedTweet> references;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "context_annotation", joinColumns = {@JoinColumn(name = "id_tweet")},
@@ -135,8 +128,7 @@ public class Tweet implements Serializable {
         this.hashtags = new HashSet<>();
         this.urls = new HashSet<>();
         this.mentions = new HashSet<>();
-        this.replies = new HashSet<>();
-        this.retweets = new HashSet<>();
+        this.references = new HashSet<>();
         this.entities = new HashSet<>();
     }
 
@@ -325,21 +317,12 @@ public class Tweet implements Serializable {
         this.mentions = mentions;
     }
 
-    public Set<Tweet> getReplies() {
-        return replies;
-
+    public Set<ReferencedTweet> getReferences() {
+        return this.references;
     }
 
-    public void setReplies(Set<Tweet> replies) {
-        this.replies = replies;
-    }
-
-    public Set<Tweet> getRetweets() {
-        return retweets;
-    }
-
-    public void setRetweets(Set<Tweet> retweets) {
-        this.retweets = retweets;
+    public void setReferences(Set<ReferencedTweet> references) {
+        this.references = references;
     }
 
     public Set<EntityTweet> getEntities() {
@@ -378,13 +361,9 @@ public class Tweet implements Serializable {
         this.entities.add(entityTweet);
     }
 
-    public void addReply(Tweet tweet) {
-        
-        this.replies.add(tweet);
-    }
-
-    public void addRetweet(Tweet retweet) {
-        this.retweets.add(retweet);
+    public void addReference(ReferencedTweet tweet) {
+        tweet.setReferencedTweet(this);
+        this.references.add(tweet);
     }
 
     public Set<RecommendationItem> getRecommendedItems() {
@@ -393,6 +372,21 @@ public class Tweet implements Serializable {
 
     public void setRecommendedItems(Set<RecommendationItem> recommendations) {
         this.recommendedItems = recommendations;
+    }
+
+    public Set<ReferencedTweet> getReplies() {
+        return this.references.stream().filter(p -> p.getId().getTypeReference().equals("R"))
+                .collect(Collectors.toSet());
+    }
+
+    public Set<ReferencedTweet> getRetweets() {
+        return this.references.stream().filter(p -> p.getId().getTypeReference().equals("F"))
+                .collect(Collectors.toSet());
+    }
+
+    public Set<ReferencedTweet> getQuotes() {
+        return this.references.stream().filter(p -> p.getId().getTypeReference().equals("Q"))
+                .collect(Collectors.toSet());
     }
 
     @Override

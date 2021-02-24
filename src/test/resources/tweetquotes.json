@@ -1,0 +1,280 @@
+{
+  "data": [
+    {
+      "entities": {
+        "urls": [
+          {
+            "start": 100,
+            "end": 123,
+            "url": "https://t.co/RGDjfvtAXY",
+            "expanded_url": "https://twitter.com/LateNightSeth/status/1356328969008631809",
+            "display_url": "twitter.com/LateNightSeth/…"
+          }
+        ],
+        "annotations": [
+          {
+            "start": 0,
+            "end": 11,
+            "probability": 0.9972,
+            "type": "Person",
+            "normalized_text": "Matt Cameron"
+          },
+          {
+            "start": 95,
+            "end": 97,
+            "probability": 0.8367,
+            "type": "Organization",
+            "normalized_text": "NBC"
+          }
+        ],
+        "mentions": [
+          {
+            "start": 19,
+            "end": 33,
+            "username": "LateNightSeth"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1356368494028320771",
+      "source": "Twitter Web App",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1356328969008631809"
+        }
+      ],
+      "text": "Matt Cameron is on @LateNightSeth this whole week! Tune in starting tonight at 12:35/11:35c on NBC. https://t.co/RGDjfvtAXY",
+      "public_metrics": {
+        "retweet_count": 41,
+        "reply_count": 8,
+        "like_count": 458,
+        "quote_count": 5
+      },
+      "lang": "en",
+      "created_at": "2021-02-01T22:27:03.000Z"
+    },
+    {
+      "entities": {
+        "urls": [
+          {
+            "start": 53,
+            "end": 76,
+            "url": "https://t.co/U4JARtY0zk",
+            "expanded_url": "https://twitter.com/999KISW/status/1360272460885626886",
+            "display_url": "twitter.com/999KISW/status…"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1360283433855897600",
+      "source": "Twitter for iPhone",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1360272460885626886"
+        }
+      ],
+      "text": "Happy 50th! Thanks for taking us along for the ride. https://t.co/U4JARtY0zk",
+      "public_metrics": {
+        "retweet_count": 43,
+        "reply_count": 9,
+        "like_count": 663,
+        "quote_count": 3
+      },
+      "lang": "en",
+      "created_at": "2021-02-12T17:43:38.000Z"
+    },
+    {
+      "entities": {
+        "urls": [
+          {
+            "start": 82,
+            "end": 105,
+            "url": "https://t.co/HCVlyYZfTu",
+            "expanded_url": "https://twitter.com/morethanavote/status/1346459607548522498",
+            "display_url": "twitter.com/morethanavote/…"
+          }
+        ],
+        "annotations": [
+          {
+            "start": 5,
+            "end": 10,
+            "probability": 0.9782,
+            "type": "Person",
+            "normalized_text": "LeBron"
+          },
+          {
+            "start": 58,
+            "end": 64,
+            "probability": 0.9418,
+            "type": "Place",
+            "normalized_text": "Georgia"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1346509041799987200",
+      "source": "Twitter Web App",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1346459607548522498"
+        }
+      ],
+      "text": "What LeBron said ⬇️🇺🇸  Any questions on voting today in Georgia call 866-OUR-VOTE https://t.co/HCVlyYZfTu",
+      "public_metrics": {
+        "retweet_count": 55,
+        "reply_count": 31,
+        "like_count": 372,
+        "quote_count": 3
+      },
+      "lang": "en",
+      "created_at": "2021-01-05T17:29:07.000Z"
+    },
+    {
+      "entities": {
+        "urls": [
+          {
+            "start": 19,
+            "end": 42,
+            "url": "https://t.co/oo9YaNCOWX",
+            "expanded_url": "https://twitter.com/chrislhayes/status/1337534769240940545",
+            "display_url": "twitter.com/chrislhayes/st…"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1337537692855201792",
+      "source": "Twitter for iPhone",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1337534769240940545"
+        }
+      ],
+      "text": "Couple of Legends! https://t.co/oo9YaNCOWX",
+      "public_metrics": {
+        "retweet_count": 12,
+        "reply_count": 5,
+        "like_count": 339,
+        "quote_count": 2
+      },
+      "lang": "en",
+      "created_at": "2020-12-11T23:20:10.000Z"
+    },
+    {
+      "entities": {
+        "hashtags": [
+          {
+            "start": 13,
+            "end": 22,
+            "tag": "Jamilton"
+          }
+        ],
+        "urls": [
+          {
+            "start": 23,
+            "end": 46,
+            "url": "https://t.co/NKBJ2NHdBD",
+            "expanded_url": "https://twitter.com/Lin_Manuel/status/1337534329149399041",
+            "display_url": "twitter.com/Lin_Manuel/sta…"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1337536213964578817",
+      "source": "Twitter for iPhone",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1337534329149399041"
+        }
+      ],
+      "text": "Well played! #Jamilton https://t.co/NKBJ2NHdBD",
+      "public_metrics": {
+        "retweet_count": 231,
+        "reply_count": 46,
+        "like_count": 3629,
+        "quote_count": 80
+      },
+      "lang": "en",
+      "created_at": "2020-12-11T23:14:18.000Z"
+    },
+    {
+      "entities": {
+        "urls": [
+          {
+            "start": 153,
+            "end": 176,
+            "url": "https://t.co/JRWxVLboqk",
+            "expanded_url": "https://twitter.com/Lin_Manuel/status/1334539123911254018",
+            "display_url": "twitter.com/Lin_Manuel/sta…"
+          }
+        ],
+        "annotations": [
+          {
+            "start": 3,
+            "end": 7,
+            "probability": 0.8873,
+            "type": "Person",
+            "normalized_text": "Eddie"
+          },
+          {
+            "start": 17,
+            "end": 23,
+            "probability": 0.9004,
+            "type": "Place",
+            "normalized_text": "Georgia"
+          },
+          {
+            "start": 42,
+            "end": 48,
+            "probability": 0.9937,
+            "type": "Place",
+            "normalized_text": "America"
+          },
+          {
+            "start": 72,
+            "end": 78,
+            "probability": 0.9954,
+            "type": "Place",
+            "normalized_text": "America"
+          },
+          {
+            "start": 100,
+            "end": 106,
+            "probability": 0.9183,
+            "type": "Place",
+            "normalized_text": "Georgia"
+          }
+        ],
+        "mentions": [
+          {
+            "start": 121,
+            "end": 132,
+            "username": "Lin_Manuel"
+          }
+        ]
+      },
+      "author_id": "15155074",
+      "id": "1334561787350556672",
+      "source": "Twitter Web App",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "1334539123911254018"
+        }
+      ],
+      "text": "As Eddie says... Georgia came through for America and now it's time for America to come through for Georgia! Join us and @Lin_Manuel 12/16 at 8:30pm EST https://t.co/JRWxVLboqk",
+      "public_metrics": {
+        "retweet_count": 92,
+        "reply_count": 36,
+        "like_count": 737,
+        "quote_count": 13
+      },
+      "lang": "en",
+      "created_at": "2020-12-03T18:14:59.000Z"
+    }
+  ]
+}
