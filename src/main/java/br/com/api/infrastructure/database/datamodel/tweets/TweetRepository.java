@@ -8,11 +8,18 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface TweetRepository extends JpaRepository<Tweet, Long> {
 
+        // @Query(value = "SELECT * FROM tweet t "
+        // + "WHERE t.is_retweet = 0 and t.id not in (SELECT r.id_tweet FROM referenced_tweet r
+        // WHERE r.id_tweet = t.id) and t.id in (SELECT t1.id FROM twitter_db.tweet t1 "
+        // + "JOIN twitter_db.context_annotation ctx on t1.id = ctx.id_tweet "
+        // + "JOIN twitter_db.entity e on ctx.id_entity = e.id WHERE e.id = 13) ",
+        // nativeQuery = true)
+        // public List<Tweet> getAllWithoutReplyRetweet();
+
         @Query(value = "SELECT * FROM tweet t "
-                        + "WHERE t.is_retweet = 0 and t.id not in (SELECT r.id_tweet FROM referenced_tweet r WHERE r.id_tweet = t.id) "
-                        +"limit 10",
+                        + "WHERE t.is_retweet = 0 and t.id not in (SELECT r.id_tweet FROM referenced_tweet r WHERE r.id_tweet = t.id) ",
                         nativeQuery = true)
-        public Set<Tweet> getAllWithoutReplyRetweet();
+        public List<Tweet> getAllWithoutReplyRetweet();
 
         @Query(value = "SELECT * FROM tweet t "
                         + "JOIN recommendation_item ri on t.id = ri.id_tweet "

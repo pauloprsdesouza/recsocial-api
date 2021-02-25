@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
-import javax.annotation.Nullable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,9 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 import br.com.api.infrastructure.database.datamodel.recommendations.Items.RecommendationItem;
 import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;

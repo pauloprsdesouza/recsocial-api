@@ -1,5 +1,6 @@
 package br.com.api.infrastructure.services;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
@@ -32,7 +33,8 @@ import br.com.api.infrastructure.preprocessing.TextAnalysisByTFIDF;
 import br.com.api.infrastructure.preprocessing.TweetCleanerService;
 import br.com.api.infrastructure.preprocessing.TweetSentimentAnalysis;
 import br.com.api.infrastructure.utils.Metric;
-import smile.projection.ProbabilisticPCA;
+import smile.feature.WinsorScaler;
+import smile.projection.PCA;
 
 @Service
 public class RecommendationService {
@@ -50,14 +52,14 @@ public class RecommendationService {
     @Autowired
     private TweetSentimentAnalysis _sentimentAnalysis;
 
-    private Set<Tweet> tweets;
+    private List<Tweet> tweets;
     private boolean _isSentimentAnalysis;
     private double maxFollowersCount;
-    private ProbabilisticPCA pca;
+    private List<EntityTweet> entities;
 
     public RecommendationService() {
         this._isSentimentAnalysis = false;
-        this.tweets = new HashSet<>();
+        this.tweets = new ArrayList<>();
         this.maxFollowersCount = 0;
     }
 
@@ -86,10 +88,14 @@ public class RecommendationService {
     }
 
     public void generateAllScores() {
+        this.entities = _entities.findAll();
         this.tweets = _tweets.getAllWithoutReplyRetweet();
-        
-        // generateBaseline01Scores();
-        // generateCosineSimilarityScores();
+
+        this.maxFollowersCount = tweets.stream()
+                .mapToLong(p -> p.getWhosPosted().getFollowersCount()).max().getAsLong();
+
+        generateBaseline01Scores();
+        generateCosineSimilarityScores();
         generateteSocialCapitalScoresWithSentimentAnalysis();
         generateteSocialCapitalScoresWithoutSentimentAnalysis();
     }
@@ -246,93 +252,143 @@ public class RecommendationService {
     }
 
     private void generateBaseline01Scores() {
-        StringTokenizer stringToken;
-        Map<Tweet, List<String>> tweetsKeywords = new HashMap<>();
+        for (EntityTweet entity : this.entities) {
+            Map<Tweet, List<String>> tweetsKeywords = new HashMap<>();
+            List<Tweet> tweetsToUpdate = new ArrayList<>();
 
-        for (Tweet tweet : this.tweets) {
-            String text = this._tweetCleanerService.setText(tweet.getText()).cleanMentions()
-                    .cleanHashtag().cleanUrls().clean().getTextCleaned();
-
-            stringToken = new StringTokenizer(text);
-            List<String> keywords = stringToken.getTokenList();
-
-            keywords = this._stopWordService.removeFromText(keywords).toList();
-            keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName())
-                    .collect(Collectors.toList()));
-
-            tweetsKeywords.put(tweet, keywords);
-        }
-
-        TextAnalysisByTFIDF tfIDF = new TextAnalysisByTFIDF(tweetsKeywords);
-        double[][] matrix = tfIDF.createMatrix();
-
-        Map<Tweet, double[]> tweetsFrequencyPCA = null;// applyPCA(matrix, this.tweets);
-
-        for (Entry<Tweet, double[]> tweet : tweetsFrequencyPCA.entrySet()) {
-            tweet.getKey().setPca1B1(tweet.getValue()[0]);
-            tweet.getKey().setPca2B1(tweet.getValue()[1]);
-            _tweets.save(tweet.getKey());
-        }
-    }
-
-    private void generateCosineSimilarityScores() {
-        StringTokenizer stringToken;
-        Map<Tweet, List<String>> tweetsKeywords = new HashMap<>();
-        List<EntityTweet> entities = _entities.findAll();
-
-        for (EntityTweet entity : entities) {
             List<Tweet> tweetsByEntity = this.tweets.stream().filter(
                     p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
                     .collect(Collectors.toList());
 
             for (Tweet tweet : tweetsByEntity) {
-                String text = this._tweetCleanerService.setText(tweet.getText()).cleanMentions()
+                String text = _tweetCleanerService.setText(tweet.getText()).cleanMentions()
                         .cleanHashtag().cleanUrls().clean().getTextCleaned();
 
-                stringToken = new StringTokenizer(text);
+                StringTokenizer stringToken = new StringTokenizer(text);
                 List<String> keywords = stringToken.getTokenList();
 
-                keywords = this._stopWordService.removeFromText(keywords).toList();
+                keywords = _stopWordService.removeFromText(keywords).toList();
                 keywords.addAll(tweet.getHashtags().stream().map(p -> p.getName())
                         .collect(Collectors.toList()));
 
                 tweetsKeywords.put(tweet, keywords);
             }
 
-            TextAnalysisByFrequency textAnalysisFreq = new TextAnalysisByFrequency(tweetsKeywords);
-            double[][] matrix = textAnalysisFreq.createMatrix();
+            if (!tweetsByEntity.isEmpty()) {
+                TextAnalysisByTFIDF textAnalysisFreq = new TextAnalysisByTFIDF(tweetsKeywords);
+                double[][] matrix = textAnalysisFreq.createMatrix();
 
-            // Map<Tweet, double[]> tweetsFrequencyPCA = applyPCA(matrix, tweetsByEntity);
+                Map<Tweet, double[]> tweetsFrequencyPCA = applyPCA(matrix, tweetsByEntity);
 
-            Map<Tweet, double[]> tweetsFrequencyPCA = null;// applyPCA(matrix, tweetsByEntity);
+                for (Entry<Tweet, double[]> tweet : tweetsFrequencyPCA.entrySet()) {
+                    tweet.getKey().setPca1B1(tweet.getValue()[0]);
+                    tweet.getKey().setPca2B1(tweet.getValue()[1]);
 
-            for (Entry<Tweet, double[]> tweet : tweetsFrequencyPCA.entrySet()) {
-                tweet.getKey().setPca1Similarity(tweet.getValue()[0]);
-                tweet.getKey().setPca2Similarity(tweet.getValue()[1]);
-                _tweets.save(tweet.getKey());
+                    tweetsToUpdate.add(tweet.getKey());
+                }
+
+                _tweets.saveAll(tweetsToUpdate);
             }
         }
+    }
+
+    private void generateCosineSimilarityScores() {
+        for (EntityTweet entity : this.entities) {
+            Map<Tweet, List<String>> tweetsKeywords = new HashMap<>();
+            List<Tweet> tweetsToUpdate = new ArrayList<>();
+
+            List<Tweet> tweetsByEntity = this.tweets.stream().filter(
+                    p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
+                    .collect(Collectors.toList());
+
+            for (Tweet tweet : tweetsByEntity) {
+                String text = _tweetCleanerService.setText(tweet.getText()).cleanMentions()
+                        .cleanHashtag().cleanUrls().clean().getTextCleaned();
+
+                StringTokenizer stringToken = new StringTokenizer(text);
+                List<String> keywords = stringToken.getTokenList();
+
+                keywords = _stopWordService.removeFromText(keywords).toList();
+                tweetsKeywords.put(tweet, keywords);
+            }
+
+            if (!tweetsByEntity.isEmpty()) {
+                TextAnalysisByFrequency textAnalysisFreq =
+                        new TextAnalysisByFrequency(tweetsKeywords);
+
+                double[][] matrix = textAnalysisFreq.createMatrix();
+
+                Map<Tweet, double[]> tweetsFrequencyPCA = applyPCA(matrix, tweetsByEntity);
+
+                for (Entry<Tweet, double[]> tweet : tweetsFrequencyPCA.entrySet()) {
+                    tweet.getKey().setPca1Similarity(tweet.getValue()[0]);
+                    tweet.getKey().setPca2Similarity(tweet.getValue()[1]);
+
+                    tweetsToUpdate.add(tweet.getKey());
+                }
+
+                _tweets.saveAll(tweetsToUpdate);
+            }
+        }
+    }
+
+    private Map<Tweet, double[]> applyPCA(double[][] matrix, List<Tweet> tweets) {
+        WinsorScaler scaler = WinsorScaler.fit(matrix, 0.01, 0.99);
+        double[][] matrixFrequencies = scaler.transform(matrix);
+
+        PCA pca = PCA.fit(matrixFrequencies);
+        pca.setProjection(2);
+        double[][] result = pca.project(matrixFrequencies);
+        Map<Tweet, double[]> tweetFrequencyPCA = new HashMap<>();
+
+        int i = 0;
+        for (Tweet tweet : tweets) {
+            tweetFrequencyPCA.put(tweet, result[i]);
+            i++;
+        }
+
+        return tweetFrequencyPCA;
     }
 
     private void generateteSocialCapitalScoresWithSentimentAnalysis() {
         _isSentimentAnalysis = true;
 
-        for (Tweet tweet : this.tweets) {
-            double score = socialCapitalScoreCalculator(tweet);
-            tweet.setScsaScore(score);
+        for (EntityTweet entity : this.entities) {
+            List<Tweet> tweetsToUpdate = new ArrayList<>();
 
-            _tweets.save(tweet);
+            List<Tweet> tweetsByEntity = this.tweets.stream().filter(
+                    p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
+                    .collect(Collectors.toList());
+
+            for (Tweet tweet : tweetsByEntity) {
+                double score = socialCapitalScoreCalculator(tweet);
+                tweet.setScsaScore(score);
+
+                tweetsToUpdate.add(tweet);
+            }
+
+            _tweets.saveAll(tweetsToUpdate);
         }
     }
 
     private void generateteSocialCapitalScoresWithoutSentimentAnalysis() {
         _isSentimentAnalysis = false;
 
-        for (Tweet tweet : this.tweets) {
-            double score = socialCapitalScoreCalculator(tweet);
-            tweet.setScScore(score);
+        for (EntityTweet entity : this.entities) {
+            List<Tweet> tweetsToUpdate = new ArrayList<>();
 
-            _tweets.save(tweet);
+            List<Tweet> tweetsByEntity = this.tweets.stream().filter(
+                    p -> p.getEntities().stream().anyMatch(p1 -> p1.getId() == entity.getId()))
+                    .collect(Collectors.toList());
+
+            for (Tweet tweet : tweetsByEntity) {
+                double score = socialCapitalScoreCalculator(tweet);
+                tweet.setScScore(score);
+
+                tweetsToUpdate.add(tweet);
+            }
+
+            _tweets.saveAll(tweetsToUpdate);
         }
     }
 
