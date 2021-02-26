@@ -22,7 +22,7 @@ public class UpdateRecommendationItemTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void testBla() throws Exception {
         UpdateItemRatingJson rating = new UpdateItemRatingJson();
         rating.setIdRecommendation(1);

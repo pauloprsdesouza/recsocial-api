@@ -117,9 +117,4 @@ public class UserAccount implements Serializable {
         setRegistrationDate(registrationDate);
         return this;
     }
-
-    public void addRecommendation(Recommendation recommendation) {
-        this.recommendations.add(recommendation);
-        recommendation.setUser(this);
-    }
 }

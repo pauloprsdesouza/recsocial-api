@@ -1,7 +1,7 @@
 package br.com.api.infrastructure.database.datamodel.entitiestweet;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -38,7 +38,7 @@ public class EntityTweet implements Serializable {
     private DomainTweet domain;
 
     @ManyToMany(mappedBy = "entities", fetch = FetchType.LAZY)
-    private Set<Tweet> tweets;
+    private List<Tweet> tweets;
 
     public EntityTweet() {
     }
@@ -75,11 +75,11 @@ public class EntityTweet implements Serializable {
         this.domain = domain;
     }
 
-    public Set<Tweet> getTweets() {
+    public List<Tweet> getTweets() {
         return this.tweets;
     }
 
-    public void setTweets(Set<Tweet> tweets) {
+    public void setTweets(List<Tweet> tweets) {
         this.tweets = tweets;
     }
 

@@ -18,7 +18,7 @@ public class ViewInstructionsUserAccountTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldUpdateInstructions() throws Exception {
         ResultActions response = mvc
                 .perform(get("/users/view-instructions").contentType(MediaType.APPLICATION_JSON));

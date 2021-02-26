@@ -57,7 +57,7 @@ public class TwitterHTTPService {
             ArrayList<NameValuePair> queryParameters;
             queryParameters = new ArrayList<>();
             queryParameters.addAll(getFieldsParameters());
-            queryParameters.add(new BasicNameValuePair("max_results", "5"));
+            queryParameters.add(new BasicNameValuePair("max_results", "20"));
             uriBuilder.addParameters(queryParameters);
 
             HttpGet httpGet = new HttpGet(uriBuilder.build());
@@ -104,38 +104,6 @@ public class TwitterHTTPService {
 
         } catch (URISyntaxException ex) {
             throw new URISyntaxException("https://api.twitter.com/2/tweets/",
-                    "Couldn't possible to parse the URI");
-        }
-
-        return this;
-    }
-
-    public TwitterHTTPService getASingleUserById(Long id) throws IOException, URISyntaxException {
-        try {
-            URIBuilder uriBuilder = new URIBuilder(
-                    String.format("https://api.twitter.com/2/users/%s", Long.toString(id)));
-
-            ArrayList<NameValuePair> queryParameters;
-            queryParameters = new ArrayList<>();
-            queryParameters.addAll(getFieldsParameters());
-            queryParameters.add(new BasicNameValuePair("user.fields",
-                    "created_at,description,entities,id,location,name,profile_image_url,protected,public_metrics,url,username,verified"));
-            uriBuilder.addParameters(queryParameters);
-
-            HttpGet httpGet = new HttpGet(uriBuilder.build());
-            httpGet.setHeader("Authorization", String.format("Bearer %s", getAccessTokenDefault()));
-            httpGet.setHeader("Content-Type", "application/json");
-
-            HttpResponse response = httpClient.execute(httpGet);
-            HttpEntity entity = response.getEntity();
-            if (null != entity) {
-                this.result = EntityUtils.toString(entity, "UTF-8");
-            }
-        } catch (IOException ex) {
-            throw new IOException("Couldn't possible to connect to the server");
-
-        } catch (URISyntaxException ex) {
-            throw new URISyntaxException("https://api.twitter.com/2/users/",
                     "Couldn't possible to parse the URI");
         }
 

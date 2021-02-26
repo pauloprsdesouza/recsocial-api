@@ -4,8 +4,8 @@ package br.com.api.functional.entitiestweet;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -36,7 +36,7 @@ public class CreateEntitiesTweetTest {
     public void createEntityTweet() {
         Tweet tweet = new Tweet();
         tweet.setId(1L);
-        Set<Tweet> tweets = new HashSet<>();
+        List<Tweet> tweets = new ArrayList<>();
         tweets.add(tweet);
 
         DomainTweet domain = new DomainTweet();

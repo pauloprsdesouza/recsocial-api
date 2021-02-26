@@ -13,7 +13,7 @@ public class GenerateRecommendationJson {
     private List<Long> idsEntities;
 
     @NotBlank(message = "Recommendation Type is Required")
-    @Pattern(regexp = "(SC)}|(SCSA)|(CS)|(BA)")
+    @Pattern(regexp = "(SC)|(SCSA)|(CS)|(B1)")
     private String recommendationType;
 
     public GenerateRecommendationJson() {

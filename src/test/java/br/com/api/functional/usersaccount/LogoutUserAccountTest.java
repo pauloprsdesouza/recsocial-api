@@ -19,7 +19,7 @@ public class LogoutUserAccountTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldlogout() throws Exception {
         ResultActions response =
                 mvc.perform(get("/users/logout").contentType(MediaType.APPLICATION_JSON));

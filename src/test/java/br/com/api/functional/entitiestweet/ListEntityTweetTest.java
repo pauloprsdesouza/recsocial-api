@@ -18,7 +18,7 @@ public class ListEntityTweetTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldListAllEntitiesTweetByDomain() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/1").contentType(MediaType.APPLICATION_JSON));
@@ -27,7 +27,7 @@ public class ListEntityTweetTest {
     }
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldRespond404ForInexistentId() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/").contentType(MediaType.APPLICATION_JSON));
@@ -36,7 +36,7 @@ public class ListEntityTweetTest {
     }
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldReturnEmpityArrayForUnregistredId() throws Exception {
         ResultActions response =
                 mvc.perform(get("/entities/bydomain/999").contentType(MediaType.APPLICATION_JSON));

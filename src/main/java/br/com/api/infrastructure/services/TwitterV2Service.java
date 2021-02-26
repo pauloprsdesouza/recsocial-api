@@ -11,6 +11,7 @@ import com.google.gson.reflect.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.annotation.RequestScope;
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;
 import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweetPK;
@@ -33,6 +34,7 @@ import twitter4j.User;
 import twitter4j.conf.ConfigurationBuilder;
 
 @Service
+@RequestScope
 public class TwitterV2Service {
     @Autowired
     private TweetRepository _tweets;
@@ -100,6 +102,8 @@ public class TwitterV2Service {
                         tweet = createTweetFromTweetJson(tweetData);
                     }
                 }
+            } else {
+                throw new Exception("Json is null");
             }
 
         } catch (Exception ex) {

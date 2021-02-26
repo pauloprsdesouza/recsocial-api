@@ -2,7 +2,6 @@ package br.com.api.functional.usersaccount;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
@@ -29,26 +28,33 @@ public class LoginUserAccountTest {
     @Test
     public void shouldRealizeLogin() throws Exception {
         SaveUserAccountJson json = new SaveUserAccountJson();
-        json.setUsername("paulo.prsdesouza@gmail.com");
+        json.setUsername("email@email.com");
 
         ResultActions response = mvc.perform(post("/users/login")
                 .contentType(MediaType.APPLICATION_JSON).content(new Gson().toJson(json)));
 
         response.andExpect(status().isOk());
 
-        UserAccount user = _users.findByEmail("paulo.prsdesouza@gmail.com").get();
+        UserAccount user = _users.findByEmail("email@email.com").get();
 
         assertEquals(user.getToken(), response.andReturn().getResponse().getContentAsString());
     }
 
     @Test
-    public void shouldBeValiddateEmail() throws Exception {
+    public void shouldBeValidateEmail() throws Exception {
         SaveUserAccountJson params = new SaveUserAccountJson();
-        params.setUsername("paulo.prsdesouza");
+        params.setUsername("emailemail@");
 
         mvc.perform(post("/users/login").contentType(MediaType.APPLICATION_JSON)
-                .content(new Gson().toJson(params))).andExpect(status().isUnprocessableEntity())
-                .andExpect(content().string("[\"Por favor forneça um email válido\"]"));
+                .content(new Gson().toJson(params))).andExpect(status().isUnprocessableEntity());
+    }
 
+    @Test
+    public void shouldBeValidateRangeEmail() throws Exception {
+        SaveUserAccountJson params = new SaveUserAccountJson();
+        params.setUsername("email");
+
+        mvc.perform(post("/users/login").contentType(MediaType.APPLICATION_JSON)
+                .content(new Gson().toJson(params))).andExpect(status().isUnprocessableEntity());
     }
 }

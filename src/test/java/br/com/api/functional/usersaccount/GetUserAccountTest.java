@@ -1,7 +1,7 @@
 package br.com.api.functional.usersaccount;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,17 +13,16 @@ import org.springframework.test.web.servlet.ResultActions;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class DetailsUserAccountTest {
+public class GetUserAccountTest {
     @Autowired
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
-    public void shouldRealizeLogin() throws Exception {
+    @WithUserDetails("email@email.com")
+    public void shouldShowUserDetails() throws Exception {
         ResultActions response =
                 mvc.perform(get("/users/details").contentType(MediaType.APPLICATION_JSON));
 
-        response.andExpect(content().json(
-                "{'email':'paulo.prsdesouza@gmail.com','viewInstructions':true, 'registrationDate':'2021-02-20T19:18:09.000+00:00'}"));
+        response.andExpect(status().isOk());
     }
 }

@@ -386,6 +386,14 @@ public class Tweet implements Serializable {
                 .collect(Collectors.toSet());
     }
 
+    public double[] getPCAByCosineSimilarity() {
+        return new double[] {this.pca1Similarity, this.pca2Similarity};
+    }
+
+    public double[] getPCAByBaseline1() {
+        return new double[] {this.pca1B1, this.pca2B1};
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;

@@ -22,7 +22,7 @@ public class AuthorizationTokenTest {
         @Test
         public void authorize() throws Exception {
                 SaveUserAccountJson json = new SaveUserAccountJson();
-                json.setUsername("paulo.prsdesouza@gmail.com");
+                json.setUsername("email@email.com");
 
                 ResultActions resultUsers = mvc.perform(
                                 post("/users/login").contentType(MediaType.APPLICATION_JSON)
@@ -40,9 +40,9 @@ public class AuthorizationTokenTest {
         }
 
         @Test
-        public void authorizeInvalidHeader() throws Exception {
+        public void shouldBeUnauthorizeInvalidHeader() throws Exception {
                 SaveUserAccountJson json = new SaveUserAccountJson();
-                json.setUsername("paulo.prsdesouza@gmail.com");
+                json.setUsername("email@email.com");
 
                 ResultActions resultUsers = mvc.perform(
                                 post("/users/login").contentType(MediaType.APPLICATION_JSON)
@@ -60,9 +60,9 @@ public class AuthorizationTokenTest {
         }
 
         @Test
-        public void authorizeNotValidToken() throws Exception {
+        public void shouldBeUnauthorizeNotValidToken() throws Exception {
                 SaveUserAccountJson json = new SaveUserAccountJson();
-                json.setUsername("paulo.prsdesouza@gmail.com");
+                json.setUsername("email@email.com");
 
                 ResultActions resultUsers = mvc.perform(
                                 post("/users/login").contentType(MediaType.APPLICATION_JSON)

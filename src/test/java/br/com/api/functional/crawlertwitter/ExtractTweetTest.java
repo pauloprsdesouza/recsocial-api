@@ -69,7 +69,7 @@ public class ExtractTweetTest {
 
     @Test
     @Order(1)
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void extractTweets() throws Exception {
         ResultActions response =
                 mvc.perform(get("/twitter/extract-data").contentType(MediaType.APPLICATION_JSON));
@@ -164,6 +164,27 @@ public class ExtractTweetTest {
 
         } catch (Exception ex) {
             assertEquals("User not found", ex.getMessage());
+        }
+    }
+
+    @Test
+    @Order(7)
+    public void shouldBeJsonNull() {
+        String userName = "MiamiHEAT";
+
+        try {
+            TwitterUser twitterUser = _twitterUsers.getUserByScreenName(userName)
+                    .orElse(_twitterService.getInstance().createUser(userName));
+
+            EntityTweet entity = _entities.findById(new EntityTweetPK(13L, 4L)).get();
+
+            JsonObject searchResult = new JsonObject();
+            searchResult.addProperty("errors", "");
+
+            _twitterService.getInstance().withSearchResult(searchResult)
+                    .parseResultJson(twitterUser, entity);
+        } catch (Exception ex) {
+            assertEquals("Json is null", ex.getMessage());
         }
     }
 }

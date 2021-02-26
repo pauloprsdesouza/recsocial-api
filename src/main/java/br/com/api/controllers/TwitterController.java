@@ -32,16 +32,39 @@ public class TwitterController {
     public ResponseEntity<?> extractData() {
         Map<String, Integer> accounts = new HashMap<>();
 
-        // accounts.put("MiamiHEAT", 13);
-        // accounts.put("Bucks", 13);
-        accounts.put("chicagobulls", 13);
-        // accounts.put("DetroitPistons", 13);
-        // accounts.put("LAClippers", 13);
-        // accounts.put("nyknicks", 13);
-        // accounts.put("Lakers", 13);
-        // accounts.put("sixers", 13);
-        // accounts.put("HoustonRockets", 13);
-        // accounts.put("cavs", 13);
+        accounts.put("Lakers", 13);
+        // accounts.put("U2", 1);
+        // accounts.put("linkinpark", 1);
+        // accounts.put("BonJovi", 1);
+        // accounts.put("evanescence", 1);
+        // accounts.put("pinkfloyd", 1);
+        // accounts.put("scorpions", 1);
+        // accounts.put("acdc", 1);
+        // accounts.put("PearlJam", 1);
+        // accounts.put("gunsnroses", 1);
+        // accounts.put("ChiliPeppers", 1);
+
+        // accounts.put("taylorswift13", 2);
+        // accounts.put("katyperry", 2);
+        // accounts.put("selenagomez", 2);
+        // accounts.put("KimKardashian", 2);
+        // accounts.put("rihanna", 2);
+        // accounts.put("BrunoMars", 2);
+        // accounts.put("ladygaga", 2);
+        // accounts.put("johnlegend", 2);
+        // accounts.put("jtimberlake", 2);
+        // accounts.put("ArianaGrande", 2);
+
+        // accounts.put("thelittleidiot", 3);
+        // accounts.put("arminvanbuuren", 3);
+        // accounts.put("R3HAB", 3);
+        // accounts.put("bobsinclar", 3);
+        // accounts.put("steveaoki", 3);
+        // accounts.put("DonDiablo", 3);
+        // accounts.put("davidguetta", 3);
+        // accounts.put("afrojack", 3);
+        // accounts.put("QUINTINOO", 3);
+        // accounts.put("Zedd", 3);
 
         for (Entry<String, Integer> account : accounts.entrySet()) {
             EntityTweet entity =

@@ -18,7 +18,7 @@ public class ListDomainsTweetTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void shouldListAllDomainsTweet() throws Exception {
         ResultActions response =
                 mvc.perform(get("/domains/all").contentType(MediaType.APPLICATION_JSON));

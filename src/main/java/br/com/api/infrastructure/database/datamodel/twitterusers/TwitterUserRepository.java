@@ -5,7 +5,11 @@ import java.util.Optional;
 import java.util.Set;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Repository
+@Transactional(readOnly = true)
 public interface TwitterUserRepository extends JpaRepository<TwitterUser, Long> {
 
     @Query(value = "SELECT * FROM twitter_user WHERE screen_name = ?1", nativeQuery = true)

@@ -18,9 +18,8 @@ public class GenerateAllRecommendationsTest {
     private MockMvc mvc;
 
     @Test
-    @WithUserDetails("paulo.prsdesouza@gmail.com")
+    @WithUserDetails("email@email.com")
     public void generateAll() throws Exception {
-
         ResultActions response = mvc
                 .perform(get("/recommendations/generate").contentType(MediaType.APPLICATION_JSON));
 
