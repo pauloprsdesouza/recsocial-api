@@ -122,15 +122,18 @@ public class TweetDataJson implements Serializable {
     }
 
     public boolean isQuoted() {
-        return type.equals("quoted");
+        return type != null ? type.equals("quoted") : false;
     }
 
     public boolean isRepliedTo() {
-        return type.equals("replied_to");
+        return type != null ? type.equals("replied_to") : false;
     }
 
     public boolean isRetweet() {
-        return type.equals("retweeted");
+        return type != null ? type.equals("retweeted") : false;
     }
 
+    public boolean isReferencedTweet() {
+        return isRetweet() || isRepliedTo() || isQuoted();
+    }
 }

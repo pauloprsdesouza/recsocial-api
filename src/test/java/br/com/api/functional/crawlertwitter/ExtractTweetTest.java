@@ -10,6 +10,8 @@ import com.google.gson.JsonObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -26,6 +28,7 @@ import br.com.api.infrastructure.services.TwitterV2Service;
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@TestMethodOrder(OrderAnnotation.class)
 public class ExtractTweetTest {
     @Autowired
     private MockMvc mvc;

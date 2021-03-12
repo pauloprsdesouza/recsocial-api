@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccountRepository;
 import br.com.api.models.useraccount.SaveUserAccountJson;
+import br.com.api.models.useraccount.UserAccountJson;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -37,7 +38,10 @@ public class LoginUserAccountTest {
 
         UserAccount user = _users.findByEmail("email@email.com").get();
 
-        assertEquals(user.getToken(), response.andReturn().getResponse().getContentAsString());
+        UserAccountJson userAccontJson = new Gson().fromJson(
+                response.andReturn().getResponse().getContentAsString(), UserAccountJson.class);
+
+        assertEquals(user.getToken(), userAccontJson.getToken());
     }
 
     @Test

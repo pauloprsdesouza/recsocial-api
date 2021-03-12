@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Random;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +27,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ListRecommendationTest {
+@TestMethodOrder(OrderAnnotation.class)
+public class RecommendationStepsTest {
         @Autowired
         private MockMvc mvc;
 
@@ -41,7 +44,7 @@ public class ListRecommendationTest {
                 for (RecommendationItemJson item : recommendedItems) {
                         UpdateItemRatingJson rating = new UpdateItemRatingJson();
                         rating.setIdRecommendation(item.getIdRecommendation());
-                        rating.setIdTweet(item.getIdTweet());
+                        rating.setIdTweet(Long.valueOf(item.getIdTweet()));
                         rating.setRating(random.nextInt(5 - 1) + 1);
 
                         ResultActions responseRecommendationsUpdateItem =
@@ -69,14 +72,22 @@ public class ListRecommendationTest {
         @Test
         @Order(1)
         @WithUserDetails("email@email.com")
+        public void generateAll() throws Exception {
+                ResultActions response = mvc.perform(get("/recommendations/generate")
+                                .contentType(MediaType.APPLICATION_JSON));
+
+                response.andExpect(status().isOk());
+        }
+
+        @Test
+        @Order(2)
+        @WithUserDetails("email@email.com")
         public void shouldListRecommendationsBySocialCapital() throws Exception {
                 ResultActions responseRecommendationsByType =
                                 mvc.perform(post("/recommendations/bytype")
                                                 .contentType(MediaType.APPLICATION_JSON)
                                                 .content(new Gson().toJson(getJsonRequest(
                                                                 RecommendationTypeEnum.SocialCapial))));
-
-
 
                 updateRating(responseRecommendationsByType.andReturn().getResponse()
                                 .getContentAsString());
@@ -85,7 +96,7 @@ public class ListRecommendationTest {
         }
 
         @Test
-        @Order(2)
+        @Order(3)
         @WithUserDetails("email@email.com")
         public void shouldListRecommendationsBySocialCapitalSentimentAnalysis() throws Exception {
                 ResultActions responseRecommendationsByType =
@@ -101,7 +112,7 @@ public class ListRecommendationTest {
         }
 
         @Test
-        @Order(3)
+        @Order(4)
         @WithUserDetails("email@email.com")
         public void shouldListRecommendationsByCosineSimilarity() throws Exception {
                 ResultActions responseRecommendationsByType =
@@ -117,7 +128,7 @@ public class ListRecommendationTest {
         }
 
         @Test
-        @Order(4)
+        @Order(5)
         @WithUserDetails("email@email.com")
         public void shouldListRecommendationsByBaselineA() throws Exception {
                 ResultActions responseRecommendationsByType =
@@ -133,10 +144,19 @@ public class ListRecommendationTest {
         }
 
         @Test
-        @Order(5)
+        @Order(6)
         @WithUserDetails("email@email.com")
         public void shouldToFinishEvaluations() throws Exception {
                 ResultActions response = mvc.perform(get("/recommendations/finished-evaluations")
+                                .contentType(MediaType.APPLICATION_JSON));
+
+                response.andExpect(status().isOk());
+        }
+
+        @Test
+        @Order(7)
+        public void evaluateAll() throws Exception {
+                ResultActions response = mvc.perform(get("/evaluations/generate")
                                 .contentType(MediaType.APPLICATION_JSON));
 
                 response.andExpect(status().isOk());

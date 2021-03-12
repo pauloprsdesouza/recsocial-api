@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ApplicationControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    
+
     public ResponseEntity<List<String>> handlerMethodNotValidException(
             MethodArgumentNotValidException ex) {
 

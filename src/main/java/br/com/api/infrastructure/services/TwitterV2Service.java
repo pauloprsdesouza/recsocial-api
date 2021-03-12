@@ -1,9 +1,13 @@
 package br.com.api.infrastructure.services;
 
 import java.lang.reflect.Type;
+import java.util.AbstractMap;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -15,6 +19,7 @@ import org.springframework.web.context.annotation.RequestScope;
 import br.com.api.infrastructure.database.datamodel.entitiestweet.EntityTweet;
 import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweet;
 import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweetPK;
+import br.com.api.infrastructure.database.datamodel.referencedtweets.ReferencedTweetRepository;
 import br.com.api.infrastructure.database.datamodel.tags.Tag;
 import br.com.api.infrastructure.database.datamodel.tags.TagRepository;
 import br.com.api.infrastructure.database.datamodel.tweets.Tweet;
@@ -46,6 +51,8 @@ public class TwitterV2Service {
     private TwitterUserRepository _twitterUsers;
     @Autowired
     private TwitterHTTPService _twitterHTTP;
+    @Autowired
+    private ReferencedTweetRepository _references;
 
     private TwitterUser _activeUser;
     private EntityTweet _entityTweet;
@@ -54,6 +61,7 @@ public class TwitterV2Service {
     private Set<TwitterUser> _extractedUsers;
     private Set<URL> _extractedUrls;
     private JsonObject _searchResult;
+    private Entry<Tweet, TweetDataJson> _originalTweet;
 
     private Twitter _twitterInstance;
 
@@ -76,41 +84,83 @@ public class TwitterV2Service {
         return this;
     }
 
-    @Transactional
+
     public void parseResultJson(TwitterUser user, EntityTweet entity) throws Exception {
-        try {
-            this._activeUser = user;
-            this._entityTweet = entity;
+        this._activeUser = user;
+        this._entityTweet = entity;
 
-            if (_searchResult == null) {
-                _searchResult = this._twitterHTTP.getInstance()
-                        .getTweetsFromTimelineUserId(user.getId()).getResult();
-            }
+        if (_searchResult == null) {
+            _searchResult = this._twitterHTTP.getInstance()
+                    .getTweetsFromTimelineUserId(user.getId()).getResult();
+        }
 
-            JsonElement existsTweets = _searchResult.get("data");
+        JsonElement existsTweets = _searchResult.get("data");
 
-            if (existsTweets != null) {
-                Type typeToken = new TypeToken<List<TweetDataJson>>() {
-                }.getType();
+        if (existsTweets != null) {
+            Type typeToken = new TypeToken<List<TweetDataJson>>() {
+            }.getType();
 
-                List<TweetDataJson> tweetsDataJson = new Gson().fromJson(existsTweets, typeToken);
+            List<TweetDataJson> tweetsDataJson = new Gson().fromJson(existsTweets, typeToken);
 
-                for (TweetDataJson tweetData : tweetsDataJson) {
-                    Tweet tweet = getTweetFromId(tweetData.getId());
-
-                    if (tweet == null) {
-                        tweet = createTweetFromTweetJson(tweetData);
-                    }
-                }
-            } else {
-                throw new Exception("Json is null");
-            }
-
-        } catch (Exception ex) {
-            throw new Exception(ex.getMessage());
+            addTweetsTeste(tweetsDataJson);
+            addTweetsReferences(tweetsDataJson);
         }
 
         _twitterUsers.save(this._activeUser);
+    }
+
+    @Transactional
+    private void addTweetsTeste(List<TweetDataJson> tweetsDataJson) throws Exception {
+        for (TweetDataJson tweetData : tweetsDataJson) {
+            Tweet tweet = getTweetFromId(tweetData.getId());
+            if (tweet != null) {
+                tweet.setOnTimelineOf(_activeUser);
+
+                _extractedTweets.add(tweet);
+            }
+        }
+
+        _tweets.saveAll(_extractedTweets);
+    }
+
+    @Transactional
+    private void addTweetsReferences(List<TweetDataJson> tweetsDataJson) throws Exception {
+        for (TweetDataJson tweetData : tweetsDataJson) {
+            Tweet tweet = getTweetFromId(tweetData.getId());
+
+            if (tweet != null) {
+                for (TweetDataJson tweetDataReferenced : tweetData.getReferencedTweets()) {
+                    Tweet originalTweet = getTweetFromId(tweetDataReferenced.getId());
+
+                    if (originalTweet != null) {
+                        ReferencedTweetPK referencedTweetPK = new ReferencedTweetPK();
+                        referencedTweetPK.setIdReferenceTweet(tweet.getId());
+                        referencedTweetPK.setIdTweet(originalTweet.getId());
+
+                        ReferencedTweet referencedTweet = new ReferencedTweet();
+                        referencedTweet.setId(referencedTweetPK);
+
+                        if (tweetDataReferenced.isRepliedTo()) {
+                            referencedTweetPK.setTypeReference("R");
+                        } else if (tweetDataReferenced.isRetweet()) {
+                            tweet.setRetweet(true);
+                            referencedTweetPK.setTypeReference("F");
+                        } else {
+                            tweet.setRetweet(true);
+                            tweet.setQuoted(true);
+                            referencedTweetPK.setTypeReference("Q");
+                        }
+
+                        originalTweet.setOnTimelineOf(originalTweet.getWhosPosted());
+                        originalTweet.addReference(referencedTweet);
+
+                        _extractedTweets.add(originalTweet);
+                    }
+                }
+            }
+        }
+
+        _tweets.saveAll(_extractedTweets);
     }
 
     public TwitterV2Service withSearchResult(JsonObject searchResult) {
@@ -143,49 +193,34 @@ public class TwitterV2Service {
         for (UrlDataJson urlData : tweetData.getEntities().getUrls()) {
             URL url = _extractedUrls.stream()
                     .filter(p -> p.getName().equalsIgnoreCase(urlData.getName())).findFirst()
-                    .orElse(new URL(urlData.getName()));
+                    .orElse(null);
+
+            if (url == null) {
+                url = new URL(urlData.getName());
+                _extractedUrls.add(url);
+            }
 
             tweet.addUrl(url);
         }
 
+        _urls.saveAll(_extractedUrls);
+
         for (HashtagDataJson hashtagData : tweetData.getEntities().getHashtags()) {
             Tag tag = _extractedTags.stream()
                     .filter(p -> p.getName().equalsIgnoreCase(hashtagData.getName())).findFirst()
-                    .orElse(new Tag(hashtagData.getName()));
+                    .orElse(null);
+
+            if (tag == null) {
+                tag = new Tag(hashtagData.getName());
+                _extractedTags.add(tag);
+            }
 
             tweet.addHashTag(tag);
         }
 
-        for (TweetDataJson tweetReferencedData : tweetData.getReferencedTweets()) {
-            Tweet originalTweet = getTweetFromId(tweetReferencedData.getId());
+        _tags.saveAll(_extractedTags);
 
-            if (originalTweet != null) {
-                ReferencedTweetPK referencedTweetPK = new ReferencedTweetPK();
-                referencedTweetPK.setIdTweet(originalTweet.getId());
-                referencedTweetPK.setIdReferenceTweet(tweet.getId());
-
-                if (tweetReferencedData.isRepliedTo()) {
-                    referencedTweetPK.setTypeReference("R");
-                } else if (tweetReferencedData.isRetweet()) {
-                    tweet.setRetweet(true);
-                    referencedTweetPK.setTypeReference("F");
-                } else {
-                    tweet.setRetweet(true);
-                    tweet.setQuoted(true);
-                    referencedTweetPK.setTypeReference("Q");
-                }
-
-                ReferencedTweet referencedTweet = new ReferencedTweet();
-                referencedTweet.setId(referencedTweetPK);
-
-                originalTweet.addReference(referencedTweet);
-                originalTweet.setOnTimelineOf(originalTweet.getWhosPosted());
-            }
-        }
-
-        tweet.setOnTimelineOf(_activeUser);
-
-        return _tweets.save(tweet);
+        return tweet;
     }
 
     private Tweet getTweetFromId(long id) throws Exception {
@@ -199,17 +234,13 @@ public class TwitterV2Service {
                 if (result.get("errors") != null) {
                     return null;
                 }
-
                 TweetDataJson tweetData = new Gson().fromJson(result.get("data").getAsJsonObject(),
                         TweetDataJson.class);
 
-                tweet = _tweets.save(createTweetFromTweetJson(tweetData));
-
-                _extractedTweets.add(tweet);
+                tweet = createTweetFromTweetJson(tweetData);
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
-            throw new Exception(ex.getMessage());
+            return null;
         }
 
         return tweet;
@@ -225,9 +256,8 @@ public class TwitterV2Service {
                 twitterUser = _twitterUsers.getUserByScreenName(screenName).orElse(
                         getUserAccountFromTwitterUser(_twitterInstance.showUser(screenName)));
 
-                twitterUser = _twitterUsers.save(twitterUser);
-
                 _extractedUsers.add(twitterUser);
+                _twitterUsers.save(twitterUser);
             }
         } catch (Exception ex) {
             throw new Exception("Couldn't possible to get user by screenName from Twitter");
@@ -245,9 +275,8 @@ public class TwitterV2Service {
                 twitterUser = _twitterUsers.findById(userId)
                         .orElse(getUserAccountFromTwitterUser(_twitterInstance.showUser(userId)));
 
-                twitterUser = _twitterUsers.save(twitterUser);
-
                 _extractedUsers.add(twitterUser);
+                _twitterUsers.save(twitterUser);
             }
         } catch (Exception ex) {
             throw new Exception("Couldn't possible to get user by id from Twitter");

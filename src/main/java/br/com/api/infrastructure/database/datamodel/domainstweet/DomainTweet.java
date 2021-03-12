@@ -1,7 +1,7 @@
 package br.com.api.infrastructure.database.datamodel.domainstweet;
 
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,8 +30,8 @@ public class DomainTweet implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "domain", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<EntityTweet> entities;
+    @OneToMany(mappedBy = "domain", cascade = CascadeType.ALL)
+    private List<EntityTweet> entities;
 
     public DomainTweet() {
     }
@@ -60,11 +60,11 @@ public class DomainTweet implements Serializable {
         this.description = description;
     }
 
-    public Set<EntityTweet> getEntities() {
+    public List<EntityTweet> getEntities() {
         return entities;
     }
 
-    public void setEntities(Set<EntityTweet> entities) {
+    public void setEntities(List<EntityTweet> entities) {
         this.entities = entities;
     }
 

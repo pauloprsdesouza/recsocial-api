@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 import br.com.api.models.useraccount.SaveUserAccountJson;
+import br.com.api.models.useraccount.UserAccountJson;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -30,11 +31,13 @@ public class AuthorizationTokenTest {
 
                 resultUsers.andExpect(status().isOk());
 
-                String token = resultUsers.andReturn().getResponse().getContentAsString();
+                UserAccountJson userAccontJson = new Gson().fromJson(
+                                resultUsers.andReturn().getResponse().getContentAsString(),
+                                UserAccountJson.class);
 
-                ResultActions resultDomains = mvc
-                                .perform(get("/domains/all").contentType(MediaType.APPLICATION_JSON)
-                                                .header("Authorization", "Bearer " + token));
+                ResultActions resultDomains = mvc.perform(get("/domains/all")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .header("Authorization", "Bearer " + userAccontJson.getToken()));
 
                 resultDomains.andExpect(status().isOk());
         }

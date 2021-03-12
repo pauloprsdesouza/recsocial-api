@@ -57,7 +57,7 @@ public class TwitterHTTPService {
             ArrayList<NameValuePair> queryParameters;
             queryParameters = new ArrayList<>();
             queryParameters.addAll(getFieldsParameters());
-            queryParameters.add(new BasicNameValuePair("max_results", "20"));
+            queryParameters.add(new BasicNameValuePair("max_results", "50"));
             uriBuilder.addParameters(queryParameters);
 
             HttpGet httpGet = new HttpGet(uriBuilder.build());
@@ -120,9 +120,14 @@ public class TwitterHTTPService {
         Type typeToken = new TypeToken<JsonObject>() {
         }.getType();
 
-        JsonObject result = this.gson.fromJson(this.result, typeToken);
+        if (!this.result.contains("Rate limit exceeded")) {
+            return this.gson.fromJson(this.result, typeToken);
+        } else {
+            JsonObject error = new JsonObject();
+            error.addProperty("error", this.result);
 
-        return result;
+            return error;
+        }
     }
 
     private List<NameValuePair> getFieldsParameters() {

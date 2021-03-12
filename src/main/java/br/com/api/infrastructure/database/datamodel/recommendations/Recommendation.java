@@ -44,7 +44,7 @@ public class Recommendation implements Serializable {
     @Column(name = "registration_date")
     private Date registrationDate;
 
-    @OneToMany(mappedBy = "recommendation", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recommendation", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<RecommendationItem> items;
 
     public Recommendation() {

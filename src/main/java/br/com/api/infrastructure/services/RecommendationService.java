@@ -71,6 +71,11 @@ public class RecommendationService {
 
     public List<RecommendationItem> getRecommendedItemsBy(RecommendationTypeEnum type,
             List<Long> idsEntities) {
+        if (type == RecommendationTypeEnum.SocialCapial) {
+            _recommendations
+                    .deleteAll(_recommendations.notFinished(HttpContext.getUserLogged().getId()));
+        }
+
         _tweetsInMemory =
                 _tweets.getNotRecommendedTweets(HttpContext.getUserLogged().getId(), idsEntities);
 

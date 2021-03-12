@@ -118,7 +118,7 @@ public class Tweet implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "id_entity"), @JoinColumn(name = "id_domain")})
     private Set<EntityTweet> entities;
 
-    @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "tweet", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<RecommendationItem> recommendedItems;
 
     public Tweet() {
@@ -287,7 +287,6 @@ public class Tweet implements Serializable {
 
     public void setOnTimelineOf(TwitterUser onTimelineOf) {
         this.onTimelineOf = onTimelineOf;
-        onTimelineOf.addTweetOnTimeline(this);
     }
 
     public Set<Tag> getHashtags() {

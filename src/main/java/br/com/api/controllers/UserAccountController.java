@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.api.authorization.HttpContext;
-import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationRepository;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccount;
 import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccountRepository;
 import br.com.api.infrastructure.services.JwtService;
@@ -24,9 +23,6 @@ import br.com.api.models.useraccount.UserAccountJson;
 public class UserAccountController {
     @Autowired
     private UserAccountRepository _users;
-
-    @Autowired
-    private RecommendationRepository _recommendations;
 
     @Autowired
     private PasswordEncoder _passwordEncoder;
@@ -47,9 +43,7 @@ public class UserAccountController {
 
         _users.save(user);
 
-        _recommendations.deleteAll(_recommendations.notFinished(user.getId()));
-
-        return ResponseEntity.ok().body(token);
+        return ResponseEntity.ok().body(new UserAccountJson(user));
     }
 
     @GetMapping("/view-instructions")

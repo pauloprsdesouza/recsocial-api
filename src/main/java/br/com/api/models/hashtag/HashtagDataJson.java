@@ -14,11 +14,11 @@ public class HashtagDataJson implements Serializable {
     private String name;
 
     public String getName() {
-        return this.name;
+        return this.name.toLowerCase();
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name.toLowerCase();
     }
 
 }
