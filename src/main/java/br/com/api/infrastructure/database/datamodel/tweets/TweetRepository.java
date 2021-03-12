@@ -26,7 +26,7 @@ public interface TweetRepository extends JpaRepository<Tweet, Long> {
 
         @Query(value = "SELECT * FROM tweet t "
                         + "JOIN context_annotation ca on t.id = ca.id_tweet "
-                        + "WHERE ca.id_entity in (?2) and t.id_owner_user = t.id_user_timeline and t.is_retweet = 0 and t.sc_score is not null and t.id not in (SELECT id_tweet FROM recommendation_item rt "
+                        + "WHERE ca.id_entity in (?2) and t.id_owner_user = t.id_user_timeline and t.is_retweet = 0 and t.sc_score is not null and t.id not in (SELECT rt.id_tweet FROM recommendation_item rt "
                         + "																		   JOIN recommendation r on rt.id_recommendation = r.id "
                         + "																		   WHERE rt.rating is not null and r.id_active_user = ?1 and r.finished_date is null)",
                         nativeQuery = true)

@@ -112,8 +112,8 @@ public class TwitterHTTPService {
 
     private String getAccessTokenDefault() {
         // return MARIA_TWITTER;
-        // return EXPERIMENTAL_APP_TWITTER;
-        return EXPERIMENTAL_APP2_TWITTER;
+        return EXPERIMENTAL_APP_TWITTER;
+        // return EXPERIMENTAL_APP2_TWITTER;
     }
 
     public JsonObject getResult() {
