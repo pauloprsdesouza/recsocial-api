@@ -11,7 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+import br.com.api.infrastructure.database.datamodel.logerrors.LogError;
 import br.com.api.infrastructure.database.datamodel.recommendations.Recommendation;
 
 @Entity
@@ -48,8 +48,8 @@ public class UserAccount implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Recommendation> recommendations;
 
-    // @OneToMany(mappedBy = "activeUser")
-    // private List<LogError> systemErrors;
+    @OneToMany(mappedBy = "activeUser")
+    private Set<LogError> systemErrors;
 
     public int getId() {
         return this.id;
@@ -116,5 +116,13 @@ public class UserAccount implements Serializable {
     public UserAccount registrationDate(Date registrationDate) {
         setRegistrationDate(registrationDate);
         return this;
+    }
+
+    public Set<LogError> getSystemErrors() {
+        return this.systemErrors;
+    }
+
+    public void setSystemErrors(Set<LogError> systemErrors) {
+        this.systemErrors = systemErrors;
     }
 }
