@@ -1,10 +1,10 @@
 package br.com.api.infrastructure.services;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import com.google.gson.JsonArray;
@@ -20,7 +20,7 @@ import br.com.api.infrastructure.database.datamodel.usersaccount.UserAccountRepo
 import br.com.api.infrastructure.utils.Metric;
 
 @Service
-public class EvaluationMetricsService {
+public class EvaluationDashboardService {
     @Autowired
     private RecommendationRepository _recommendations;
 
@@ -35,27 +35,17 @@ public class EvaluationMetricsService {
     private List<Recommendation> cosineSimilarityRecommendations;
     private List<Recommendation> baselineARecommendations;
     private final String SC_COLOR = "rgba(4,93,183,0.9)";
-    private final String SCSA_COLOR = "rgba(30, 93, 280, 0.9)";
+    private final String SCSA_COLOR = "rgba(4, 129, 183, 0.9)";
     private final String CS_COLOR = "rgba(124,134,147,0.9)";
     private final String BA_COLOR = "rgba(153,163,178,0.9)";
 
     private final String SC_COLOR_TRANSPARENT = "rgba(4,93,183,0.1)";
-    private final String SCSA_COLOR_TRANSPARENT = "rgba(30, 93, 280, 0.1)";
+    private final String SCSA_COLOR_TRANSPARENT = "rgba(4, 129, 183, 0.1)";
     private final String CS_COLOR_TRANSPARENT = "rgba(124,134,147,0.1)";
     private final String BA_COLOR_TRANSPARENT = "rgba(153,163,178,0.1)";
 
-    public EvaluationMetricsService getInstance() {
-        this.socialCapitalRecommendations = new ArrayList<>();
-        this.socialCapitalSentimentRecommendations = new ArrayList<>();
-        this.cosineSimilarityRecommendations = new ArrayList<>();
-        this.baselineARecommendations = new ArrayList<>();
-        this.generateEvaluation();
-
-        return this;
-    }
-
-    private EvaluationMetricsService generateEvaluation() {
-        List<Recommendation> recommendations = _recommendations.findAll();
+    public EvaluationDashboardService getInstance() {
+        Set<Recommendation> recommendations = _recommendations.findAllFinished();
 
         this.socialCapitalRecommendations = recommendations.stream()
                 .filter(p -> p.getRecommendationType() == RecommendationTypeEnum.SocialCapial)
@@ -77,10 +67,10 @@ public class EvaluationMetricsService {
     }
 
     private JsonArray getResultsMAP() {
-        double mapSC = calculateMAP(socialCapitalRecommendations);
-        double mapSCSA = calculateMAP(socialCapitalSentimentRecommendations);
-        double mapCS = calculateMAP(cosineSimilarityRecommendations);
-        double mapBA = calculateMAP(baselineARecommendations);
+        double mapSC = Metric.calculateMAP(socialCapitalRecommendations);
+        double mapSCSA = Metric.calculateMAP(socialCapitalSentimentRecommendations);
+        double mapCS = Metric.calculateMAP(cosineSimilarityRecommendations);
+        double mapBA = Metric.calculateMAP(baselineARecommendations);
 
         JsonArray mapResultsJsonMAP = new JsonArray();
         mapResultsJsonMAP.add(mapSC);
@@ -92,10 +82,10 @@ public class EvaluationMetricsService {
     }
 
     private JsonArray getResultsNDCG() {
-        double ndcgSC = calculateNDCG(socialCapitalRecommendations);
-        double ndcgSCSA = calculateNDCG(socialCapitalSentimentRecommendations);
-        double ndcgCS = calculateNDCG(cosineSimilarityRecommendations);
-        double ndcgBA = calculateNDCG(baselineARecommendations);
+        double ndcgSC = Metric.calculateNDCG(socialCapitalRecommendations);
+        double ndcgSCSA = Metric.calculateNDCG(socialCapitalSentimentRecommendations);
+        double ndcgCS = Metric.calculateNDCG(cosineSimilarityRecommendations);
+        double ndcgBA = Metric.calculateNDCG(baselineARecommendations);
 
         JsonArray ndcgResultsJson = new JsonArray();
         ndcgResultsJson.add(ndcgSC);
@@ -107,10 +97,11 @@ public class EvaluationMetricsService {
     }
 
     private JsonArray getResultsSPS() {
-        double spsSC = calculateSpearmansCorrelation(socialCapitalRecommendations);
-        double spsSCSA = calculateSpearmansCorrelation(socialCapitalSentimentRecommendations);
-        double spsCS = calculateSpearmansCorrelation(cosineSimilarityRecommendations);
-        double spsBA = calculateSpearmansCorrelation(baselineARecommendations);
+        double spsSC = Metric.calculateSpearmansCorrelation(socialCapitalRecommendations);
+        double spsSCSA =
+                Metric.calculateSpearmansCorrelation(socialCapitalSentimentRecommendations);
+        double spsCS = Metric.calculateSpearmansCorrelation(cosineSimilarityRecommendations);
+        double spsBA = Metric.calculateSpearmansCorrelation(baselineARecommendations);
 
         JsonArray mapResultsJsonWSPS = new JsonArray();
         mapResultsJsonWSPS.add(spsSC);
@@ -122,10 +113,10 @@ public class EvaluationMetricsService {
     }
 
     private JsonArray getResultsMRR() {
-        double mrrSC = calculateMRR(socialCapitalRecommendations);
-        double mrrSCSA = calculateMRR(socialCapitalSentimentRecommendations);
-        double mrrCS = calculateMRR(cosineSimilarityRecommendations);
-        double mrrBA = calculateMRR(baselineARecommendations);
+        double mrrSC = Metric.calculateMRR(socialCapitalRecommendations);
+        double mrrSCSA = Metric.calculateMRR(socialCapitalSentimentRecommendations);
+        double mrrCS = Metric.calculateMRR(cosineSimilarityRecommendations);
+        double mrrBA = Metric.calculateMRR(baselineARecommendations);
 
         JsonArray mapResultsJsonMRR = new JsonArray();
         mapResultsJsonMRR.add(mrrSC);
@@ -157,27 +148,27 @@ public class EvaluationMetricsService {
             for (int i = 0; i < 10; i++) {
                 if (recommendationType == RecommendationTypeEnum.SocialCapial) {
                     resultsAlgorithmJson
-                            .add(calculatePrecisionAtN(socialCapitalRecommendations, i + 1));
+                            .add(Metric.calculatePrecisionAtN(socialCapitalRecommendations, i + 1));
                     backgrounds.add(this.SC_COLOR_TRANSPARENT);
                     dataset.addProperty("borderColor", this.SC_COLOR);
                     dataset.add("borderDash", borderDash);
                     dataset.addProperty("order", -7);
                 } else if (recommendationType == RecommendationTypeEnum.SocialCapitalSentiment) {
-                    resultsAlgorithmJson.add(
-                            calculatePrecisionAtN(socialCapitalSentimentRecommendations, i + 1));
+                    resultsAlgorithmJson.add(Metric
+                            .calculatePrecisionAtN(socialCapitalSentimentRecommendations, i + 1));
                     backgrounds.add(this.SCSA_COLOR_TRANSPARENT);
                     dataset.addProperty("borderColor", this.SCSA_COLOR);
                     dataset.add("borderDash", borderDashPointed);
                     dataset.addProperty("order", -8);
                 } else if (recommendationType == RecommendationTypeEnum.CosineSimilarity) {
-                    resultsAlgorithmJson
-                            .add(calculatePrecisionAtN(cosineSimilarityRecommendations, i + 1));
+                    resultsAlgorithmJson.add(
+                            Metric.calculatePrecisionAtN(cosineSimilarityRecommendations, i + 1));
                     backgrounds.add(this.CS_COLOR_TRANSPARENT);
                     dataset.addProperty("borderColor", this.CS_COLOR);
                     dataset.addProperty("order", -9);
                 } else if (recommendationType == RecommendationTypeEnum.BaselineA) {
                     resultsAlgorithmJson
-                            .add(calculatePrecisionAtN(baselineARecommendations, i + 1));
+                            .add(Metric.calculatePrecisionAtN(baselineARecommendations, i + 1));
                     backgrounds.add(this.BA_COLOR_TRANSPARENT);
                     dataset.addProperty("borderColor", this.BA_COLOR);
                     dataset.addProperty("order", -10);
@@ -189,7 +180,6 @@ public class EvaluationMetricsService {
             dataset.add("backgroundColor", backgrounds);
 
             dataset.addProperty("lineTension", 0.0);
-            // dataset.addProperty("fill", false);
 
             precisionAtNResultsJson.add(dataset);
         }
@@ -222,7 +212,7 @@ public class EvaluationMetricsService {
             JsonArray algorithmRatingsFrequencyJson = new JsonArray();
 
             for (Entry<Integer, Double> ratingFrequency : algorithmRatingsFrequency.entrySet()) {
-                algorithmRatingsFrequencyJson.add(round(ratingFrequency.getValue()));
+                algorithmRatingsFrequencyJson.add(Metric.round(ratingFrequency.getValue()));
 
                 if (recommendationType == RecommendationTypeEnum.SocialCapial) {
                     backgrounds.add(this.SC_COLOR);
@@ -264,10 +254,10 @@ public class EvaluationMetricsService {
 
             standardDeviation = Math.sqrt(standardDeviation / ratings.size());
 
-            meanRatingsByAlgorithm.add(round(mean));
+            meanRatingsByAlgorithm.add(Metric.round(mean));
 
-            stDevMinusRatingsByAlgorithm.add(round(mean - standardDeviation));
-            stDevPlusRatingsByAlgorithm.add(round(mean + standardDeviation));
+            stDevMinusRatingsByAlgorithm.add(Metric.round(mean - standardDeviation));
+            stDevPlusRatingsByAlgorithm.add(Metric.round(mean + standardDeviation));
         }
 
         JsonObject datasetMean = new JsonObject();
@@ -309,10 +299,6 @@ public class EvaluationMetricsService {
         datasetsJson.add(datasetStDevPlus);
 
         return datasetsJson;
-    }
-
-    private double round(double value) {
-        return Math.round(value * 100.0) / 100.0;
     }
 
     private Map<Integer, Double> getRatings(List<Recommendation> recommendations) {
@@ -417,151 +403,5 @@ public class EvaluationMetricsService {
         resultsJson.add("dataSummary", getDataSummary());
 
         return resultsJson;
-    }
-
-    private double calculateMAP(List<Recommendation> recommendations) {
-        List<Double> aveps = new ArrayList<>();
-
-        for (Recommendation recommendation : recommendations) {
-            double totalPrecisions = 0.0;
-            double relevantItems = 1;
-            double index = 1;
-
-            List<RecommendationItem> sortedItems = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
-                    .collect(Collectors.toList());
-
-            for (RecommendationItem item : sortedItems) {
-                if (item.getRating() > 3) {
-                    totalPrecisions += relevantItems / index;
-                    relevantItems++;
-                }
-
-                index++;
-            }
-
-            aveps.add(totalPrecisions / relevantItems);
-        }
-
-        return aveps.size() > 0 ? round(aveps.stream().mapToDouble(p -> p).average().getAsDouble())
-                : 0;
-    }
-
-    private double calculatePrecisionAtN(List<Recommendation> recommendations, int n) {
-        List<Double> precisions = new ArrayList<>();
-
-        for (Recommendation recommendation : recommendations) {
-            double relevantItems = 0;
-
-            List<RecommendationItem> sortedItems = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getScore).reversed()).limit(n)
-                    .collect(Collectors.toList());
-
-            for (RecommendationItem item : sortedItems) {
-                if (item.getRating() > 3) {
-                    relevantItems++;
-                }
-            }
-
-            precisions.add(relevantItems / n);
-        }
-
-        return precisions.size() > 0
-                ? round(precisions.stream().mapToDouble(p -> p).average().getAsDouble())
-                : 0;
-    }
-
-    private double calculateSpearmansCorrelation(List<Recommendation> recommendations) {
-        List<Double> sps = new ArrayList<>();
-
-        for (Recommendation recommendation : recommendations) {
-            double totalSPS = 0.0;
-
-            double[] originalOrder =
-                    recommendation.getItems().stream().mapToDouble(p -> p.getRank()).toArray();
-
-            double[] sortedItems = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getRank).reversed())
-                    .mapToDouble(p -> p.getRank()).toArray();
-
-            totalSPS = spearmans(originalOrder, sortedItems);
-
-            sps.add(totalSPS);
-        }
-
-        return sps.size() > 0 ? round(sps.stream().mapToDouble(p -> p).average().getAsDouble()) : 0;
-    }
-
-    private double spearmans(double[] listA, double[] listB) {
-        double sumDifference = 0;
-        double n = listA.length;
-
-        for (int i = 0; i < n; i++) {
-            sumDifference += Math.pow(listA[i] - listB[i], 2);
-        }
-
-        return 1 - ((6 * sumDifference) / (n * (Math.pow(n, 2) - 1)));
-    }
-
-    private double calculateMRR(List<Recommendation> recommendations) {
-        List<Double> mrrs = new ArrayList<>();
-
-        for (Recommendation recommendation : recommendations) {
-            double totalMRR = 0.0;
-            double index = 1;
-
-            List<RecommendationItem> sortedItems = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
-                    .collect(Collectors.toList());
-
-            for (RecommendationItem item : sortedItems) {
-                if (item.getRating() > 3) {
-                    totalMRR = 1 / index;
-                    break;
-                }
-
-                index++;
-            }
-
-            mrrs.add(totalMRR);
-        }
-
-        return mrrs.size() > 0 ? round(mrrs.stream().mapToDouble(p -> p).average().getAsDouble())
-                : 0;
-    }
-
-    private double calculateNDCG(List<Recommendation> recommendations) {
-        double totalNDCG = 0;
-
-        for (Recommendation recommendation : recommendations) {
-            double dcg = 0;
-            double idcg = 0;
-
-            List<RecommendationItem> sortedItemsByScore = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getScore).reversed())
-                    .collect(Collectors.toList());
-
-            List<RecommendationItem> sortedItemsByRating = recommendation.getItems().stream()
-                    .sorted(Comparator.comparing(RecommendationItem::getRating).reversed())
-                    .collect(Collectors.toList());
-
-            for (RecommendationItem item : sortedItemsByScore) {
-                double denominator = Metric.log10ToLog2(item.getRank()) + 1;
-                dcg += (Math.pow(item.getRating(), 2) - 1) / denominator;
-            }
-
-            int i = 1;
-            for (RecommendationItem item : sortedItemsByRating) {
-                double denominator = Metric.log10ToLog2(i) + 1;
-                idcg += (Math.pow(item.getRating(), 2) - 1) / denominator;
-                i++;
-            }
-
-            if (dcg > 0) {
-                totalNDCG += dcg / idcg;
-            }
-        }
-
-        return round(1.0 / recommendations.size() * totalNDCG);
     }
 }

@@ -5,13 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import br.com.api.infrastructure.services.EvaluationMetricsService;
+import br.com.api.infrastructure.services.EvaluationDashboardService;
 
 @RestController
 @RequestMapping("/evaluations")
 public class EvaluationController {
     @Autowired
-    private EvaluationMetricsService _evaluationService;
+    private EvaluationDashboardService _evaluationService;
 
     @GetMapping("/generate")
     public ResponseEntity<?> generate() {

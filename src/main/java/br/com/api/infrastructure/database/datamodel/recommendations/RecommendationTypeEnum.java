@@ -1,10 +1,11 @@
 package br.com.api.infrastructure.database.datamodel.recommendations;
 
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Set;
 
 public enum RecommendationTypeEnum {
-    SocialCapial("SC"), SocialCapitalSentiment("SCSA"), CosineSimilarity("CS"), BaselineA("B1"), BaselineB("B2");
+    SocialCapial("SC"), SocialCapitalSentiment("SCSA"), CosineSimilarity("CS"), BaselineA("B1");
 
     private String value;
 
@@ -23,15 +24,13 @@ public enum RecommendationTypeEnum {
             return SocialCapitalSentiment;
         } else if (value.equals("CS")) {
             return CosineSimilarity;
-        } else if (value.equals("B1")) {
-            return BaselineA;
         } else {
-            return BaselineB;
+            return BaselineA;
         }
     }
 
-    public static Set<RecommendationTypeEnum> getListOfRecommendationType() {
-        Set<RecommendationTypeEnum> recommendationTypesOfString = new HashSet<>();
+    public static LinkedList<RecommendationTypeEnum> getListOfRecommendationType() {
+        LinkedList<RecommendationTypeEnum> recommendationTypesOfString = new LinkedList<>();
         recommendationTypesOfString.add(SocialCapial);
         recommendationTypesOfString.add(SocialCapitalSentiment);
         recommendationTypesOfString.add(CosineSimilarity);

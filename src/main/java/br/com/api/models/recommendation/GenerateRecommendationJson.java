@@ -3,7 +3,6 @@ package br.com.api.models.recommendation;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import br.com.api.infrastructure.database.datamodel.recommendations.RecommendationTypeEnum;
 

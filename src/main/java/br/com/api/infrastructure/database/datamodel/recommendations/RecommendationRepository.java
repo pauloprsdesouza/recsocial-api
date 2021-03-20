@@ -14,4 +14,8 @@ public interface RecommendationRepository extends JpaRepository<Recommendation, 
     @Query(value = "SELECT * FROM recommendation r "
             + "WHERE r.id_active_user = ?1 and r.finished_date is null", nativeQuery = true)
     public Set<Recommendation> notFinished(int idUser);
+
+    @Query(value = "SELECT * FROM recommendation r WHERE r.finished_date is not null",
+            nativeQuery = true)
+    public Set<Recommendation> findAllFinished();
 }
