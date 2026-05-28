@@ -1,27 +1,31 @@
-# Recsocial API
+# Recsocial Api
 
 [![License](https://img.shields.io/github/license/pauloprsdesouza/recsocial-api)](./LICENSE)
-[![Last Commit](https://img.shields.io/github/last-commit/pauloprsdesouza/recsocial-api)](https://github.com/pauloprsdesouza/recsocial-api/commits/main)
+[![Last Commit](https://img.shields.io/github/last-commit/pauloprsdesouza/recsocial-api)](https://github.com/pauloprsdesouza/recsocial-api/commits)
 [![Top Language](https://img.shields.io/github/languages/top/pauloprsdesouza/recsocial-api)](https://github.com/pauloprsdesouza/recsocial-api)
 
-Java API for social recommendation workflows and service endpoints.
+## Overview
+Java Spring Boot API for social recommendation workloads.
 
 ## Tech Stack
 - Java
-- Spring Boot
-- REST API patterns
+- C# / .NET
+- Java / Maven
 
-## Architecture
-- Service modules are structured around recommendation and social-domain responsibilities.
-- API layer, domain rules, and persistence concerns are organized for maintainability.
+## Repository Structure
+- `src/` - main source code
 
 ## Quick Start
-1. Install Java and Maven-compatible toolchain.
-2. Build the project.
-3. Run the application and verify API endpoints.
+1. Install Java and Maven.
+2. Build the project with Maven.
+3. Run the application locally.
 
 ## Validation
-- Run tests and verify endpoint behavior with your API client.
+- Run local build and tests where available.
+- Validate main workflows/endpoints before opening pull requests.
 
 ## Contributing
 See `CONTRIBUTING.md` for contribution and PR guidelines.
+
+## Status
+Actively maintained by Paulo Roberto de Souza.
